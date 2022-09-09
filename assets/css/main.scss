@@ -1070,6 +1070,7 @@ a{
                     width: 100%;
                     height: 242px;
                     img{
+                        cursor: pointer;
                         width: 100%;
                         height: 100%;
                         object-fit: cover;
@@ -1086,6 +1087,17 @@ a{
 
     &.vision-section{
         background-color: #F2F2F2;
+    }
+}
+
+.imagepop{
+    height: 100%;
+    padding: 0;
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
     }
 }
 

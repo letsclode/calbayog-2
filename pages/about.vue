@@ -39,7 +39,7 @@
                 <div class="right-content gallery-content">
                     <div class="left-gallery">
                         <div class="img-wrapper" v-for="(img, index) in galleryMisiion" :key="index">
-                            <img :src="img.img" :alt="img.title"  class="about-gallery-imgs">
+                            <img :src="img.img" :alt="img.title"  class="about-gallery-imgs" @click="getImg(img.title)">
                         </div>
                     </div>
                 </div>
@@ -63,6 +63,11 @@
                 <Officials/>
             </div>
         </div>
+        <modal name="imgpop" width="600px" height="600px">
+            <div class="imagepop">
+                <img :src="require('~/static/images/about1.png')">
+            </div>
+        </modal>
     </div>
 </template>
 <script>
@@ -86,6 +91,12 @@ export default {
                 }
             ]
         }
+    },
+    methods:{
+        getImg(val){
+            this.$modal.show('imgpop');
+        },  
+       
     }      
 }
 </script>
