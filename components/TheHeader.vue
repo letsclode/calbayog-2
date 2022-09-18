@@ -38,21 +38,56 @@
                             <a href="#">pages</a>
                         </div>
                         <div class="nav-items">
-                            <a href="#">contact</a>
+                            <NuxtLink to="/contact">contact</NuxtLink>
                         </div>
                         <div class="nav-items" id="h-search-bar">
-                            <form action="#">
+                            <!-- <form action="#">
                                 <div class="search-wrapper">
                                     <button type="submit">
                                         <img :src="require('~/static/images/icon-search.png')">
                                     </button>
                                     <input type="text" class="search-input">
                                 </div>
-                            </form>
+                            </form> -->
+                            <button class="search-btn-nav" @click="showSearch()">
+                                <img :src="require('~/static/images/icon-search.png')">
+                            </button>
                         </div>
                     </nav>
             </div>
         </div>
+        <transition name="fade">
+        <div class="search-bar-wrapper" v-if="showSearchform">
+            <div class="container">
+                <div class="search-wrapper">
+                        <div class="close-search-form">
+                            <span class="mdi mdi-close-thick" @click="showSearch()"></span>
+                        </div>
+                        <div class="search-form">
+                            <form action="#">
+                                <input type="text" class="search-bar-input" placeholder="Search for News, Events and Departments">
+                                <button class="search-btn"> 
+                                    <img :src="require('~/static/images/icon-search.png')">
+                                </button>
+                            </form>
+                        </div>
+                </div>
+            </div>
+        </div>
+        </transition>
     </div>
 </template>
-
+<script>
+  export default {
+    data () {
+      return {
+        showSearchform: false,
+      }
+    },
+    methods:{
+        showSearch(){
+            this.showSearchform = !this.showSearchform;
+        }
+    }
+  }
+</script>

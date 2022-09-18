@@ -32,13 +32,13 @@
             Be Updated With City News
           </h4>
           <div class="news-grid">
-            <template >
+            <template>
               <v-card
                 width="300"
                 :class="activeNews == index ? 'active' : ''"
                 @click="newsShowPopup(index)"
                 class="news-card-wrappper"
-                v-for="(news, index) in newsArray" :key="index"
+                v-for="(news, index) in newsArray.slice(0,6)" :key="index"
               >
                 <v-img
                   height="210"
@@ -49,14 +49,28 @@
                     <p class="news-date">{{news.date}}</p>
                     <h5 class="news-title">{{news.title}}</h5>
                     <p class="news-desc">{{news.description}}</p>
+                    <v-btn
+                      text
+                      class="readmore-btn"
+                    >
+                      Read More
+                    </v-btn>
                 </v-card-text>
               </v-card>
             </template>
           </div>
           <div class="news-slider-wrapper">
-            <div class="next-prev-w">
+            <!-- <div class="next-prev-w">
               <v-btn elevation="1" class="n-slider-btn"><span class="mdi mdi-chevron-left"></span></v-btn>
               <v-btn elevation="1" class="n-slider-btn"><span class="mdi mdi-chevron-right"></span></v-btn>
+            </div> -->
+            <div class="viewall-news">
+              <v-btn
+                class="news-seemore"
+                outlined
+              >
+                See More
+              </v-btn>
             </div>
           </div>
         </div>
@@ -165,7 +179,7 @@
           <Officials/>
       </div>
     </div>
-    <modal name="newsModal" width="1000px" height="auto">
+    <!-- <modal name="newsModal" width="1000px" height="auto">
       <div class="newspopup">
         <div class="images-slider">
            
@@ -206,7 +220,7 @@
           </div>
         </div>
       </div>
-    </modal>
+    </modal> -->
   </div>
 </template>
 
@@ -219,49 +233,49 @@ export default {
       return {
         newsArray: [
           {
-            title : 'Gaduation Ceremony',
+            title : 'Graduation Ceremony',
             date: '15 JULY, 2022',
             description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
             img: '/images/news2.png',
           },
             {
-            title : 'Gaduation Ceremony',
+            title : 'Graduation Ceremony',
             date: '15 JULY, 2022',
             description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
             img: '/images/news3.png',
           },
              {
-            title : 'Gaduation Ceremony',
+            title : 'Graduation Ceremony',
             date: '15 JULY, 2022',
             description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
             img: '/images/news4.png',
           },
              {
-            title : 'Gaduation Ceremony',
+            title : 'Graduation Ceremony',
             date: '15 JULY, 2022',
             description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
             img: '/images/news5.png',
           },
              {
-            title : 'Gaduation Ceremony',
+            title : 'Graduation Ceremony',
             date: '15 JULY, 2022',
             description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
             img: '/images/news2.png',
           },
           {
-            title : 'Gaduation Ceremony',
+            title : 'Graduation Ceremony',
             date: '15 JULY, 2022',
             description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
             img: '/images/news2.png',
           },
           {
-            title : 'Gaduation Ceremony',
+            title : 'Graduation Ceremony',
             date: '15 JULY, 2022',
             description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
             img: '/images/news2.png',
           },
           {
-            title : 'Gaduation Ceremony',
+            title : 'Graduation Ceremony',
             date: '15 JULY, 2022',
             description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
             img: '/images/news2.png',

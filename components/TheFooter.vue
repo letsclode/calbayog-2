@@ -3,9 +3,9 @@
         <div class="top-footer">
             <div class="overlay">
                 <div class="container newsletter-wrapper">
-                    <h3>Recevez notre newsletter</h3>
+                    <h3>Receive our newsletter</h3>
                     <p>
-                        Inscrivez vous à notre newsletter et soyez avertie, avant tout le monde, de nos nouveautés, promotions et coup de coeur.
+                        Subscribe to our newsletter and be informed, before everyone else, of our news, promotions and favorites.
                     </p>
                     <div class="email-wrapper">
                         <form>

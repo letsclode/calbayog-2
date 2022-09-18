@@ -3,6 +3,7 @@
         <TheHeader/>
         <Banners/>
         <Nuxt/>
+        <!-- <ToTop/> -->
         <TheFooter/>
     </div>
 </template>

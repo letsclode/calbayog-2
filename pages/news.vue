@@ -16,24 +16,23 @@
                 </h4>
                 <div class="news-grid">
                     <template>
-                    <v-card
-                        width="300"
-                        class="news-card-wrappper"
-                        v-for="(news, index) in newsArray" :key="index"
-                    >
+                        <v-card
+                            width="300"
+                            class="news-card-wrappper"
+                            v-for="(news, index) in newsArray" :key="index">
 
-                        <v-img
-                        height="210"
-                        class="news-card-img"
-                        :src="news.img"
-                        
-                        ></v-img>
-                        <v-card-text class="news-content-wrapper">
-                            <p class="news-date">{{news.date}}</p>
-                            <h5 class="news-title">{{news.title}}</h5>
-                            <p class="news-desc">{{news.description}}</p>
-                        </v-card-text>
-                    </v-card>
+                            <v-img
+                            height="210"
+                            class="news-card-img"
+                            :src="news.img"
+                            
+                            ></v-img>
+                            <v-card-text class="news-content-wrapper">
+                                <p class="news-date">{{news.date}}</p>
+                                <h5 class="news-title">{{news.title}}</h5>
+                                <p class="news-desc">{{news.description}}</p>
+                            </v-card-text>
+                        </v-card>
                     </template>
                 </div>
             </div>
@@ -133,24 +132,24 @@
                 description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
                 img: '/images/news2.png',
               },
-              {
-                title : 'Gaduation Ceremony',
-                date: '15 JULY, 2022',
-                description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
-                img: '/images/news2.png',
-              },
-              {
-                title : 'Gaduation Ceremony',
-                date: '15 JULY, 2022',
-                description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
-                img: '/images/news2.png',
-              },
-              {
-                title : 'Gaduation Ceremony',
-                date: '15 JULY, 2022',
-                description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
-                img: '/images/news2.png',
-              }
+            //   {
+            //     title : 'Gaduation Ceremony',
+            //     date: '15 JULY, 2022',
+            //     description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
+            //     img: '/images/news2.png',
+            //   },
+            //   {
+            //     title : 'Gaduation Ceremony',
+            //     date: '15 JULY, 2022',
+            //     description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
+            //     img: '/images/news2.png',
+            //   },
+            //   {
+            //     title : 'Gaduation Ceremony',
+            //     date: '15 JULY, 2022',
+            //     description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
+            //     img: '/images/news2.png',
+            //   }
             ],
         }
       }
