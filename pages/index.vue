@@ -89,6 +89,17 @@
           <div class="events-gallery">
             <div class="img-gallery" v-for="(item, index) in eventGallery" :key="index">
               <img :src="item.img" :alt="item.title">
+              <div class="events-content">
+                <p>
+                  {{item.title}}
+                </p>
+                <v-btn
+                  class="ma-2 events-btn"
+                  outlined
+                >
+                  View Event
+                </v-btn>
+              </div>
             </div>
           </div>
         </div>
@@ -282,11 +293,11 @@ export default {
           }
         ],
         eventGallery: [
-          { title: 'Samar day' , img: '/images/event1.png'},
-          { title: 'Samar day' , img: '/images/mutyahansamar2019.png'},
-          { title: 'Samar day' , img: '/images/Civic-Parade1.png'},
-          { title: 'Samar day' , img: '/images/2378565_orig.png'},
-          { title: 'Samar day' , img: '/images/downloadsd.png'}
+          { title: 'September' , img: '/images/event1.png'},
+          { title: 'August' , img: '/images/mutyahansamar2019.png'},
+          { title: 'July' , img: '/images/Civic-Parade1.png'},
+          { title: 'June' , img: '/images/2378565_orig.png'},
+          { title: 'May' , img: '/images/downloadsd.png'}
         ],
         agencyArray: [
           {title: 'Agriculture', icon: '/images/Icon awesome-leaf.png', name: 'agri'},
