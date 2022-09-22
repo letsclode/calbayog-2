@@ -3,8 +3,11 @@
         <div class="search-bar">
             <div class="container">
                 <form action="#">
-                    <div class="seacrh-wrapper">
-                        <input type="text">
+                    <div class="search-wrapper">
+                        <input type="text" class="search-input" placeholder="Search News">
+                        <button type="submit">
+                            <img :src="require('~/static/images/Icon awesome-search.png')">
+                        </button>
                     </div>
                 </form>
             </div>
@@ -12,14 +15,14 @@
         <div class="city-news-section latest-news-section">
             <div class="container">
                 <h4 class="title">
-                    Latest
+                    News
                 </h4>
                 <div class="news-grid">
                     <template>
                         <v-card
                             width="300"
                             class="news-card-wrappper"
-                            v-for="(news, index) in newsArray" :key="index">
+                            v-for="(news, index) in newsArray.slice(0,4)" :key="index">
 
                             <v-img
                             height="210"
@@ -31,6 +34,13 @@
                                 <p class="news-date">{{news.date}}</p>
                                 <h5 class="news-title">{{news.title}}</h5>
                                 <p class="news-desc">{{news.description}}</p>
+                                <Nuxtlink
+                                :to="news/news-id"
+                                text
+                                class="readmore-btn"
+                                >
+                                Read More
+                                </Nuxtlink>
                             </v-card-text>
                         </v-card>
                     </template>
@@ -47,9 +57,8 @@
                     <v-card
                         width="300"
                         class="news-card-wrappper"
-                        v-for="(news, index) in newsArray" :key="index"
+                        v-for="(news, index) in newsArray.slice(0,4)" :key="index"
                     >
-
                         <v-img
                         height="210"
                         class="news-card-img"
@@ -59,13 +68,20 @@
                             <p class="news-date">{{news.date}}</p>
                             <h5 class="news-title">{{news.title}}</h5>
                             <p class="news-desc">{{news.description}}</p>
+                            <Nuxtlink
+                            :to="news/id"
+                            text
+                            class="readmore-btn"
+                            >
+                            Read More
+                            </Nuxtlink>
                         </v-card-text>
                     </v-card>
                     </template>
                 </div>
             </div>
         </div>
-        <div class="city-news-section upcoming-news-section">
+        <!-- <div class="city-news-section upcoming-news-section">
             <div class="container">
                 <h4 class="title">
                     Up coming
@@ -92,7 +108,7 @@
                     </template>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 <script>

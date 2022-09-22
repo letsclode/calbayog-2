@@ -14,6 +14,17 @@
         </div> -->
         <div class="dept-section">
             <div class="container">
+                <div class="header">
+                    <h4 class="title">Departments</h4>
+                    <form action="#">
+                        <div class="search-wrapper">
+                            <input type="text" class="search-input" placeholder="Search Departments">
+                            <button type="submit">
+                                <img :src="require('~/static/images/Icon awesome-search.png')">
+                            </button>
+                        </div>
+                    </form>
+                </div>
                 <div class="dept-wrapper">
                     <div class="dept-info" v-for="(dept, index) in departments" :key="index">
                         <div class="inner-info">
@@ -48,39 +59,33 @@
                         logo: '/images/City_seal.png',
                     },
                     {
-                        title: 'City Mayors Office',
-                        oic: 'Raymund C. Uy',
-                        position: 'CITY MAYOR',
+                        title: 'City Vice - Mayor Office',
+                        oic: 'Rex M. Daguman',
+                        position: 'CITY VICE - MAYOR',
                         logo: '/images/City_seal.png',
                     },
                     {
-                        title: 'City Mayors Office',
-                        oic: 'Raymund C. Uy',
-                        position: 'CITY MAYOR',
+                        title: 'City Administrator Office',
+                        oic: 'Augusto L. Magdaraog, JD',
+                        position: 'DEPARTMENT HEAD',
                         logo: '/images/City_seal.png',
                     },
                     {
-                        title: 'City Mayors Office',
-                        oic: 'Raymund C. Uy',
-                        position: 'CITY MAYOR',
+                        title: 'City Accountant Office',
+                        oic: 'Atty. Isagani G. Togonon, CPA',
+                        position: 'DEPARTMENT HEAD',
                         logo: '/images/City_seal.png',
                     },
                     {
-                        title: 'City Mayors Office',
-                        oic: 'Raymund C. Uy',
-                        position: 'CITY MAYOR',
+                        title: 'Assesor`s Office',
+                        oic: 'Joselito A. Montealto, JD',
+                        position: 'DEPARTMENT HEAD',
                         logo: '/images/City_seal.png',
                     },
                     {
-                        title: 'City Mayors Office',
-                        oic: 'Raymund C. Uy',
-                        position: 'CITY MAYOR',
-                        logo: '/images/City_seal.png',
-                    },
-                    {
-                        title: 'City Mayors Office',
-                        oic: 'Raymund C. Uy',
-                        position: 'CITY MAYOR',
+                        title: 'BPLO',
+                        oic: 'Leonardo A. Bedio',
+                        position: 'DEPARTMENT HEAD',
                         logo: '/images/City_seal.png',
                     },
                     {

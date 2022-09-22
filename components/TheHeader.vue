@@ -29,11 +29,11 @@
                             <NuxtLink to="/news">News</NuxtLink>
                         </div>
                         <div class="nav-items">
-                            <a href="#">events</a>
+                            <a href="#">Activities</a>
                         </div>
-                        <div class="nav-items">
+                        <!-- <div class="nav-items">
                             <a href="#">BARANGAYs</a>
-                        </div>
+                        </div> -->
                         <div class="nav-items">
                             <a href="#">pages</a>
                         </div>

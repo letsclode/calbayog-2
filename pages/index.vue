@@ -38,7 +38,7 @@
                 :class="activeNews == index ? 'active' : ''"
                 @click="newsShowPopup(index)"
                 class="news-card-wrappper"
-                v-for="(news, index) in newsArray.slice(0,6)" :key="index"
+                v-for="(news, index) in newsArray" :key="index"
               >
                 <v-img
                   height="210"
@@ -49,12 +49,13 @@
                     <p class="news-date">{{news.date}}</p>
                     <h5 class="news-title">{{news.title}}</h5>
                     <p class="news-desc">{{news.description}}</p>
-                    <v-btn
+                    <Nuxtlink
+                      :to="news/id"
                       text
                       class="readmore-btn"
                     >
                       Read More
-                    </v-btn>
+                    </Nuxtlink>
                 </v-card-text>
               </v-card>
             </template>
@@ -65,12 +66,13 @@
               <v-btn elevation="1" class="n-slider-btn"><span class="mdi mdi-chevron-right"></span></v-btn>
             </div> -->
             <div class="viewall-news">
-              <v-btn
+              <NuxtLink
+                to="news"
                 class="news-seemore"
                 outlined
               >
                 See More
-              </v-btn>
+              </NuxtLink>
             </div>
           </div>
         </div>
@@ -79,7 +81,7 @@
     <div class="events-section">
       <div class="overlay">
         <div class="container">
-          <h4 class="title">Events</h4>
+          <h4 class="title">Calendar of Activities</h4>
           <p class="section-desc">Our aim to provide transparency and accountability
           to our constituents and to others who take interest in our beloved City 
           is further extended in this website. As Calbayog consistently delivers good 
@@ -129,7 +131,9 @@
     <div class="welcome-statement-section">
       <div class="container">
         <div class="logo-wrapper">
-           <img :src="require('~/static/images/City_seal.png')" alt="City Official Seal">
+          <a href="https://www.dbm.gov.ph/index.php/about-us/philippine-transparency-seal" target="_blank">
+           <img :src="require('~/static/images/Transparency_seal-01.png')" alt="Transparency seal Seal">
+          </a>
         </div>
         <v-divider vertical class="wss-hr"></v-divider>
         <div class="statement">
