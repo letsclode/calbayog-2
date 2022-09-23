@@ -50,7 +50,7 @@
                                 </div>
                             </form> -->
                             <button class="search-btn-nav" @click="showSearch()">
-                                <img :src="require('~/static/images/icon-search.png')">
+                                <img :src="require('~/static/images/Icon-search.png')">
                             </button>
                         </div>
                     </nav>
@@ -67,7 +67,7 @@
                             <form action="#">
                                 <input type="text" class="search-bar-input" placeholder="Search for News, Events and Departments">
                                 <button class="search-btn"> 
-                                    <img :src="require('~/static/images/icon-search.png')">
+                                    <!-- <img :src="require('~/static/images/icon-search.png')"> -->
                                 </button>
                             </form>
                         </div>

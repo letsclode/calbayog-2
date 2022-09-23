@@ -6,7 +6,7 @@
                 <form action="#">
                     <div class="search-wrapper">
                         <button type="submit">
-                            <img :src="require('~/static/images/icon-search.png')">
+                            <img :src="require('~/static/images/Icon-search.png')">
                         </button>
                         <input type="text" class="search-input">
                     </div>
