@@ -27,20 +27,23 @@
                 </div>
                 <div class="dept-wrapper">
                     <div class="dept-info" v-for="(dept, index) in departments" :key="index">
-                        <div class="inner-info">
-                            <div class="dept-logo">
-                                <img :src="dept.logo" :alt="dept.title">
+                        <a href="departments/_id">
+                            <div class="inner-info">
+                                <div class="dept-logo">
+                                    <img :src="dept.logo" :alt="dept.title">
+                                </div>
+                                <div class="dept-content">
+                                    <p class="dept-title">{{dept.title}}</p>
+                                    <p class="oic">{{dept.oic}}</p>
+                                    <v-divider></v-divider>
+                                    <span class="position">{{dept.position}}</span>
+                                </div>
                             </div>
-                            <div class="dept-content">
-                                <p class="dept-title">{{dept.title}}</p>
-                                <p class="oic">{{dept.oic}}</p>
-                                <v-divider></v-divider>
-                                <span class="position">{{dept.position}}</span>
-                            </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
+            
         </div>
     </div>
 

@@ -64,7 +64,28 @@ export default{
                 "rows": 2,
                 "slidesPerRow": 1,
                 "draggable": true,
-                "swipeToSlide": true
+                "swipeToSlide": true,
+                "responsive": [
+                        {
+                        "breakpoint": 1300,
+                        "settings": {
+                            "slidesToShow": 4,
+                        }
+                        },
+                        {
+                        "breakpoint": 1200,
+                        "settings": {
+                            "slidesToShow": 3,
+                            
+                        }
+                        },
+                        {
+                        "breakpoint": 1000,
+                        "settings": {
+                            "slidesToShow": 2,
+                        }
+                        }
+                    ]
             }
         }
     }

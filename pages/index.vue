@@ -20,8 +20,16 @@
                         <p>
                         Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.
                         </p>
+                        <div class="hid-message-welcome" :class="{animate : showWelcomeMessage}">
+                          <p>
+                            Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.
+                          </p>
+                          <p>
+                            Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.
+                          </p>
+                        </div>
                     </div>
-                    <button class="read-more">READ MORE</button>
+                    <button class="read-more" @click="readMoreWelcome" :class="{animate : showWelcomeMessage}">READ MORE</button>
                 </div>
               </div>
           </div>
@@ -40,6 +48,7 @@
                 class="news-card-wrappper"
                 v-for="(news, index) in newsArray" :key="index"
               >
+              <a href="news/_id">
                 <v-img
                   height="210"
                   class="news-card-img"
@@ -49,22 +58,20 @@
                     <p class="news-date">{{news.date}}</p>
                     <h5 class="news-title">{{news.title}}</h5>
                     <p class="news-desc">{{news.description}}</p>
-                    <Nuxtlink
-                      :to="news/id"
-                      text
-                      class="readmore-btn"
-                    >
-                      Read More
-                    </Nuxtlink>
+                    <a href="news/_id" class="readmore-a">
+                      <Nuxtlink
+                        text
+                        class="readmore-btn"
+                      >
+                        Read More
+                      </Nuxtlink>
+                    </a>
                 </v-card-text>
+              </a>
               </v-card>
             </template>
           </div>
           <div class="news-slider-wrapper">
-            <!-- <div class="next-prev-w">
-              <v-btn elevation="1" class="n-slider-btn"><span class="mdi mdi-chevron-left"></span></v-btn>
-              <v-btn elevation="1" class="n-slider-btn"><span class="mdi mdi-chevron-right"></span></v-btn>
-            </div> -->
             <div class="viewall-news">
               <NuxtLink
                 to="news"
@@ -95,12 +102,14 @@
                 <p>
                   {{item.title}}
                 </p>
-                <v-btn
-                  class="ma-2 events-btn"
-                  outlined
-                >
-                  View Event
-                </v-btn>
+                <a href="events/_id">
+                  <v-btn
+                    class="ma-2 events-btn"
+                    outlined
+                  >
+                    View Event
+                  </v-btn>
+                </a>
               </div>
             </div>
           </div>
@@ -331,6 +340,7 @@ export default {
           {name: 'E-Service' , hotline: '0000-0000'},
         ],
         activeNews: '',
+        showWelcomeMessage: false,
     }
   },
   mounted () {
@@ -343,6 +353,9 @@ export default {
     },
     closeNewsModal(){
       this.$modal.hide('newsModal');
+    },
+    readMoreWelcome(){
+      this.showWelcomeMessage = !this.showWelcomeMessage;
     }
   }
 }

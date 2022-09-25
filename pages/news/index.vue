@@ -23,25 +23,27 @@
                             width="300"
                             class="news-card-wrappper"
                             v-for="(news, index) in newsArray.slice(0,4)" :key="index">
-
-                            <v-img
-                            height="210"
-                            class="news-card-img"
-                            :src="news.img"
-                            
-                            ></v-img>
-                            <v-card-text class="news-content-wrapper">
-                                <p class="news-date">{{news.date}}</p>
-                                <h5 class="news-title">{{news.title}}</h5>
-                                <p class="news-desc">{{news.description}}</p>
-                                <Nuxtlink
-                                :to="news/news-id"
-                                text
-                                class="readmore-btn"
-                                >
-                                Read More
-                                </Nuxtlink>
-                            </v-card-text>
+                            <a href="news/_id">
+                                <v-img
+                                height="210"
+                                class="news-card-img"
+                                :src="news.img"
+                                
+                                ></v-img>
+                                <v-card-text class="news-content-wrapper">
+                                    <p class="news-date">{{news.date}}</p>
+                                    <h5 class="news-title">{{news.title}}</h5>
+                                    <p class="news-desc">{{news.description}}</p>
+                                    <a href="news/_id">
+                                    <Nuxtlink
+                                    text
+                                    class="readmore-btn"
+                                    >
+                                    Read More
+                                    </Nuxtlink>
+                                    </a>
+                                </v-card-text>
+                            </a>
                         </v-card>
                     </template>
                 </div>
@@ -59,23 +61,26 @@
                         class="news-card-wrappper"
                         v-for="(news, index) in newsArray.slice(0,4)" :key="index"
                     >
-                        <v-img
-                        height="210"
-                        class="news-card-img"
-                        :src="news.img"
-                        ></v-img>
-                        <v-card-text class="news-content-wrapper">
-                            <p class="news-date">{{news.date}}</p>
-                            <h5 class="news-title">{{news.title}}</h5>
-                            <p class="news-desc">{{news.description}}</p>
-                            <Nuxtlink
-                            :to="news/id"
-                            text
-                            class="readmore-btn"
-                            >
-                            Read More
-                            </Nuxtlink>
-                        </v-card-text>
+                        <a href="news/_id">
+                            <v-img
+                            height="210"
+                            class="news-card-img"
+                            :src="news.img"
+                            ></v-img>
+                            <v-card-text class="news-content-wrapper">
+                                <p class="news-date">{{news.date}}</p>
+                                <h5 class="news-title">{{news.title}}</h5>
+                                <p class="news-desc">{{news.description}}</p>
+                                <a href="news/_id">
+                                    <Nuxtlink
+                                    text
+                                    class="readmore-btn"
+                                    >
+                                    Read More
+                                    </Nuxtlink>
+                                </a>
+                            </v-card-text>
+                        </a>
                     </v-card>
                     </template>
                 </div>
