@@ -3,14 +3,14 @@
         <div class="container">
             <div class="title-search-wrapper">
                 <h3>Activities Post</h3>
-                <form action="#">
+                <!-- <form action="#">
                     <div class="search-wrapper">
                         <button type="submit">
                             <img :src="require('~/static/images/Icon-search.png')">
                         </button>
                         <input type="text" class="search-input">
                     </div>
-                </form>
+                </form> -->
             </div>
             <div class="nsp-content">
                 <div class="full-img">

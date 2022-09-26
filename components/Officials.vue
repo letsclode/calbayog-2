@@ -81,10 +81,18 @@ export default{
                         },
                         {
                         "breakpoint": 1000,
-                        "settings": {
-                            "slidesToShow": 2,
-                        }
-                        }
+                            "settings": {
+                                "slidesToShow": 3,
+                                "rows": 1,
+                            }
+                        },
+                        {
+                        "breakpoint": 991,
+                            "settings": {
+                                "slidesToShow": 3,
+                                "rows": 1,
+                            }
+                        },
                     ]
             }
         }

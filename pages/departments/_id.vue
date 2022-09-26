@@ -151,24 +151,7 @@
                 </div>
             </div>
         </div>
-         <!-- <modal name="officialModal" width="1000px" height="auto">
-            <div class="official" v-for="(official, index) in popOfficial" :key="index" >
-                    <v-avatar
-                        class="profile"
-                        height="117"
-                        width="117"
-                        rounded="true"
-                    >
-                        <img :src="official.profile">
-                    </v-avatar>
-                    <div class="name-and-position">
-                        <p>{{official.name}}</p>
-                        <v-divider class="line"></v-divider>
-                        <span>{{official.position}}</span>
-                    </div>
-                </div>
-        </modal> -->
-        <!-- <modal name="jobsModal" width="100%" height="100%">
+        <modal name="jobsModal" width="100%" height="100%">
             <div class="newspopup">
                 <div class="images-slider">
                     <v-carousel class="news-slider-img">
@@ -196,7 +179,7 @@
                 </div>
                 </div>
             </div>
-        </modal> -->
+        </modal>
     </div>
 </template>
 
