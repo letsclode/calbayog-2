@@ -63,11 +63,11 @@
                 <Officials/>
             </div>
         </div>
-        <modal name="imgpop" width="600px" height="600px">
+        <!-- <modal name="imgpop" width="600px" height="600px">
             <div class="imagepop">
                 <img :src="require('~/static/images/about1.png')">
             </div>
-        </modal>
+        </modal> -->
     </div>
 </template>
 <script>

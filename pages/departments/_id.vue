@@ -17,8 +17,16 @@
                                 <p>
                                 Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.
                                 </p>
+                                <div class="hid-message-welcome" :class="{animate : showWelcomeMessage}">
+                                    <p>
+                                        Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.
+                                    </p>
+                                    <p>
+                                        Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.
+                                    </p>
+                                </div>
                             </div>
-                            <button class="read-more">READ MORE</button>
+                            <button class="read-more" :class="{animate : showWelcomeMessage}">READ MORE</button>
                         </div>
                     </div>
                 </div>
@@ -41,17 +49,17 @@
                     </div>
                     <div class="nsp-content">
                         <div class="full-img">
-                            <img :src="require('~/static/images/300819481_120140560796856_1936510054696472107_n.png')">
+                            <img :src="require('~/static/images/300819481_120140560796856_1936510054696472107_n.png')" @click="jobsModal">
                         </div>
                         <div class="grid-img">
                             <div class="nsp-imgs">
-                                <img :src="require('~/static/images/301651196_120137000797212_6510033162591886582_n.png')">
+                                <img :src="require('~/static/images/301651196_120137000797212_6510033162591886582_n.png')"  @click="jobsModal">
                             </div>
                             <div class="nsp-imgs">
-                                <img :src="require('~/static/images/301170044_120137067463872_2606454796904951662_n.png')">
+                                <img :src="require('~/static/images/301170044_120137067463872_2606454796904951662_n.png')"  @click="jobsModal">
                             </div>
                             <div class="nsp-imgs">
-                                <img :src="require('~/static/images/299932715_120137040797208_2127528906162976991_n.png')">
+                                <img :src="require('~/static/images/299932715_120137040797208_2127528906162976991_n.png')"  @click="jobsModal">
                             </div>
                         </div>
                         <div class="nsp-articles">
@@ -160,6 +168,35 @@
                     </div>
                 </div>
         </modal> -->
+        <!-- <modal name="jobsModal" width="100%" height="100%">
+            <div class="newspopup">
+                <div class="images-slider">
+                    <v-carousel class="news-slider-img">
+                        <v-carousel-item
+                            v-for="(item,i) in jobs"
+                            :key="i"
+                            :src="item.img"
+                        ></v-carousel-item>
+                    </v-carousel>
+                </div>
+                <div class="right-content">
+                    <div class="close">
+                        <v-icon @click="closeNewsModal()" class="x-close">mdi-close</v-icon>
+                    </div>
+                <div class="title-close-wrapper">
+                    <h3 class="title">
+                        Activities Post
+                    </h3>
+                </div>
+                <div class="news-modal-content">
+                    <div class="news-description">
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                    </p>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </modal> -->
     </div>
 </template>
 
@@ -175,6 +212,7 @@
     data () {
         return {
             officialIndex: '',
+            showWelcomeMessage: false,
             galleryMisiion:[
                 {
                     title: 'img1',
@@ -188,6 +226,28 @@
                     title: 'img3',
                     img: '/images/about3.png',
                 }
+            ],
+            jobs:[
+                {
+                    title: 'img1',
+                    img: '/images/300819481_120140560796856_1936510054696472107_n.png',
+                },
+                {
+                    title: 'img2',
+                    img: '/images/301651196_120137000797212_6510033162591886582_n.png',
+                },
+                {
+                    title: 'img3',
+                    img: '/images/301170044_120137067463872_2606454796904951662_n.png',
+                },
+                {
+                    title: 'img4',
+                    img: '/images/299932715_120137040797208_2127528906162976991_n.png',
+                },
+                {
+                    title: 'img5',
+                    img: '/images/301170044_120137067463872_2606454796904951662_n.png',
+                },
             ],
             officials:[
                 {name: 'Hon. Raymund C. Uy', position: 'Calbayog City Mayor', profile: '/images/cm.png'}, 
@@ -223,7 +283,15 @@
         officialShowPopup(index){
             // this.$modal.show('officialModal');
         },
-       
+        readMoreWelcome(){
+             this.showWelcomeMessage = !this.showWelcomeMessage;
+        },
+        jobsModal(){
+             this.$modal.show('jobsModal');
+        },
+        closeNewsModal(){
+          this.$modal.hide('jobsModal');
+        },
     }      
 }
 </script>
