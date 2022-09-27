@@ -10,4 +10,13 @@ export default new Vuetify({
   icons: {
     iconfont: 'mdi', // default - only for display purposes
   },
+  // breakpoint: {
+  //   thresholds: {
+  //     xs: 320,
+  //     sm: 600,
+  //     md: 991,
+  //     lg: 1000,
+  //   },
+  //   scrollBarWidth: 24,
+  // },
 })

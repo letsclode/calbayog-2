@@ -2,6 +2,35 @@
     <div class="header-wrapper">
         <div class="top-header">
             <div class="container logo-and-title">
+                <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="nav-burger"></v-app-bar-nav-icon>
+                <v-navigation-drawer
+                v-model="drawer"
+                absolute
+                left
+                temporary
+                class="list-mobile-nav"
+                >
+                <nav class="navigation">
+                        <div class="nav-items">
+                            <NuxtLink to="/">Home</NuxtLink>
+                        </div>
+                        <div class="nav-items">
+                            <NuxtLink to="/about">About</NuxtLink>
+                        </div>
+                        <div class="nav-items">
+                            <NuxtLink to="/departments">Departments</NuxtLink>
+                        </div>
+                        <div class="nav-items">
+                            <NuxtLink to="/news">News</NuxtLink>
+                        </div>
+                        <div class="nav-items">
+                            <a href="#">pages</a>
+                        </div>
+                        <div class="nav-items">
+                            <NuxtLink to="/contact">contact</NuxtLink>
+                        </div>
+                </nav>
+                </v-navigation-drawer>
                 <div class="logo">
                     <img :src="require('~/static/images/City_seal.png')" alt="City Official Seal">
                 </div>
@@ -29,31 +58,25 @@
                             <NuxtLink to="/news">News</NuxtLink>
                         </div>
                         <div class="nav-items">
-                            <a href="#">Activities</a>
-                        </div>
-                        <!-- <div class="nav-items">
-                            <a href="#">BARANGAYs</a>
-                        </div> -->
-                        <div class="nav-items">
                             <a href="#">pages</a>
                         </div>
                         <div class="nav-items">
                             <NuxtLink to="/contact">contact</NuxtLink>
                         </div>
                         <div class="nav-items" id="h-search-bar">
-                            <!-- <form action="#">
+                            <form action="#">
                                 <div class="search-wrapper">
                                     <button type="submit">
                                         <img :src="require('~/static/images/icon-search.png')">
                                     </button>
-                                    <input type="text" class="search-input">
+                                    <input type="text" class="search-input" placeholder="Search for News, Events and Departments">
                                 </div>
-                            </form> -->
+                            </form>
                             <button class="search-btn-nav" @click="showSearch()">
                                 <img :src="require('~/static/images/Icon-search.png')">
                             </button>
                         </div>
-                    </nav>
+                </nav>
             </div>
         </div>
         <transition name="fade">
@@ -82,7 +105,14 @@
     data () {
       return {
         showSearchform: false,
+        drawer: false,
+        group: null,
       }
+    },
+    watch: {
+      group () {
+        this.drawer = false
+      },
     },
     methods:{
         showSearch(){
