@@ -91,6 +91,23 @@ export default{
                             "settings": {
                                 "slidesToShow": 3,
                                 "rows": 1,
+                                "dots": false,
+                            }
+                        },
+                        {
+                        "breakpoint": 767,
+                            "settings": {
+                                "slidesToShow": 2,
+                                "rows": 1,
+                                "dots": false,
+                            }
+                        },
+                        {
+                        "breakpoint": 500,
+                            "settings": {
+                                "slidesToShow": 1,
+                                "rows": 1,
+                                "dots": false,
                             }
                         },
                     ]

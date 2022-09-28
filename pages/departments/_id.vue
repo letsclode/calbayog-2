@@ -29,6 +29,30 @@
                             <button class="read-more" :class="{animate : showWelcomeMessage}">READ MORE</button>
                         </div>
                     </div>
+                    <div class="mobile-wt-wrapper">
+                        <div class="img-holder">
+                            <img :src="require('~/static/images/cm.png')" alt="">
+                        </div>
+                        <div class="wtc-inner">
+                                <h4>Welcome to Calbayog City</h4>
+                                <p>
+                                Welcome to the official website of the City Government of Calbayog!
+                                </p>
+                                <br>
+                                <p>
+                                Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.
+                                </p>
+                                <div class="hid-message-welcome" :class="{animate : showWelcomeMessage}">
+                                <p>
+                                    Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.
+                                </p>
+                                <p>
+                                    Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.
+                                </p>
+                                </div>
+                            </div>
+                            <button class="read-more" @click="readMoreWelcome" :class="{animate : showWelcomeMessage}">READ MORE</button>
+                    </div>
                 </div>
             </div>
             <div class="city-news-section" id="dept-sp-desc">
