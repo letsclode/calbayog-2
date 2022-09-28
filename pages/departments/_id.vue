@@ -56,14 +56,12 @@
                 </div>
             </div>
             <div class="city-news-section" id="dept-sp-desc">
-                <div class="container">
-                <p class="dept_desc">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet 
-                </p>
-                <br>
-                <p>
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                </p>
+                <div class="container dept-sp-con">
+                    <a :href="service.url" class="service" v-for="(service, index) in servicesArray" :key="index" target="_blank">
+                        <span class="icon">
+                            <img :src="service.icon">
+                        </span>
+                    </a>
                 </div>
             </div>
             <div class="news-single-wrapper">
@@ -104,6 +102,17 @@
                 </div>
             </div>
         </div>
+        <div class="mandate-section">
+            <div class="container">
+                <h4 class="title">Programmes and Accomplishment</h4>
+                <div class="mandate-gal">
+                    <div class="img-gal-wrapper" v-for="(img, index) in mandates" :key="index"  @click="programmesModal">
+                        <img :src="img.img">
+                        <p class="title-m">{{img.title}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="mission-section mission-visons-sections">
             <div class="container">
                 <div class="right-content text-content">
@@ -119,7 +128,7 @@
                 <div class="left-content gallery-content">
                     <div class="left-gallery">
                         <div class="img-wrapper" v-for="(img, index) in galleryMisiion" :key="index">
-                            <img :src="img.img" :alt="img.title"  class="about-gallery-imgs">
+                            <img :src="img.img"  class="about-gallery-imgs">
                         </div>
                     </div>
                 </div>
@@ -204,6 +213,35 @@
                 </div>
             </div>
         </modal>
+        <modal name="progModal" width="100%" height="100%">
+            <div class="newspopup">
+                <div class="images-slider">
+                    <v-carousel class="news-slider-img">
+                        <v-carousel-item
+                            v-for="(item,i) in mandates"
+                            :key="i"
+                            :src="item.img"
+                        ></v-carousel-item>
+                    </v-carousel>
+                </div>
+                <div class="right-content">
+                    <div class="close">
+                        <v-icon @click="closeProgrammesModal" class="x-close">mdi-close</v-icon>
+                    </div>
+                <div class="title-close-wrapper">
+                    <h3 class="title">
+                        Programmes and Accomplishment
+                    </h3>
+                </div>
+                <div class="news-modal-content">
+                    <div class="news-description">
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                    </p>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </modal>
     </div>
 </template>
 
@@ -270,6 +308,25 @@
                 {name: 'Hon. Raymund C. Uy', position: 'Calbayog City Mayor', profile: '/images/cm.png'}, 
                 {name: 'Hon. Raymund C. Uy', position: 'Calbayog City Mayor', profile: '/images/cm.png'}, 
             ],
+            servicesArray:[
+                {url: 'https://www.bir.gov.ph/' , icon: '/images/Bureau_of_Internal_Revenue_(BIR).svg.png'},
+                {url: 'https://www.prc.gov.ph/' , icon: '/images/g7646.png'},
+                {url: 'https://www.gsis.gov.ph/' , icon: '/images/Government_Service_Insurance_System_(Philippines)_(logo).svg.png'},
+                {url: 'http://www.csc.gov.ph/' , icon: '/images/Civil_Service_Commission.svg.png'},
+                {url: 'https://www.sss.gov.ph/' , icon: '/images/sss-logo-medium.png'},
+                {url: 'https://www.philhealth.gov.ph/' , icon: '/images/Www.philhealth.gov.ph.png'},
+            ],
+            mandates:[
+                {img: '/images/about1.png', title: 'Sample title'},
+                {img: '/images/about2.png', title: 'Sample title'},
+                {img: '/images/news5.png', title: 'Sample title'},
+                {img: '/images/news4.png', title: 'Sample title'},
+                {img: '/images/news3.png', title: 'Sample title'},
+                {img: '/images/news2.png', title: 'Sample title'},
+                {img: '/images/news1.png', title: 'Sample title'},
+                {img: '/images/mutyahansamar2019.png', title: 'Sample title'},
+                {img: '/images/Civic-Parade1.png', title: 'Sample title'},
+            ],
             sliderSettings:{
                 "dots": true,
                 "dotsClass": "slick-dots custom-dot-class",
@@ -298,6 +355,12 @@
         },
         closeNewsModal(){
           this.$modal.hide('jobsModal');
+        },
+        programmesModal(){
+             this.$modal.show('progModal');
+        },
+        closeProgrammesModal(){
+          this.$modal.hide('progModal');
         },
     }      
 }

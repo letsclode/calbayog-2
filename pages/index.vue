@@ -66,7 +66,6 @@
           <div class="news-grid">
             <template>
               <v-card
-                width="300"
                 :class="activeNews == index ? 'active' : ''"
                 @click="newsShowPopup(index)"
                 class="news-card-wrappper"
@@ -94,7 +93,37 @@
               </a>
               </v-card>
             </template>
+            
           </div>
+          <VueSlickCarousel v-bind="newsSettings" class="mobile-news">
+              <v-card
+                :class="activeNews == index ? 'active' : ''"
+                @click="newsShowPopup(index)"
+                class="news-card-wrappper"
+                v-for="(news, index) in newsArray" :key="index"
+              >
+              <a href="news/_id">
+                <v-img
+                  height="210"
+                  class="news-card-img"
+                  :src="news.img"
+                ></v-img>
+                <v-card-text class="news-content-wrapper">
+                    <p class="news-date">{{news.date}}</p>
+                    <h5 class="news-title">{{news.title}}</h5>
+                    <p class="news-desc">{{news.description}}</p>
+                    <a href="news/_id" class="readmore-a">
+                      <Nuxtlink
+                        text
+                        class="readmore-btn"
+                      >
+                        Read More
+                      </Nuxtlink>
+                    </a>
+                </v-card-text>
+              </a>
+              </v-card>
+            </VueSlickCarousel>
           <div class="news-slider-wrapper">
             <div class="viewall-news">
               <NuxtLink
@@ -154,8 +183,8 @@
               <p class="dep-name">{{agency.title}}</p>
             </div>
             <div class="back-desc">
-              <p class="dep-name">{{agency.title}}</p>
-              <p class="desc">Sample text</p>
+              <!-- <p class="dep-name">{{agency.title}}</p> -->
+              <a href="departments/_id" class="desc">{{agency.mandate}}</a>
             </div>
           </div>
         </div>
@@ -224,59 +253,42 @@
          <h4 class="title">
             Your Calbayog City Public Servants
           </h4>
-          <Officials/>
+          <div class="officials-wrapper">
+            <VueSlickCarousel v-bind="sliderSettings" class="officials-slider">
+                <div class="official" v-for="(official, index) in officials" :key="index">
+                    <!-- <div class="profile">
+                        <img :src="official.profile" alt="">
+                    </div> -->
+                    <v-avatar
+                        class="profile"
+                        height="117"
+                        width="117"
+                        rounded="true"
+                    >
+                        <img :src="official.profile">
+                    </v-avatar>
+                    <div class="name-and-position">
+                        <p>{{official.name}}</p>
+                        <v-divider class="line"></v-divider>
+                        <span>{{official.position}}</span>
+                    </div>
+                </div>
+            </VueSlickCarousel>
+          </div>
       </div>
     </div>
-    <!-- <modal name="newsModal" width="1000px" height="auto">
-      <div class="newspopup">
-        <div class="images-slider">
-           
-            <v-carousel class="news-slider-img">
-              <v-carousel-item
-                v-for="(item,i) in newsArray"
-                :key="i"
-                :src="item.img"
-              ></v-carousel-item>
-            </v-carousel>
-        </div>
-        <div class="right-content">
-          <div class="close">
-              <v-icon @click="closeNewsModal()" class="x-close">mdi-close</v-icon>
-            </div>
-          <div class="title-close-wrapper">
-            <h3 class="title">
-              Graduation Ceremony
-            </h3>
-            <div class="date-info">
-              <p>15 JULY, 2022</p>
-            </div>
-          </div>
-          <div class="news-modal-content">
-            <div class="news-description">
-              <p>Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente,
-                Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente
-                Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente
-              </p>
-            </div>
-            <v-btn
-              class="full-artcl ma-2"
-              outlined
-              color="red"
-            >
-              Read Full Article
-            </v-btn>
-          </div>
-        </div>
-      </div>
-    </modal> -->
   </div>
 </template>
 
 <script>
-
+import VueSlickCarousel from 'vue-slick-carousel'
+import 'vue-slick-carousel/dist/vue-slick-carousel.css'
+  // optional style for arrows & dots
+import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 export default {
   name: 'IndexPage',
   layouts: 'default',
+  components: { VueSlickCarousel },
   data () {
       return {
         newsArray: [
@@ -337,24 +349,74 @@ export default {
           { title: 'May' , img: '/images/downloadsd.png'}
         ],
         agencyArray: [
-          {title: 'Agriculture', icon: '/images/Icon awesome-leaf.png', name: 'agri'},
-          {title: 'Disaster Risk Reduction', icon: '/images/Icon ionic-md-warning.png', name: 'disaster'},
-          {title: 'Education', icon: '/images/Icon awesome-graduation-cap.png', name: 'educ'},
-          {title: 'Health', icon: '/images/Icon awesome-briefcase-medical.png', name: 'health'},
-          {title: 'Infrastructure Development', icon: '/images/Icon awesome-building.png', name: 'infra'},
-          {title: 'Peace and Order', icon: '/images/Icon awesome-dove.png', name: 'peace'},
-          {title: 'Poverty Alleviation', icon: '/images/Icon open-graph.png', name: 'pov'},
-          {title: 'Solid Waste Management', icon: '/images/Icon awesome-recycle.png', name: 'waste'},
-          {title: 'Tourism', icon: '/images/Icon awesome-umbrella-beach.png', name: 'tourism'},
-          {title: 'Transportation Planning and Traffic Management', icon: '/images/Icon awesome-traffic-light.png', name: 'transpo'},
+          {
+            title: 'Agriculture',
+            icon: '/images/Icon awesome-leaf.png', 
+            name: 'agri',
+            mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
+          },
+          {
+            title: 'Disaster Risk Reduction', 
+            icon: '/images/Icon ionic-md-warning.png', 
+            name: 'disaster',
+            mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
+          },
+          {
+            title: 'Education', 
+            icon: '/images/Icon awesome-graduation-cap.png', 
+            name: 'educ',
+            mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
+          },
+          {
+            title: 'Health', 
+            icon: '/images/Icon awesome-briefcase-medical.png', 
+            name: 'health',
+            mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
+          },
+          {
+            title: 'Infrastructure Development', 
+            icon: '/images/Icon awesome-building.png', 
+            name: 'infra',
+            mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
+          },
+          {
+            title: 'Peace and Order', 
+            icon: '/images/Icon awesome-dove.png', 
+            name: 'peace',
+            mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
+          },
+          {
+            title: 'Poverty Alleviation', 
+            icon: '/images/Icon open-graph.png', 
+            name: 'pov',
+            mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
+          },
+          {
+            title: 'Solid Waste Management', 
+            icon: '/images/Icon awesome-recycle.png', 
+            name: 'waste',
+            mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
+          },
+          {
+            title: 'Tourism', 
+            icon: '/images/Icon awesome-umbrella-beach.png', 
+            name: 'tourism',
+            mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
+          },
+          {
+            title: 'Transportation Planning and Traffic Management', 
+            icon: '/images/Icon awesome-traffic-light.png', 
+            name: 'transpo',
+            mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
+          },
         ],
         servicesArray:[
-          {title: 'Social Services' , icon: '/images/Icon awesome-hand-holding-usd.png'},
-          {title: 'Civil Registry Services' , icon: '/images/Icon awesome-folder-open.png'},
-          {title: 'Online Payment' , icon: '/images/Icon material-storage.png'},
-          {title: 'Landmark Legislation' , icon: '/images/Icon awesome-landmark.png'},
-          {title: 'Career Opportunities' , icon: '/images/Icon awesome-shopping-bag.png'},
-          {title: 'Vacination' , icon: '/images/medical.png'},
+            {url: 'https://www.bir.gov.ph/' , icon: '/images/Bureau_of_Internal_Revenue_(BIR).svg.png'},
+            {url: 'https://www.prc.gov.ph/' , icon: '/images/g7646.png'},
+            {url: 'https://www.gsis.gov.ph/' , icon: '/images/Government_Service_Insurance_System_(Philippines)_(logo).svg.png'},
+            {url: 'http://www.csc.gov.ph/' , icon: '/images/Civil_Service_Commission.svg.png'},
+            {url: 'https://www.sss.gov.ph/' , icon: '/images/sss-logo-medium.png'},
+            {url: 'https://www.philhealth.gov.ph/' , icon: '/images/Www.philhealth.gov.ph.png'},
         ],
         helpLines: [
           {name: 'Mayor Office' , hotline: '0000-0000'},
@@ -368,15 +430,134 @@ export default {
         items: [],
         limitationList:3,
         screenWidth:0,
+        officials:[
+                {name: 'Hon. Raymund C. Uy', position: 'Calbayog City Mayor', profile: '/images/cm.png'}, 
+                {name: 'Jaynard Monterona', position: 'Damdamin ng Bayan', profile: '/images/cm.png'},
+                {name: 'Hon. Raymund C. Uy', position: 'Calbayog City Mayor', profile: '/images/cm.png'}, 
+                {name: 'Jaynard Monterona', position: 'Damdamin ng Bayan', profile: '/images/cm.png'}, 
+                {name: 'Hon. Raymund C. Uy', position: 'Calbayog City Mayor', profile: '/images/cm.png'}, 
+                {name: 'Jaynard Monterona', position: 'Damdamin ng Bayan', profile: '/images/cm.png'}, 
+                {name: 'Hon. Raymund C. Uy', position: 'Calbayog City Mayor', profile: '/images/cm.png'}, 
+                {name: 'Jaynard Monterona', position: 'Damdamin ng Bayan', profile: '/images/cm.png'}, 
+                {name: 'Hon. Raymund C. Uy', position: 'Calbayog City Mayor', profile: '/images/cm.png'}, 
+                {name: 'Jaynard Monterona', position: 'Damdamin ng Bayan', profile: '/images/cm.png'}, 
+                {name: 'Hon. Raymund C. Uy', position: 'Calbayog City Mayor', profile: '/images/cm.png'}, 
+                {name: 'Jaynard Monterona', position: 'Damdamin ng Bayan', profile: '/images/cm.png'}, 
+                {name: 'Hon. Raymund C. Uy', position: 'Calbayog City Mayor', profile: '/images/cm.png'}, 
+                {name: 'Jaynard Monterona', position: 'Damdamin ng Bayan', profile: '/images/cm.png'}, 
+                {name: 'Hon. Raymund C. Uy', position: 'Calbayog City Mayor', profile: '/images/cm.png'}, 
+                {name: 'Jaynard Monterona', position: 'Damdamin ng Bayan', profile: '/images/cm.png'}, 
+                {name: 'Hon. Raymund C. Uy', position: 'Calbayog City Mayor', profile: '/images/cm.png'}, 
+                {name: 'Jaynard Monterona', position: 'Damdamin ng Bayan', profile: '/images/cm.png'}, 
+                {name: 'Hon. Raymund C. Uy', position: 'Calbayog City Mayor', profile: '/images/cm.png'}, 
+                {name: 'Jaynard Monterona', position: 'Damdamin ng Bayan', profile: '/images/cm.png'}, 
+                {name: 'Hon. Raymund C. Uy', position: 'Calbayog City Mayor', profile: '/images/cm.png'}, 
+                {name: 'Jaynard Monterona', position: 'Damdamin ng Bayan', profile: '/images/cm.png'}, 
+            ],
+            sliderSettings:{
+                "dots": true,
+                "dotsClass": "slick-dots custom-dot-class",
+                "infinite": true,
+                "slidesToShow": 5,
+                "speed": 300,
+                "rows": 2,
+                "slidesPerRow": 1,
+                "draggable": true,
+                "swipeToSlide": true,
+                "responsive": [
+                        {
+                        "breakpoint": 1300,
+                        "settings": {
+                            "slidesToShow": 4,
+                        }
+                        },
+                        {
+                        "breakpoint": 1200,
+                        "settings": {
+                            "slidesToShow": 3,
+                            
+                        }
+                        },
+                        {
+                        "breakpoint": 1000,
+                            "settings": {
+                                "slidesToShow": 3,
+                                "rows": 1,
+                            }
+                        },
+                        {
+                        "breakpoint": 991,
+                            "settings": {
+                                "slidesToShow": 3,
+                                "rows": 1,
+                                "dots": false,
+                            }
+                        },
+                        {
+                        "breakpoint": 767,
+                            "settings": {
+                                "slidesToShow": 2,
+                                "rows": 1,
+                                "dots": false,
+                            }
+                        },
+                        {
+                        "breakpoint": 600,
+                            "settings": {
+                                "slidesToShow": 2.2,
+                                "rows": 1,
+                                "dots": false,
+                            }
+                        },
+                        {
+                        "breakpoint": 475,
+                            "settings": {
+                                "slidesToShow": 1.3,
+                                "rows": 1,
+                                "dots": false,
+                            }
+                        },
+                        {
+                        "breakpoint": 400,
+                            "settings": {
+                                "slidesToShow": 1,
+                                "rows": 1,
+                                "dots": false,
+                            }
+                        },
+                    ]
+            },
+            newsSettings:{
+                "dots": false,
+                "infinite": true,
+                "slidesToShow": 1.4,
+                "speed": 300,
+                "rows": 1,
+                "slidesPerRow": 1,
+                "draggable": true,
+                "swipeToSlide": true,
+                "responsive": [
+                        {
+                        "breakpoint": 475,
+                            "settings": {
+                                "slidesToShow": 1.3,
+                                "rows": 1,
+                                "dots": false,
+                            }
+                        },
+                        {
+                        "breakpoint": 400,
+                            "settings": {
+                                "slidesToShow": 1,
+                                "rows": 1,
+                                "dots": false,
+                            }
+                        },
+                    ]
+            }
     }
   },
-  mounted () {
-     if(process.browser){
-      window.addEventListener('resize', this.getDimensions);
-      this.screenWidth = window.innerWidth || 0
-     }
-     
-  },
+
   methods:{
     newsShowPopup(val){
       this.activeNews = val;
@@ -388,22 +569,6 @@ export default {
     readMoreWelcome(){
       this.showWelcomeMessage = !this.showWelcomeMessage;
     },
-    getDimensions(){
-      if(process.browser){
-        this.screenWidth = window.innerWidth || 0
-     }
-    }
-  },
-  computed:{
-    // filterItems () {
-    //   return this.items && this.items.length > 0 && (this.items.length - 1) <= this.limitationList
-    // },
-    // newsArray(){
-    //   if(this.screenWidth <= 767){
-    //     return this.limitationList ? this.object.slice(0,this.limitationList) : this.items
-    //   }
-      
-    // }
-  },
+  }
 }
 </script>
