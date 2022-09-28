@@ -21,7 +21,13 @@
                             Our Mission
                         </h5>
                         <div class="content">
-                            <p>Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.</p>
+                            <p>The office of the mayor is tasked with promoting the general welfare of the city and its
+constituents the efficient, effective, relevant and economical governance. It exercises general
+supervision and control over all programs, projects, services and activities of the City
+Government which aims to put emphasis on prioritizing the citizens&#39; needs at the core of the
+development agenda. &quot;Tao ang una&quot;. The office serves as the coordinating body which goal is to
+maximize the generation of resources and revenues and apply the same to the effective
+implementation of development plans, programs, objectives and priorities to ensure</p>
                         </div>
                     </div>
                 </div>
@@ -49,7 +55,8 @@
                             Our Vision
                         </h5>
                         <div class="content">
-                            <p>Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.</p>
+                            <p>Good Governance, Better Quality life for empowered God Loving citizens and Private-
+Public partnership for a sustainable economic development, entrepreneurship and self-reliance.</p>
                         </div>
                     </div>
                 </div>
