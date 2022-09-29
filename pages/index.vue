@@ -34,7 +34,7 @@
               </div>
               <div class="mobile-wt-wrapper">
                 <div class="img-holder">
-                    <img :src="require('~/static/images/cm.png')" alt="">
+                    <img :src="require('~/static/images/Mayor12 – 10.jpg')" alt="">
                 </div>
                 <div class="wtc-inner">
                         <h4>Welcome to Calbayog City</h4>
@@ -104,7 +104,7 @@
               >
               <a href="news/_id">
                 <v-img
-                  height="210"
+                  height="auto"
                   class="news-card-img"
                   :src="news.img"
                 ></v-img>
@@ -115,7 +115,7 @@
                     <a href="news/_id" class="readmore-a">
                       <Nuxtlink
                         text
-                        class="readmore-btn"
+                        class="readmore-btn-mobile"
                       >
                         Read More
                       </Nuxtlink>
@@ -254,7 +254,7 @@
             Your Calbayog City Public Servants
           </h4>
           <div class="officials-wrapper">
-            <!-- <VueSlickCarousel v-bind="sliderSettings" class="officials-slider">
+            <VueSlickCarousel v-bind="sliderSettings" class="officials-slider">
                 <div class="official" v-for="(official, index) in officials" :key="index">
                     <v-avatar
                         class="profile"
@@ -270,7 +270,7 @@
                         <span>{{official.position}}</span>
                     </div>
                 </div>
-            </VueSlickCarousel> -->
+            </VueSlickCarousel>
           </div>
       </div>
     </div>
@@ -522,7 +522,7 @@ export default {
                                 "dots": false,
                             }
                         },
-                    ]
+                ]
             },
             newsSettings:{
                 "dots": false,
@@ -544,6 +544,14 @@ export default {
                         },
                         {
                         "breakpoint": 400,
+                            "settings": {
+                                "slidesToShow": 1.2,
+                                "rows": 1,
+                                "dots": false,
+                            }
+                        },
+                        {
+                        "breakpoint": 360,
                             "settings": {
                                 "slidesToShow": 1,
                                 "rows": 1,

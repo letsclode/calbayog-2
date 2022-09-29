@@ -5,7 +5,7 @@
                 <div class="container wt-container">
                     <div class="wt-wrapper">
                         <div class="img-holder">
-                            <img :src="require('~/static/images/cm.png')" alt="">
+                            <img :src="require('~/static/images/Mayor12 – 10.jpg')" alt="">
                         </div>
                         <div class="wt-content">
                             <div class="wtc-inner">
@@ -17,7 +17,7 @@
                                 <p>
                                 Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.
                                 </p>
-                                <div class="hid-message-welcome" :class="{animate : showWelcomeMessage}">
+                                <div class="hid-message-welcome" :class="{animate : showWelcomeMesDept}">
                                     <p>
                                         Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.
                                     </p>
@@ -26,12 +26,12 @@
                                     </p>
                                 </div>
                             </div>
-                            <button class="read-more" :class="{animate : showWelcomeMessage}">READ MORE</button>
+                            <button class="read-more" @click="readMoreWelcome" :class="{animate : showWelcomeMesDept}">READ MORE</button>
                         </div>
                     </div>
                     <div class="mobile-wt-wrapper">
                         <div class="img-holder">
-                            <img :src="require('~/static/images/cm.png')" alt="">
+                            <img :src="require('~/static/images/Mayor12 – 10.jpg')" alt="">
                         </div>
                         <div class="wtc-inner">
                                 <h4>Welcome to Calbayog City</h4>
@@ -42,7 +42,7 @@
                                 <p>
                                 Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.
                                 </p>
-                                <div class="hid-message-welcome" :class="{animate : showWelcomeMessage}">
+                                <div class="hid-message-welcome" :class="{animate : showWelcomeMesDept}">
                                 <p>
                                     Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.
                                 </p>
@@ -51,7 +51,7 @@
                                 </p>
                                 </div>
                             </div>
-                            <button class="read-more" @click="readMoreWelcome" :class="{animate : showWelcomeMessage}">READ MORE</button>
+                            <button class="read-more" @click="readMoreWelcome" :class="{animate : showWelcomeMesDept}">READ MORE</button>
                     </div>
                 </div>
             </div>
@@ -257,7 +257,7 @@
     data () {
         return {
             officialIndex: '',
-            showWelcomeMessage: false,
+            showWelcomeMesDept: false,
             galleryMisiion:[
                 {
                     title: 'img1',
@@ -336,7 +336,69 @@
                 "rows": 2,
                 "slidesPerRow": 1,
                 "draggable": true,
-                "swipeToSlide": true
+                "swipeToSlide": true,
+                "responsive": [
+                        {
+                        "breakpoint": 1300,
+                        "settings": {
+                            "slidesToShow": 4,
+                        }
+                        },
+                        {
+                        "breakpoint": 1200,
+                        "settings": {
+                            "slidesToShow": 3,
+                            
+                        }
+                        },
+                        {
+                        "breakpoint": 1000,
+                            "settings": {
+                                "slidesToShow": 3,
+                                "rows": 1,
+                            }
+                        },
+                        {
+                        "breakpoint": 991,
+                            "settings": {
+                                "slidesToShow": 3,
+                                "rows": 1,
+                                "dots": false,
+                            }
+                        },
+                        {
+                        "breakpoint": 767,
+                            "settings": {
+                                "slidesToShow": 2,
+                                "rows": 1,
+                                "dots": false,
+                            }
+                        },
+                        {
+                        "breakpoint": 600,
+                            "settings": {
+                                "slidesToShow": 2.2,
+                                "rows": 1,
+                                "dots": false,
+                            }
+                        },
+                        {
+                        "breakpoint": 500,
+                            "settings": {
+                                "slidesToShow": 1.3,
+                                "rows": 1,
+                                "dots": false,
+                            }
+                        },
+                        {
+                        "breakpoint": 400,
+                            "settings": {
+                                "slidesToShow": 1.2,
+                                "rows": 1,
+                                "dots": false,
+                            }
+                        },
+                ]
             }
         }
     },
@@ -348,7 +410,7 @@
             // this.$modal.show('officialModal');
         },
         readMoreWelcome(){
-             this.showWelcomeMessage = !this.showWelcomeMessage;
+             this.showWelcomeMesDept = !this.showWelcomeMesDept;
         },
         jobsModal(){
              this.$modal.show('jobsModal');
