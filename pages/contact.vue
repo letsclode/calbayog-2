@@ -7,17 +7,17 @@
                     <div class="address">
                         <span class="mdi mdi-map-marker-radius-outline"></span>
                         <h6>Address:</h6>
-                        <p>sample sample sample</p>
+                        <p>JD. Avelino St. Calbayog City, Western Samar</p>
                     </div>
                     <div class="phone">
                         <span class="mdi mdi-phone-outline"></span>
                         <h6>Phone:</h6>
-                        <p>+ 1234 5678 90</p>
+                        <p>09- 261-954-254</p>
                     </div>
                     <div class="email">
                         <span class="mdi mdi-email-outline"></span>
                         <h6>Email:</h6>
-                        <p>sample@sample</p>
+                        <p>lgucalbayog@gmail.com</p>
                     </div>
                 </div>
                 <div class="contact-forms">

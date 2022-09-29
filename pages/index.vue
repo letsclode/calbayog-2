@@ -8,7 +8,7 @@
         <div class="container wt-container">
             <div class="wt-wrapper">
                 <div class="img-holder">
-                    <img :src="require('~/static/images/cm.png')" alt="">
+                    <img :src="require('~/static/images/Mayor12 – 10.jpg')" alt="">
                 </div>
                 <div class="wt-content">
                     <div class="wtc-inner">
@@ -254,11 +254,8 @@
             Your Calbayog City Public Servants
           </h4>
           <div class="officials-wrapper">
-            <VueSlickCarousel v-bind="sliderSettings" class="officials-slider">
+            <!-- <VueSlickCarousel v-bind="sliderSettings" class="officials-slider">
                 <div class="official" v-for="(official, index) in officials" :key="index">
-                    <!-- <div class="profile">
-                        <img :src="official.profile" alt="">
-                    </div> -->
                     <v-avatar
                         class="profile"
                         height="117"
@@ -273,7 +270,7 @@
                         <span>{{official.position}}</span>
                     </div>
                 </div>
-            </VueSlickCarousel>
+            </VueSlickCarousel> -->
           </div>
       </div>
     </div>
