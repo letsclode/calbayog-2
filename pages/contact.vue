@@ -68,5 +68,16 @@
     </div>
 </template>
 <script>
-
+    export default{
+        // data () {
+        //     return {
+        //        hid: 'false',
+        //     }
+        // },
+        // mounted() {
+        //     if(this.$route.path == '/contact'){
+        //         this.hid = 'true'
+        //     }
+        // }
+    }
 </script>

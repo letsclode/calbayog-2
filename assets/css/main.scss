@@ -625,7 +625,8 @@ a{
                             font-size: 14px;
                             font-family: 'Helvetica', 'san-serif';
                             line-height: 20px;
-                            text-align: justify;
+                            text-align: left;
+                            padding-right: 20px;
                             @media only screen and (max-width: 600px){
                                 text-align: center;
                             }
@@ -3109,4 +3110,8 @@ opacity: 0;
     font-size: 2.5rem!important;
     font-family: "Helvetica", sans-serif!important;
     line-height: 2.9375rem!important;
+}
+
+.v-application a{
+    color: #000000!important;
 }
