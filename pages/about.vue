@@ -1,6 +1,5 @@
 <template>
     <div>
-        
         <div class="about-section">
             <div class="container">
                 <h4 class="title">
@@ -34,7 +33,7 @@ implementation of development plans, programs, objectives and priorities to ensu
                 <div class="left-content gallery-content">
                     <div class="left-gallery">
                         <div class="img-wrapper" v-for="(img, index) in galleryMisiion" :key="index">
-                            <img :src="img.img" :alt="img.title"  class="about-gallery-imgs">
+                            <img :src="img.url" :alt="img.title"  class="about-gallery-imgs"  @click="getImg(img.url)">
                         </div>
                     </div>
                 </div>
@@ -45,7 +44,7 @@ implementation of development plans, programs, objectives and priorities to ensu
                 <div class="right-content gallery-content">
                     <div class="left-gallery">
                         <div class="img-wrapper" v-for="(img, index) in galleryMisiion" :key="index">
-                            <img :src="img.img" :alt="img.title"  class="about-gallery-imgs" @click="getImg(img.title)">
+                            <img :src="img.url" :alt="img.title"  class="about-gallery-imgs" @click="getImg(img.url)">
                         </div>
                     </div>
                 </div>
@@ -70,11 +69,11 @@ Public partnership for a sustainable economic development, entrepreneurship and 
                 <Officials/>
             </div>
         </div>
-        <!-- <modal name="imgpop" width="600px" height="600px">
+        <modal name="imgpop" width="600px" height="600px">
             <div class="imagepop">
-                <img :src="require('~/static/images/about1.png')">
+                <img :src="imgUrl">
             </div>
-        </modal> -->
+        </modal>
     </div>
 </template>
 <script>
@@ -86,21 +85,26 @@ export default {
             galleryMisiion:[
                 {
                     title: 'img1',
-                    img: '/images/about1.png',
+                    id: 1,
+                    url: '/images/about1.png',
                 },
                 {
                     title: 'img2',
-                    img: '/images/about2.png',
+                    id: 2,
+                    url: '/images/about2.png',
                 },
                 {
                     title: 'img3',
-                    img: '/images/about3.png',
+                    id: 3,
+                    url: '/images/about3.png',
                 }
-            ]
+            ],
+            imgUrl:'',
         }
     },
     methods:{
-        getImg(val){
+        getImg(url){
+           this.imgUrl = url
             this.$modal.show('imgpop');
         },  
        

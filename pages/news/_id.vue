@@ -25,6 +25,7 @@
                     </div>
                     <div class="nsp-imgs">
                         <img :src="require('~/static/images/news4.png')" @click="newsShowPopup">
+                        <p class="more-img-jobs" @click="newsShowPopup">25+</p>
                     </div>
                 </div>
                 <div class="nsp-articles">

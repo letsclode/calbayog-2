@@ -82,6 +82,7 @@
                             </div>
                             <div class="nsp-imgs">
                                 <img :src="require('~/static/images/299932715_120137040797208_2127528906162976991_n.png')"  @click="jobsModal">
+                                <p class="more-img-jobs" @click="jobsModal">25+</p>
                             </div>
                         </div>
                         <div class="nsp-articles">
@@ -105,7 +106,7 @@
         <div class="mandate-section">
             <div class="container">
                 <h4 class="title">Programmes and Accomplishment</h4>
-                <div class="mandate-gal">
+                <div class="mandate-gal" id="manadte-scroll">
                     <div class="img-gal-wrapper" v-for="(img, index) in mandates" :key="index"  @click="programmesModal">
                         <img :src="img.img">
                         <p class="title-m">{{img.title}}</p>
@@ -128,7 +129,7 @@
                 <div class="left-content gallery-content">
                     <div class="left-gallery">
                         <div class="img-wrapper" v-for="(img, index) in galleryMisiion" :key="index">
-                            <img :src="img.img"  class="about-gallery-imgs">
+                            <img :src="img.url"  class="about-gallery-imgs"  @click="getImg(img.url)">
                         </div>
                     </div>
                 </div>
@@ -139,7 +140,7 @@
                 <div class="right-content gallery-content">
                     <div class="left-gallery">
                         <div class="img-wrapper" v-for="(img, index) in galleryMisiion" :key="index">
-                            <img :src="img.img" :alt="img.title"  class="about-gallery-imgs" @click="getImg(img.title)">
+                            <img :src="img.url" :alt="img.title"  class="about-gallery-imgs" @click="getImg(img.url)">
                         </div>
                     </div>
                 </div>
@@ -242,6 +243,11 @@
                 </div>
             </div>
         </modal>
+        <modal name="imgpop" width="600px" height="600px">
+            <div class="imagepop">
+                <img :src="imgUrl">
+            </div>
+        </modal>
     </div>
 </template>
 
@@ -258,18 +264,19 @@
         return {
             officialIndex: '',
             showWelcomeMesDept: false,
+            imgUrl:'',
             galleryMisiion:[
                 {
                     title: 'img1',
-                    img: '/images/about1.png',
+                    url: '/images/about1.png',
                 },
                 {
                     title: 'img2',
-                    img: '/images/about2.png',
+                    url: '/images/about2.png',
                 },
                 {
                     title: 'img3',
-                    img: '/images/about3.png',
+                    url: '/images/about3.png',
                 }
             ],
             jobs:[
@@ -403,9 +410,9 @@
         }
     },
     methods:{
-        getImg(val){
-            this.$modal.show('imgpop');
-        },  
+        // getImg(val){
+        //     this.$modal.show('imgpop');
+        // },  
         officialShowPopup(index){
             // this.$modal.show('officialModal');
         },
@@ -424,6 +431,10 @@
         closeProgrammesModal(){
           this.$modal.hide('progModal');
         },
+        getImg(url){
+           this.imgUrl = url
+            this.$modal.show('imgpop');
+        },  
     }      
 }
 </script>
