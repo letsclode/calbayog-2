@@ -14,7 +14,7 @@
             </div>
             <div class="nsp-content">
                 <div class="full-img" id="events-sp-img">
-                    <img :src="require('~/static/images/sept.png')" @click="newsShowPopup">
+                    <img :src="require('~/static/images/302090420_126406180136397_4216193573638826460_n (1).png')" @click="newsShowPopup">
                 </div>
                 <div class="nsp-articles">
                     <div class="desc">
@@ -27,8 +27,8 @@
                  
             </div>
             <div class="next-prev-w" id="events-sp-nextprev">
-                <v-btn elevation="1" class="n-slider-btn"><span class="mdi mdi-chevron-left"></span></v-btn>
-                <a href="sid2"><v-btn elevation="1" class="n-slider-btn"><span class="mdi mdi-chevron-right"></span></v-btn></a>
+                <a href="_id"><v-btn elevation="1" class="n-slider-btn"><span class="mdi mdi-chevron-left"></span></v-btn></a>
+                <v-btn elevation="1" :disabled="true" class="n-slider-btn disabled"><span class="mdi mdi-chevron-right"></span></v-btn>
             </div>
         </div>
         <modal name="newsModal" width="100%" height="100%">

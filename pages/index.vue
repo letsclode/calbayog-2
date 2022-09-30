@@ -184,7 +184,7 @@
             </div>
             <div class="back-desc">
               <!-- <p class="dep-name">{{agency.title}}</p> -->
-              <a href="departments/_id" class="desc">{{agency.mandate}}</a>
+              <a href="departments/_id#manadte-scroll" class="desc">{{agency.mandate}}</a>
             </div>
           </div>
         </div>
@@ -218,12 +218,12 @@
             is further extended in this website.
           </p>
           <div class="services-wrapper">
-            <div class="service" v-for="(service, index) in servicesArray" :key="index">
+            <a :href="service.url" class="service" v-for="(service, index) in servicesArray" :key="index" target="_blank">
               <span class="icon">
                 <img :src="service.icon">
               </span>
               <p class="dep-name">{{service.title}}</p>
-            </div>
+            </a>
           </div>
         </div>
         <div class="helplines-wrapper">

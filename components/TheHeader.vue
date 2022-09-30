@@ -69,7 +69,8 @@
                                     <button type="submit">
                                         <img :src="require('~/static/images/icon-search.png')">
                                     </button>
-                                    <input type="text" class="search-input" placeholder="Search for News, Events and Departments">
+                                    <!-- <input type="text" class="search-input" placeholder="Search for News, Events and Departments"> -->
+                              
                                 </div>
                             </form>
                             <button class="search-btn-nav" @click="showSearch()">
@@ -86,14 +87,20 @@
                         <div class="close-search-form">
                             <span class="mdi mdi-close-thick" @click="showSearch()"></span>
                         </div>
-                        <div class="search-form">
+                        <v-app class="search-form">
                             <form action="#">
-                                <input type="text" class="search-bar-input" placeholder="Search for News, Events and Departments">
+                                <!-- <input type="text" class="search-bar-input" placeholder="Search for News, Events and Departments"> -->
+                                <v-autocomplete
+                                    v-model="value"
+                                    :items="items"
+                                    class="search-bar-input"
+                                    placeholder="Search for News, Events and Departments"
+                                ></v-autocomplete>
                                 <button class="search-btn"> 
-                                    <!-- <img :src="require('~/static/images/icon-search.png')"> -->
+                                    <img :src="require('~/static/images/icon-search.png')">
                                 </button>
                             </form>
-                        </div>
+                        </v-app>
                 </div>
             </div>
         </div>
@@ -107,17 +114,32 @@
         showSearchform: false,
         drawer: false,
         group: null,
+        items: ['Graduation Ceremony', 'September Activities', 'BPLO', 'City Mayors Office'],
+        value: null,
       }
     },
     watch: {
       group () {
         this.drawer = false
       },
+      search (val) {
+        val && val !== this.select && this.querySelections(val)
+      },
     },
     methods:{
         showSearch(){
             this.showSearchform = !this.showSearchform;
-        }
+        },
+        querySelections (v) {
+        this.loading = true
+        // Simulated ajax query
+        setTimeout(() => {
+          this.items = this.states.filter(e => {
+            return (e || '').toLowerCase().indexOf((v || '').toLowerCase()) > -1
+          })
+          this.loading = false
+        }, 500)
+      },
     }
   }
 </script>

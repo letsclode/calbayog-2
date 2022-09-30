@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <v-app>
         <!-- <div class="search-bar-section">
             <div class="container">
                 <form action="#" class="search-bar">
@@ -15,10 +15,17 @@
         <div class="dept-section">
             <div class="container">
                 <div class="header">
-                    <h4 class="title">Departments</h4>
-                    <form action="#">
+                    <h4 class="title v-app-title" style="font-size: 2.25rem !important; font-weight: 700;">Departments</h4>
+                    <form action="departments/_id">
                         <div class="search-wrapper">
-                            <input type="text" class="search-input" placeholder="Search Departments">
+                            <!-- <input type="text" class="search-input" placeholder="Search Departments"> -->
+                            <v-autocomplete
+                                v-model="value"
+                                :items="items"
+                                class="search-autocom"
+                                dense
+                                placeholder="Search Departments"
+                            ></v-autocomplete>
                             <button type="submit">
                                 <img :src="require('~/static/images/Icon awesome-search.png')">
                             </button>
@@ -45,7 +52,7 @@
             </div>
             
         </div>
-    </div>
+    </v-app>
 
 </template>
 <script>
@@ -175,7 +182,9 @@
                         position: 'CITY MAYOR',
                         logo: '/images/City_seal.png',
                     },
-                ]
+                ],
+                items: ['City Mayors Office','City Vice - Mayor Office','City Administrator Office','City Accountant Office','Assesor`s Office','BPLO',],
+                value: null,
             }
         }      
     }

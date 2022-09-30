@@ -67,16 +67,16 @@
             <div class="container bf-inner">
                 <a href="#">Calbayogcity.gov.ph</a>
                 <div class="social-icons">
-                    <a class="social-item" href="#">
+                    <a class="social-item" href="https://www.facebook.com/" target="_blank">
                         <img :src="require('~/static/images/fb.png')" alt="">
                     </a>
-                    <a class="social-item" href="#">
+                    <a class="social-item" href="https://twitter.com/" target="_blank">
                         <img :src="require('~/static/images/twitter.png')" alt="">
                     </a>
-                    <a class="social-item" href="#">
+                    <a class="social-item" href="https://www.instagram.com/" target="_blank">
                         <img :src="require('~/static/images/ig.png')" alt="">
                     </a>
-                    <a class="social-item" href="#">
+                    <a class="social-item" href="https://www.youtube.com/" target="_blank">
                         <img :src="require('~/static/images/youtube.png')" alt="">
                     </a>
                 </div>

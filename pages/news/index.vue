@@ -1,10 +1,17 @@
 <template>
-    <div class="news-section">
+    <v-app class="news-section">
         <div class="search-bar">
             <div class="container">
-                <form action="#">
+                <form action="news/_id">
                     <div class="search-wrapper">
-                        <input type="text" class="search-input" placeholder="Search News">
+                        <!-- <input type="text" class="search-input" placeholder="Search News"> -->
+                        <v-autocomplete
+                            v-model="value"
+                            :items="items"
+                            class="search-autocom"
+                            dense
+                            placeholder="Search News"
+                        ></v-autocomplete>
                         <button type="submit">
                             <img :src="require('~/static/images/Icon awesome-search.png')">
                         </button>
@@ -14,7 +21,7 @@
         </div>
         <div class="city-news-section latest-news-section">
             <div class="container">
-                <h4 class="title">
+                <h4 class="title" style="font-size: 2.25rem !important; font-weight: 700;">
                     News
                 </h4>
                 <div class="news-grid">
@@ -51,7 +58,7 @@
         </div>
         <div class="city-news-section trending-news-section">
             <div class="container">
-                <h4 class="title">
+                <h4 class="title" style="font-size: 2.25rem !important; font-weight: 700;">
                     Trending
                 </h4>
                 <div class="news-grid">
@@ -114,7 +121,7 @@
                 </div>
             </div>
         </div> -->
-    </div>
+    </v-app>
 </template>
 <script>
     export default {
@@ -124,31 +131,31 @@
           return {
             newsArray: [
               {
-                title : 'Gaduation Ceremony',
+                title : 'Graduation Ceremony',
                 date: '15 JULY, 2022',
                 description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
                 img: '/images/news2.png',
               },
                 {
-                title : 'Gaduation Ceremony',
+                title : 'Graduation Ceremony',
                 date: '15 JULY, 2022',
                 description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
                 img: '/images/news3.png',
               },
                  {
-                title : 'Gaduation Ceremony',
+                title : 'Graduation Ceremony',
                 date: '15 JULY, 2022',
                 description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
                 img: '/images/news4.png',
               },
                  {
-                title : 'Gaduation Ceremony',
+                title : 'Graduation Ceremony',
                 date: '15 JULY, 2022',
                 description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
                 img: '/images/news5.png',
               },
                  {
-                title : 'Gaduation Ceremony',
+                title : 'Graduation Ceremony',
                 date: '15 JULY, 2022',
                 description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
                 img: '/images/news2.png',
@@ -172,6 +179,8 @@
             //     img: '/images/news2.png',
             //   }
             ],
+            items: ['Graduation Ceremony', 'City Fiesta'],
+            value: null,
         }
       }
     }

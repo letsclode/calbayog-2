@@ -13,6 +13,7 @@
     padding: 0;
     box-sizing: border-box;
     letter-spacing: 1px;
+    scroll-behavior: smooth;
 }
 
 .page-enter-active,
@@ -79,6 +80,9 @@ a{
     // position: sticky;
     // top: 0;
     // z-index: 100;
+    .v-application--wrap{
+        min-height: unset!important;
+    }
     .top-header{
     background: rgb(238,0,0);
     background: linear-gradient(90deg, rgba(238,0,0,0.9976365546218487) 0%, rgba(162,2,0,1) 100%);
@@ -2036,7 +2040,8 @@ a{
                  }
                 width: 40%;
                 background: #F3F3F3;
-                padding: 10px 15px;
+                // padding: 10px 15px;
+                padding: 0 15px;
                 border-radius: 3px;
                 .search-wrapper{
                     display: flex;
@@ -2184,7 +2189,8 @@ a{
                 width: 40%;
                 margin: 0 auto;
                 background: #F3F3F3;
-                padding: 15px 15px;
+                // padding: 15px 15px;
+                padding: 0 15px;
                 border-radius: 3px;
                 @media only screen and (max-width: 991px){
                     width: 100%;
@@ -2298,6 +2304,9 @@ a{
                 @media only screen and (max-width: 1200px){
                     width: 85%;
                 }
+                &.theme--light.v-application{
+                    background-color: transparent!important;
+                }
                 form{
                     display: flex;
                     justify-content: center;
@@ -2310,8 +2319,8 @@ a{
                         line-height: 25px;
                         border: none;
                         outline: none;
-                        border-bottom: 1px solid #ffff;
-                        padding: 10px 15px;
+                        // border-bottom: 1px solid #ffff;
+                        // padding: 10px 15px;
                         font-family: 'Helvetica', sans-serif;
                         &::placeholder{
                             color: #ffffff;
@@ -2579,8 +2588,8 @@ opacity: 0;
 
                     &:last-of-type{
                         position: relative;
-                        &::before{
-                            content: "25+";
+                        .more-img-jobs{
+                            // content: "25+";
                             position: absolute;
                             width: 100%;
                             height: 100%;
@@ -2596,7 +2605,7 @@ opacity: 0;
                             font-family: 'Helvetica', 'san-serif';
                         }
                         &:hover{
-                            &::before{
+                            .more-img-jobs{
                                 opacity: 1;
                             }
                         }
@@ -3040,4 +3049,64 @@ opacity: 0;
             }
         }
     }
+}
+
+.search-bar-input{
+    .v-input__control{
+        .v-input__slot{
+            .v-select__slot{
+                input{
+                    color: #ffffff!important;
+                    &::placeholder{
+                        color: #ffff;
+                    }
+                }
+                .v-input__append-inner{
+                    .v-input__icon{
+                        i{
+                            color: #ffff;
+                            caret-color: #ffff!important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.search-bar-input > .v-input__control > .v-input__slot:before {
+    border-color: #ffff !important;
+}
+
+.v-application {
+    color: #ffff;
+}
+
+.v-application .primary--text{
+    color: #ffff!important;
+}
+
+.search-autocom > .v-input__control > .v-input__slot{
+    margin-top: 15px;
+}
+
+.search-autocom > .v-input__control > .v-input__slot:before {
+    border-style: none!important;
+    transition: unset!important;
+    border-color:transparent !important;
+    width: unset!important;
+}
+
+// .search-wrapper > .v-application--wrap{
+//     min-height: unset!important;
+// }
+
+.v-list-item__title{
+    color: #000000!important;
+}
+
+.v-application .title{
+    font-size: 2.5rem!important;
+    font-family: "Helvetica", sans-serif!important;
+    line-height: 2.9375rem!important;
 }
