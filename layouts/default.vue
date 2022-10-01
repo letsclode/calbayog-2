@@ -1,9 +1,10 @@
 <template>
     <div>
         <TheHeader/>
-        <Banners/>
+        <!-- <Banners/> -->
         <Nuxt/>
         <!-- <ToTop/> -->
         <TheFooter/>
     </div>
 </template>
+
