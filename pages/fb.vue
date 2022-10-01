@@ -5,24 +5,12 @@
             <VueSlickCarousel v-bind="sliderHeader" class="officials-slider">
                 <img :src="item.img"  alt=""  v-for="(item,i) in headerCarousel" :key="i">
             </VueSlickCarousel>
-            <p class="banner-title">Departments</p>
+            <p class="banner-title">Facebook Pages</p>
         </div>
-        <!-- <div class="search-bar-section">
-            <div class="container">
-                <form action="#" class="search-bar">
-                    <div class="sb-wrapper">
-                        <button type="submit">
-                            <img :src="require('~/static/images/icon-search.png')">
-                        </button>
-                        <input type="text" class="search-dept-input">
-                    </div>
-                </form>
-            </div>
-        </div> -->
         <div class="dept-section">
             <div class="container">
                 <div class="header">
-                    <h4 class="title v-app-title" style="font-size: 2.25rem !important; font-weight: 700;">Departments</h4>
+                    <h4 class="title v-app-title" style="font-size: 2.25rem !important; font-weight: 700;">Facebook Pages</h4>
                     <form action="departments/_id">
                         <div class="search-wrapper">
                             <!-- <input type="text" class="search-input" placeholder="Search Departments"> -->
@@ -31,7 +19,7 @@
                                 :items="items"
                                 class="search-autocom"
                                 dense
-                                placeholder="Search Departments"
+                                placeholder="Search FB Pages"
                             ></v-autocomplete>
                             <button type="submit">
                                 <img :src="require('~/static/images/Icon awesome-search.png')">
@@ -40,17 +28,17 @@
                     </form>
                 </div>
                 <div class="dept-wrapper">
-                    <div class="dept-info" v-for="(dept, index) in departments" :key="index">
-                        <a href="departments/_id">
+                    <div class="dept-info fb-info" v-for="(fb, index) in fblinks" :key="index">
+                        <a :href="fb.fblink">
                             <div class="inner-info">
                                 <div class="dept-logo">
-                                    <img :src="dept.logo" :alt="dept.title">
+                                    <img :src="fb.logo" :alt="fb.title">
                                 </div>
                                 <div class="dept-content">
-                                    <p class="dept-title">{{dept.title}}</p>
-                                    <p class="oic">{{dept.oic}}</p>
+                                    <p class="dept-title">{{fb.title}}</p>
+                                    <!-- <p class="oic">{{dept.oic}}</p> -->
                                     <v-divider></v-divider>
-                                    <span class="position">{{dept.position}}</span>
+                                    <a :href="fb.fblink" class="position">{{fb.fblink}}</a>
                                 </div>
                             </div>
                         </a>
@@ -68,131 +56,111 @@ import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 // optional style for arrows & dots
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
     export default {
-        name: 'About',
+        name: 'fb',
         layouts: 'default',
         components: { VueSlickCarousel },
         data () {
             return {
-                departments:[
+                fblinks:[
                     {
                         title: 'City Mayors Office',
-                        oic: 'Raymund C. Uy',
-                        position: 'CITY MAYOR',
-                        logo: '/images/City_seal.png',
+                        fblink: 'https://www.facebook.com/',
+                        logo: '/images/facebook-f-logo-2019.png',
                     },
                     {
                         title: 'City Vice - Mayor Office',
-                        oic: 'Rex M. Daguman',
-                        position: 'CITY VICE - MAYOR',
-                        logo: '/images/City_seal.png',
+                        fblink: 'https://www.facebook.com/',
+                        logo: '/images/facebook-f-logo-2019.png',
                     },
                     {
                         title: 'City Administrator Office',
-                        oic: 'Augusto L. Magdaraog, JD',
-                        position: 'DEPARTMENT HEAD',
-                        logo: '/images/City_seal.png',
+                        fblink: 'https://www.facebook.com/',
+                        logo: '/images/facebook-f-logo-2019.png',
                     },
                     {
                         title: 'City Accountant Office',
-                        oic: 'Atty. Isagani G. Togonon, CPA',
-                        position: 'DEPARTMENT HEAD',
-                        logo: '/images/City_seal.png',
+                        fblink: 'https://www.facebook.com/',
+                        logo: '/images/facebook-f-logo-2019.png',
                     },
                     {
                         title: 'Assesor`s Office',
-                        oic: 'Joselito A. Montealto, JD',
-                        position: 'DEPARTMENT HEAD',
-                        logo: '/images/City_seal.png',
+                        fblink: 'https://www.facebook.com/',
+                        logo: '/images/facebook-f-logo-2019.png',
                     },
                     {
                         title: 'BPLO',
-                        oic: 'Leonardo A. Bedio',
-                        position: 'DEPARTMENT HEAD',
-                        logo: '/images/City_seal.png',
+                        fblink: 'https://www.facebook.com/',
+                        logo: '/images/facebook-f-logo-2019.png',
                     },
                     {
                         title: 'City Mayors Office',
-                        oic: 'Raymund C. Uy',
-                        position: 'CITY MAYOR',
-                        logo: '/images/City_seal.png',
+                        fblink: 'https://www.facebook.com/',
+                        logo: '/images/facebook-f-logo-2019.png',
                     },
                     {
                         title: 'City Mayors Office',
-                        oic: 'Raymund C. Uy',
-                        position: 'CITY MAYOR',
-                        logo: '/images/City_seal.png',
+                        fblink: 'https://www.facebook.com/',
+                        logo: '/images/facebook-f-logo-2019.png',
                     },
                     {
                         title: 'City Mayors Office',
-                        oic: 'Raymund C. Uy',
-                        position: 'CITY MAYOR',
-                        logo: '/images/City_seal.png',
+                        fblink: 'https://www.facebook.com/',
+                        logo: '/images/facebook-f-logo-2019.png',
                     },
                     {
                         title: 'City Mayors Office',
-                        oic: 'Raymund C. Uy',
-                        position: 'CITY MAYOR',
-                        logo: '/images/City_seal.png',
+                        fblink: 'https://www.facebook.com/',
+                        logo: '/images/facebook-f-logo-2019.png',
                     },
                     {
                         title: 'City Mayors Office',
-                        oic: 'Raymund C. Uy',
-                        position: 'CITY MAYOR',
-                        logo: '/images/City_seal.png',
+                        fblink: 'https://www.facebook.com/',
+                        logo: '/images/facebook-f-logo-2019.png',
                     },
                     {
                         title: 'City Mayors Office',
-                        oic: 'Raymund C. Uy',
-                        position: 'CITY MAYOR',
-                        logo: '/images/City_seal.png',
+                        fblink: 'https://www.facebook.com/',
+                        logo: '/images/facebook-f-logo-2019.png',
                     },
                     {
                         title: 'City Mayors Office',
-                        oic: 'Raymund C. Uy',
-                        position: 'CITY MAYOR',
-                        logo: '/images/City_seal.png',
+                        fblink: 'https://www.facebook.com/',
+                        logo: '/images/facebook-f-logo-2019.png',
                     },
                     {
                         title: 'City Mayors Office',
-                        oic: 'Raymund C. Uy',
-                        position: 'CITY MAYOR',
-                        logo: '/images/City_seal.png',
+                        fblink: 'https://www.facebook.com/',
+                        logo: '/images/facebook-f-logo-2019.png',
                     },
                     {
                         title: 'City Mayors Office',
-                        oic: 'Raymund C. Uy',
-                        position: 'CITY MAYOR',
-                        logo: '/images/City_seal.png',
+                        fblink: 'https://www.facebook.com/',
+                        logo: '/images/facebook-f-logo-2019.png',
                     },
                     {
                         title: 'City Mayors Office',
-                        oic: 'Raymund C. Uy',
-                        position: 'CITY MAYOR',
-                        logo: '/images/City_seal.png',
+                        fblink: 'https://www.facebook.com/',
+                        logo: '/images/facebook-f-logo-2019.png',
                     },
                     {
                         title: 'City Mayors Office',
-                        oic: 'Raymund C. Uy',
-                        position: 'CITY MAYOR',
-                        logo: '/images/City_seal.png',
+                        fblink: 'https://www.facebook.com/',
+                        logo: '/images/facebook-f-logo-2019.png',
                     },
                     {
                         title: 'City Mayors Office',
-                        oic: 'Raymund C. Uy',
-                        position: 'CITY MAYOR',
-                        logo: '/images/City_seal.png',
+                        fblink: 'https://www.facebook.com/',
+                        logo: '/images/facebook-f-logo-2019.png',
                     },
                     {
                         title: 'City Mayors Office',
-                        oic: 'Raymund C. Uy',
-                        position: 'CITY MAYOR',
-                        logo: '/images/City_seal.png',
+                        fblink: 'https://www.facebook.com/',
+                        logo: '/images/facebook-f-logo-2019.png',
                     },
                     {
                         title: 'City Mayors Office',
-                        oic: 'Raymund C. Uy',
-                        position: 'CITY MAYOR',
-                        logo: '/images/City_seal.png',
+                        fblink: 'https://www.facebook.com/',
+                        logo: '/images/facebook-f-logo-2019.png',
                     },
                 ],
                 items: ['City Mayors Office','City Vice - Mayor Office','City Administrator Office','City Accountant Office','Assesor`s Office','BPLO',],

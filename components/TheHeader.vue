@@ -24,7 +24,7 @@
                             <NuxtLink to="/news">News</NuxtLink>
                         </div>
                         <div class="nav-items">
-                            <a href="#">pages</a>
+                            <NuxtLink to="/fb">Facebook Pages</NuxtLink>
                         </div>
                         <div class="nav-items">
                             <NuxtLink to="/contact">contact</NuxtLink>
@@ -58,7 +58,7 @@
                             <NuxtLink to="/news">News</NuxtLink>
                         </div>
                         <div class="nav-items">
-                            <a href="#">pages</a>
+                            <NuxtLink to="/fb">Facebook Pages</NuxtLink>
                         </div>
                         <div class="nav-items">
                             <NuxtLink to="/contact">contact</NuxtLink>
