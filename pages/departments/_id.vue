@@ -1,5 +1,11 @@
 <template>
     <div>
+        <div class="banner-wrapper">
+            <!-- <img :src="require('~/static/images/Calbayog.png')"  alt=""> -->
+            <VueSlickCarousel v-bind="sliderHeader" class="officials-slider">
+                <img :src="item.img"  alt=""  v-for="(item,i) in headerCarousel" :key="i">
+            </VueSlickCarousel>
+        </div>
         <div class="section-dept-sp">
             <div class="welcome-text-section" id="dept-sp-welcome">
                 <div class="container wt-container">
@@ -406,7 +412,25 @@
                             }
                         },
                 ]
-            }
+            },
+            headerCarousel: [
+                { title: 'Cathedral' , img: '/images/Calbayog.png'},
+                { title: 'Falls' , img: '/images/calbcover.png'},
+                { title: 'Falls' , img: '/images/falls.png'},
+            ],
+            sliderHeader:{
+                    "dots": false,
+                    "dotsClass": "slick-dots header-dots",
+                    "infinite": true,
+                    "slidesToShow": 1,
+                    "slidesPerRow": 1,
+                    "autoplay": true,
+                    "speed": 5000,
+                    "autoplaySpeed": 5000,
+                    "fade": true,
+                    "adaptiveHeight": false,
+                }
+
         }
     },
     methods:{

@@ -1,10 +1,17 @@
 <template>
     <div>
+        <div class="banner-wrapper small-banner" id="about-banner">
+            <!-- <img :src="require('~/static/images/Calbayog.png')"  alt=""> -->
+            <VueSlickCarousel v-bind="sliderHeader" class="officials-slider">
+                <img :src="item.img"  alt=""  v-for="(item,i) in headerCarousel" :key="i">
+            </VueSlickCarousel>
+            <p class="banner-title">About Us</p>
+        </div>
         <div class="about-section">
             <div class="container">
-                <h4 class="title">
+                <!-- <h4 class="title">
                     About Us
-                </h4>
+                </h4> -->
                 <div class="desc">
                     <p>
                         Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.
@@ -77,9 +84,14 @@ Public partnership for a sustainable economic development, entrepreneurship and 
     </div>
 </template>
 <script>
+import VueSlickCarousel from 'vue-slick-carousel'
+import 'vue-slick-carousel/dist/vue-slick-carousel.css'
+// optional style for arrows & dots
+import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 export default {
     name: 'About',
     layouts: 'default',
+    components: { VueSlickCarousel },
     data () {
         return {
             galleryMisiion:[
@@ -100,6 +112,23 @@ export default {
                 }
             ],
             imgUrl:'',
+            headerCarousel: [
+                { title: 'Cathedral' , img: '/images/Calbayog.png'},
+                { title: 'Falls' , img: '/images/calbcover.png'},
+                { title: 'Falls' , img: '/images/falls.png'},
+            ],
+            sliderHeader:{
+                "dots": false,
+                "dotsClass": "slick-dots header-dots",
+                "infinite": true,
+                "slidesToShow": 1,
+                "slidesPerRow": 1,
+                "autoplay": true,
+                "speed": 5000,
+                "autoplaySpeed": 5000,
+                "fade": true,
+                "adaptiveHeight": false,
+            }
         }
     },
     methods:{

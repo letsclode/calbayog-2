@@ -24,7 +24,7 @@
                             <NuxtLink to="/news">News</NuxtLink>
                         </div>
                         <div class="nav-items">
-                            <a href="#">pages</a>
+                            <NuxtLink to="/fb">Facebook Pages</NuxtLink>
                         </div>
                         <div class="nav-items">
                             <NuxtLink to="/contact">contact</NuxtLink>
@@ -58,13 +58,13 @@
                             <NuxtLink to="/news">News</NuxtLink>
                         </div>
                         <div class="nav-items">
-                            <a href="#">pages</a>
+                            <NuxtLink to="/fb">Facebook Pages</NuxtLink>
                         </div>
                         <div class="nav-items">
                             <NuxtLink to="/contact">contact</NuxtLink>
                         </div>
                         <div class="nav-items" id="h-search-bar">
-                            <form action="#">
+                            <form action="news/_id">
                                 <div class="search-wrapper">
                                     <button type="submit">
                                         <img :src="require('~/static/images/icon-search.png')">
@@ -88,7 +88,7 @@
                             <span class="mdi mdi-close-thick" @click="showSearch()"></span>
                         </div>
                         <v-app class="search-form">
-                            <form action="#">
+                            <form action="news/_id">
                                 <!-- <input type="text" class="search-bar-input" placeholder="Search for News, Events and Departments"> -->
                                 <v-autocomplete
                                     v-model="value"

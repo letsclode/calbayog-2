@@ -1,8 +1,6 @@
 <template>
   <div>
-      <!-- <div class="banner-section">
-        <Banners/>
-      </div> -->
+    <Banners/>
     <div class="section2">
       <div class="welcome-text-section">
         <div class="container wt-container">
@@ -177,9 +175,9 @@
         <div class="agencies-wrapper">
           <div class="agency" v-for="(agency, index) in agencyArray" :key="index" :id="agency.name">
             <div class="front-desc">
-              <span class="icon">
+              <!-- <span class="icon">
                 <img :src="agency.icon">
-              </span>
+              </span> -->
               <p class="dep-name">{{agency.title}}</p>
             </div>
             <div class="back-desc">
@@ -194,7 +192,7 @@
       <div class="container">
         <div class="logo-wrapper">
           <a href="https://www.dbm.gov.ph/index.php/about-us/philippine-transparency-seal" target="_blank">
-           <img :src="require('~/static/images/Transparency_seal-01.png')" alt="Transparency seal Seal">
+           <img src="images/Transparency_seal-01.png" alt="Transparency seal Seal">
           </a>
         </div>
         <v-divider vertical class="wss-hr"></v-divider>
@@ -205,7 +203,7 @@
       </div>
     </div>
     <div class="maps-section">
-      <img :src="require('~/static/images/snazzy-image.png')">
+      <img src="images/snazzy-image.png">
     </div>
     <div class="services-section">
       <div class="container services-con">
@@ -282,10 +280,11 @@ import VueSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
   // optional style for arrows & dots
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
+import Banners from '../components/Banners.vue'
 export default {
   name: 'IndexPage',
   layouts: 'default',
-  components: { VueSlickCarousel },
+  components: { VueSlickCarousel, Banners },
   data () {
       return {
         newsArray: [
@@ -345,48 +344,110 @@ export default {
           { title: 'June' , img: '/images/2378565_orig.png'},
           { title: 'May' , img: '/images/downloadsd.png'}
         ],
+        // agencyArray: [
+        //   {
+        //     title: 'Agriculture',
+        //     icon: '/images/Icon awesome-leaf.png', 
+        //     name: 'agri',
+        //     mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
+        //   },
+        //   {
+        //     title: 'Disaster Risk Reduction', 
+        //     icon: '/images/Icon ionic-md-warning.png', 
+        //     name: 'disaster',
+        //     mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
+        //   },
+        //   {
+        //     title: 'Education', 
+        //     icon: '/images/Icon awesome-graduation-cap.png', 
+        //     name: 'educ',
+        //     mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
+        //   },
+        //   {
+        //     title: 'Health', 
+        //     icon: '/images/Icon awesome-briefcase-medical.png', 
+        //     name: 'health',
+        //     mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
+        //   },
+        //   {
+        //     title: 'Infrastructure Development', 
+        //     icon: '/images/Icon awesome-building.png', 
+        //     name: 'infra',
+        //     mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
+        //   },
+        //   {
+        //     title: 'Peace and Order', 
+        //     icon: '/images/Icon awesome-dove.png', 
+        //     name: 'peace',
+        //     mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
+        //   },
+        //   {
+        //     title: 'Poverty Alleviation', 
+        //     icon: '/images/Icon open-graph.png', 
+        //     name: 'pov',
+        //     mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
+        //   },
+        //   {
+        //     title: 'Solid Waste Management', 
+        //     icon: '/images/Icon awesome-recycle.png', 
+        //     name: 'waste',
+        //     mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
+        //   },
+        //   {
+        //     title: 'Tourism', 
+        //     icon: '/images/Icon awesome-umbrella-beach.png', 
+        //     name: 'tourism',
+        //     mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
+        //   },
+        //   {
+        //     title: 'Transportation Planning and Traffic Management', 
+        //     icon: '/images/Icon awesome-traffic-light.png', 
+        //     name: 'transpo',
+        //     mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
+        //   },
+        // ],
         agencyArray: [
           {
-            title: 'Agriculture',
+            title: 'CITY MAYOR`S OFFICE',
             icon: '/images/Icon awesome-leaf.png', 
             name: 'agri',
-            mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
+            mandate: 'The Mayor&#39;s Office Operation coordinates and oversees the management of city governmental operations to promote the efficient and effective delivery of agency services. The office mandate to both provide the operational support for all agencies as well as measure and report on agency performance. Operations helps City agencies to improve productivity by providing recommendations and institutional support in addition to reporting areas of success and identifying the areas of possible improvement.',
           },
           {
             title: 'Disaster Risk Reduction', 
             icon: '/images/Icon ionic-md-warning.png', 
             name: 'disaster',
-            mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
+            mandate: 'The office is tasked to conduct and organized disaster preparedness activities to save lives and properties.',
           },
           {
-            title: 'Education', 
+            title: 'CITY HOUSING AND DEVELOPMENT', 
             icon: '/images/Icon awesome-graduation-cap.png', 
             name: 'educ',
-            mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
+            mandate: 'Formulate plans and program applicable to the Housing Program of the city based on RA 7279 or otherwise known as Urban Development and Housing Act of 1992',
           },
           {
-            title: 'Health', 
+            title: 'Business Permits and Licensing', 
             icon: '/images/Icon awesome-briefcase-medical.png', 
             name: 'health',
-            mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
+            mandate: 'In charge of the business permitting and licensing on private commercial, industrial and other business establishments within the jurisdiction of the local government unit in relation to the implementation of tax ordinances pursuant to the provisions provided under Book II of RA # 7160 otherwise known as the Local Government Code of 1991',
           },
           {
-            title: 'Infrastructure Development', 
+            title: 'SANGGUNIANG PANLUNGSOD', 
             icon: '/images/Icon awesome-building.png', 
             name: 'infra',
-            mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
+            mandate: 'Appropriate Funds for expenses of the City Government in accordance with law.',
           },
           {
-            title: 'Peace and Order', 
+            title: 'CITY ADMINISTRATOR', 
             icon: '/images/Icon awesome-dove.png', 
             name: 'peace',
-            mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
+            mandate: 'Develop management and administrative-related plans and strategies upon approval of the LCE/Delivery of administrative services during and after man-made and natural disasters and calamities.',
           },
           {
-            title: 'Poverty Alleviation', 
+            title: 'City Civil Registrar', 
             icon: '/images/Icon open-graph.png', 
             name: 'pov',
-            mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
+            mandate: 'Records all vital occurrences of a person, natural or through judicial order, in civil registry forms and books required by law and file, compile, keep and preserve these documents in secure place.',
           },
           {
             title: 'Solid Waste Management', 
@@ -395,16 +456,16 @@ export default {
             mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
           },
           {
-            title: 'Tourism', 
+            title: 'CITY GENERAL SERVICES', 
             icon: '/images/Icon awesome-umbrella-beach.png', 
             name: 'tourism',
-            mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
+            mandate: 'The City General Services Office was formally created and established in 1993 by virtue of Local Government Code of 1991 or RA. 7160, empowering local government units or decentralizing government&#39;s operation.',
           },
           {
-            title: 'Transportation Planning and Traffic Management', 
+            title: 'City Budget Office', 
             icon: '/images/Icon awesome-traffic-light.png', 
             name: 'transpo',
-            mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
+            mandate: 'Provide periodic review and disclosure of budgetary status of the Local Government',
           },
         ],
         servicesArray:[

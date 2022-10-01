@@ -24,7 +24,7 @@
                 </div>
             </div>
         </div>
-        <div class="mid-footer">
+        <div class="mid-footer" >
             <div class="container">
                 <div class="midf-content">
                     <div class="m-content logo">
@@ -84,3 +84,17 @@
         </div>
     </div>
 </template>
+<script>
+    export default{
+        // data () {
+        //     return {
+        //        hid: false,
+        //     }
+        // },
+        // mounted() {
+        //     if(this.$route.path == '/contact'){
+        //         this.hid = true;
+        //     }
+        // },
+    }
+</script>
