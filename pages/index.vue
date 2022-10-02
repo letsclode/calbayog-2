@@ -411,7 +411,7 @@ export default {
             title: 'CITY MAYOR`S OFFICE',
             icon: '/images/Icon awesome-leaf.png', 
             name: 'agri',
-            mandate: 'The Mayor&#39;s Office Operation coordinates and oversees the management of city governmental operations to promote the efficient and effective delivery of agency services. The office mandate to both provide the operational support for all agencies as well as measure and report on agency performance. Operations helps City agencies to improve productivity by providing recommendations and institutional support in addition to reporting areas of success and identifying the areas of possible improvement.',
+            mandate: 'The Mayor`s Office Operation coordinates and oversees the management of city governmental operations to promote the efficient and effective delivery of agency services. The office mandate to both provide the operational support for all agencies as well as measure and report on agency performance. Operations helps City agencies to improve productivity by providing recommendations and institutional support in addition to reporting areas of success and identifying the areas of possible improvement.',
           },
           {
             title: 'Disaster Risk Reduction', 
@@ -623,7 +623,12 @@ export default {
             }
     }
   },
-
+  // mounted() {
+  //   window.addEventListener("scroll", this.onScroll)
+  // },
+  // beforeDestroy() {
+  //   window.removeEventListener("scroll", this.onScroll)
+  // },
   methods:{
     newsShowPopup(val){
       this.activeNews = val;
@@ -635,6 +640,12 @@ export default {
     readMoreWelcome(){
       this.showWelcomeMessage = !this.showWelcomeMessage;
     },
+    // onScroll(e) {
+    //   this.windowTop = window.top.scrollY /* or: e.target.documentElement.scrollTop */
+    //   if(this.windowTop >= 2000){
+
+    //   }
+    // }
   }
 }
 </script>
