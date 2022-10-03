@@ -42,20 +42,20 @@
                 ></span>
                 <!--panhumalatag-->
                 <!-- <p>
-                                Welcome to the official website of the City Government of Calbayog!
-                                </p>
-                                <br>
-                                <p>
-                                Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.
-                                </p>
-                                <div class="hid-message-welcome" :class="{animate : showWelcomeMesDept}">
-                                    <p>
-                                        Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.
-                                    </p>
-                                    <p>
-                                        Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.
-                                    </p>
-                                </div> -->
+                              Welcome to the official website of the City Government of Calbayog!
+                              </p>
+                              <br>
+                              <p>
+                              Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.
+                              </p>
+                              <div class="hid-message-welcome" :class="{animate : showWelcomeMesDept}">
+                                  <p>
+                                      Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.
+                                  </p>
+                                  <p>
+                                      Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.
+                                  </p>
+                              </div> -->
               </div>
               <button
                 class="read-more"
@@ -256,24 +256,24 @@
           Your Calbayog City Public Servants
         </h4>
         <!-- <div class="officials-wrapper">
-                    <VueSlickCarousel v-bind="sliderSettings" class="officials-slider">
-                        <div class="official" v-for="(official, index) in officials" :key="index" @click="officialShowPopup(index)" :id="index">
-                            <v-avatar
-                                class="profile"
-                                height="117"
-                                width="117"
-                                rounded="true"
-                            >
-                                <img :src="official.profile">
-                            </v-avatar>
-                            <div class="name-and-position">
-                                <p>{{official.name}}</p>
-                                <v-divider class="line"></v-divider>
-                                <span>{{official.position}}</span>
-                            </div>
-                        </div>
-                    </VueSlickCarousel>
-                </div> -->
+                  <VueSlickCarousel v-bind="sliderSettings" class="officials-slider">
+                      <div class="official" v-for="(official, index) in officials" :key="index" @click="officialShowPopup(index)" :id="index">
+                          <v-avatar
+                              class="profile"
+                              height="117"
+                              width="117"
+                              rounded="true"
+                          >
+                              <img :src="official.profile">
+                          </v-avatar>
+                          <div class="name-and-position">
+                              <p>{{official.name}}</p>
+                              <v-divider class="line"></v-divider>
+                              <span>{{official.position}}</span>
+                          </div>
+                      </div>
+                  </VueSlickCarousel>
+              </div> -->
         <div class="officials-wrapper">
           <VueSlickCarousel
             v-bind="sliderSettings"
