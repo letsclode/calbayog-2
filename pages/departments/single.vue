@@ -169,7 +169,8 @@
                 </h4>
                 <div class="officials-wrapper">
                     <VueSlickCarousel v-bind="sliderSettings" class="officials-slider">
-                        <div class="official" v-for="(official, index) in officials" :key="index" @click="officialShowPopup(index)" :id="index">
+                        <!-- <div class="official" v-for="(official, index) in officials" :key="index" @click="officialShowPopup(index)" :id="index"> -->
+                        <div class="official" v-for="(official, index) in test" :key="index" @click="officialShowPopup(index)" :id="index">
                             <!-- <div class="profile">
                                 <img :src="official.profile" alt="">
                             </div> -->
@@ -429,9 +430,11 @@
                     "autoplaySpeed": 5000,
                     "fade": true,
                     "adaptiveHeight": false,
-                }
-
+                },
         }
+    },
+    mounted() {
+        console.log(this.params = this.$route.params.id)
     },
     methods:{
         // getImg(val){
@@ -459,6 +462,14 @@
            this.imgUrl = url
             this.$modal.show('imgpop');
         },  
-    }      
+    },
+    watch:{
+        params:{
+            handler(val){
+                console.log(val, 'testing')
+            },immediate:true,
+        }
+    }
+        
 }
 </script>
