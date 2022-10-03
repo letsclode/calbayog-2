@@ -274,14 +274,17 @@
                       </div>
                   </VueSlickCarousel>
               </div> -->
-        <div class="officials-wrapper">
+        <div
+          class="officials-wrapper"
+          v-if="selected_department.employees"
+        >
           <VueSlickCarousel
             v-bind="sliderSettings"
             class="officials-slider"
           >
             <div
               class="official"
-              v-for="(official, index) in officials"
+              v-for="(official, index) in selected_department.employees"
               :key="index"
               @click="officialShowPopup(index)"
               :id="index"
@@ -292,12 +295,12 @@
                 width="117"
                 rounded="true"
               >
-                <img :src="official.profile">
+                <img :src="official.img">
               </v-avatar>
               <div class="name-and-position">
-                <p>{{official.name}}</p>
+                <p>{{official.name??'Name'}}</p>
                 <v-divider class="line"></v-divider>
-                <span>{{official.position}}</span>
+                <span>{{official.position ?? 'Position'}}</span>
               </div>
             </div>
           </VueSlickCarousel>
@@ -848,7 +851,7 @@ export default {
           vision:
             "The City Agriculture Office is envisioned to be manned by professional, competent and public service-oriented employees and at molding self-reliant and self-sufficient farmers and fisherfolks with entrepreneurial capabilities in an ecologically sound environment.",
           welcome:
-            "<p>Welcome to the City Agriculture Office page.</p><br><br>Our Office takes the lead in promoting agricultural development by providing the policy framework, public investment and support services, which are needed for domestic and export-oriented enterprises.<br><br>We also adhere to the mandate of the City Agriculturist as provided for in the Local Government Code: Formulate measures to ensure the delivery of basic agricultural services; develop plans and strategies, agricultural programs and projects; and ensure assistance and access to resources in the production and processing of agricultural and fisheries and marine products are extended to farm families and fisher folks;<br><br>We look forward to uplift the living conditions of farmers and fisher folks and  promote development without compromising the welfare of the next generation by adopting effective measures that takes into consideration an ecologically sound environment. We  strive for economic growth and food security through sustainable agriculture.<br><br>“Agriculture is the greatest and fundamentally the most important of our industries. The cities are but the branches of the tree of national life, the roots of which go deeply into the land. We all flourish or decline with the farmer.” - Bernard Baruch<br><br>Should you have an concerns please feel free to contact us or visit  The City Agriculture Office, Brgy. Payahan.",
+            "<p>Our Office takes the lead in promoting agricultural development by providing the policy framework, public investment and support services, which are needed for domestic and export-oriented enterprises.<br><br>We also adhere to the mandate of the City Agriculturist as provided for in the Local Government Code: Formulate measures to ensure the delivery of basic agricultural services; develop plans and strategies, agricultural programs and projects; and ensure assistance and access to resources in the production and processing of agricultural and fisheries and marine products are extended to farm families and fisher folks;<br><br>We look forward to uplift the living conditions of farmers and fisher folks and  promote development without compromising the welfare of the next generation by adopting effective measures that takes into consideration an ecologically sound environment. We  strive for economic growth and food security through sustainable agriculture.<br><br>“Agriculture is the greatest and fundamentally the most important of our industries. The cities are but the branches of the tree of national life, the roots of which go deeply into the land. We all flourish or decline with the farmer.” - Bernard Baruch<br><br>Should you have an concerns please feel free to contact us or visit  The City Agriculture Office, Brgy. Payahan.",
           employees: [
             {
               name: "",
