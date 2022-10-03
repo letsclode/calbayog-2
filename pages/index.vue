@@ -67,7 +67,7 @@
                 :class="activeNews == index ? 'active' : ''"
                 @click="newsShowPopup(index)"
                 class="news-card-wrappper"
-                v-for="(news, index) in newsArray" :key="index"
+                v-for="(news, index) in newsArray.slice(0,3)" :key="index"
               >
               <a href="news/_id">
                 <v-img
@@ -91,20 +91,20 @@
               </a>
               </v-card>
             </template>
-            <!-- <template>
+            <template>
               <v-card
                 :class="activeNews == index ? 'active' : ''"
                 @click="newsShowPopup(index)"
                 class="news-card-wrappper vids-wrap"
                 v-for="(item, index) in newsVids" :key="index"
               >
-              <a href="news/_id">
-                item.frame
+              <a :href="item.url">
+                <iframe :src="item.frame" width="100%" height="210" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
                 <v-card-text class="news-content-wrapper">
                     <p class="news-date">{{item.date}}</p>
                     <h5 class="news-title">{{item.title}}</h5>
                     <p class="news-desc">{{item.description}}</p>
-                    <a href="news/_id" class="readmore-a">
+                    <a :href="item.url" class="readmore-a">
                       <Nuxtlink
                         text
                         class="readmore-btn"
@@ -115,7 +115,7 @@
                 </v-card-text>
               </a>
               </v-card>
-            </template> -->
+            </template>
             
           </div>
           <VueSlickCarousel v-bind="newsSettings" class="mobile-news">
@@ -348,18 +348,27 @@ export default {
           },
         ],
         newsVids:[
+        {
+            title: 'Opening Ceremony',
+            date: '3 OCTOBER, 2022',
+            description: 'We invite all participating entries in the following competitions to be present during the opening ceremonies and awarding of winners later at the Calbayog City Convention Center at 6 pm.',
+            frame: 'https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FIRcalbayog247%2Fvideos%2F496738412041957%2F&show_text=false&width=560&t=0 ',
+            url: 'news/vid1',
+          },
           
           {
-            title: 'DAMDAMIN NG BAYAN WITH THE CHIEF EXECUTIVE!',
-            date: 'OCTOBER 1, 2022',
-            description: 'ANG SUMBUNGAN NG BAYAN... AT ANG AMA NG BAYAN',
-            frame: '<iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FIRcalbayog247%2Fvideos%2F3028641717440005%2F&show_text=false&width=560&t=0" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>',
+            title: 'SANGGUNIANG PANLUNGSOD PUBLIC HEARING',
+            date: '21 SEPTEMBER, 2022',
+            description: 'SAMELCO 1 UMATUBANG SA KONSEHO SAN CALBAYOG PARA BATUNON AN MGA PAKIANA HIUNONG SAN SOBRA NGA PAGHATAAS SAN SUKOT SA KURYENTE',
+            frame: 'https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FIRcalbayog247%2Fvideos%2F465375588855152%2F&show_text=false&width=560&t=0',
+            url: 'news/vid2',
           },
           {
             title: 'THE LEGISLATIVE HOUR WITH VICE MAYOR REX DAGUMAN & CITY COUNCILOR ABBIE IRIGON-YULO',
             date: 'AUGUST 17, 2022',
             description: 'MAYOR REX DAGUMAN & CITY COUNCILOR ABBIE IRIGON-YULO KNOW HOW OUR VICE MAYOR RENDER HIS WORKS.',
             frame: 'https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FIRcalbayog247%2Fvideos%2F781763489628704%2F&show_text=false&width=560&t=0',
+            url: 'news/vid3',
           }
         ],
         eventGallery: [
