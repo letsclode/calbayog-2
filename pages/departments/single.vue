@@ -434,7 +434,7 @@
         }
     },
     mounted() {
-        console.log(this.params = this.$route.params.id)
+        this.params = this.$route.params.id
     },
     methods:{
         // getImg(val){
@@ -463,13 +463,6 @@
             this.$modal.show('imgpop');
         },  
     },
-    watch:{
-        params:{
-            handler(val){
-                console.log(val, 'testing')
-            },immediate:true,
-        }
-    }
         
 }
 </script>
