@@ -170,7 +170,7 @@
     <div class="plans-program-section">
       <div class="container">
         <h4 class="title">
-          Plans and Programs
+          Programs and Accomplishments
         </h4>
         <div class="agencies-wrapper">
           <div class="agency" v-for="(agency, index) in agencyArray" :key="index" :id="agency.name">
@@ -324,18 +324,18 @@ export default {
             description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
             img: '/images/news2.png',
           },
-          {
-            title : 'Graduation Ceremony',
-            date: '15 JULY, 2022',
-            description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
-            img: '/images/news2.png',
-          },
-          {
-            title : 'Graduation Ceremony',
-            date: '15 JULY, 2022',
-            description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
-            img: '/images/news2.png',
-          }
+          // {
+          //   title : 'Graduation Ceremony',
+          //   date: '15 JULY, 2022',
+          //   description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
+          //   img: '/images/news2.png',
+          // },
+          // {
+          //   title : 'Graduation Ceremony',
+          //   date: '15 JULY, 2022',
+          //   description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
+          //   img: '/images/news2.png',
+          // }
         ],
         eventGallery: [
           { title: 'September' , img: '/images/event1.png'},

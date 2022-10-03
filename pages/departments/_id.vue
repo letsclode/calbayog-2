@@ -111,7 +111,7 @@
         </div>
         <div class="mandate-section">
             <div class="container">
-                <h4 class="title">Programmes and Accomplishment</h4>
+                <h4 class="title">Programs and Accomplishments</h4>
                 <div class="mandate-gal" id="manadte-scroll">
                     <div class="img-gal-wrapper" v-for="(img, index) in mandates" :key="index"  @click="programmesModal">
                         <img :src="img.img">

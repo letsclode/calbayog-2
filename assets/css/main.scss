@@ -838,7 +838,7 @@ a{
         }
         .news-grid{
             display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 15px;
             justify-content: space-between;
             margin-bottom: 35px; 
