@@ -1177,6 +1177,23 @@ a{
                         opacity: 1;
                         transition: 0.3s ease-in;
                     }
+                    &:last-of-type{
+                        &::before{
+                            content: "No Events for this Month";
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            background-color: #bdbdbdf5;
+                            font-size: 21px;
+                            font-family: "Poppins", sans-serif;
+                        }
+                        &:hover .events-content{
+                            opacity: 0;
+                        }
+                    }
                 }
                
             }
