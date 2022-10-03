@@ -14,7 +14,8 @@
                 </h4> -->
                 <div class="desc">
                     <p>
-                        Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.
+                        The Mayor's Office Operation coordinates and oversees the management of city governmental operations to promote the efficient and effective delivery of agency services. The office mandate to both provide the operational support for all agencies as well as measure and report on agency performance. Operations helps City agencies to improve productivity by providing recommendations and institutional support in addition to reporting areas of success and identifying the areas of possible improvement.
+Vision: Good Governance, Better Quality life for empowered God Loving citizens and Private-Public partnership for a sustainable economic development, entrepreneurship and self-reliance.
                     </p>
                 </div>
             </div>
@@ -39,7 +40,7 @@ implementation of development plans, programs, objectives and priorities to ensu
                 </div>
                 <div class="left-content gallery-content">
                     <div class="left-gallery">
-                        <div class="img-wrapper" v-for="(img, index) in galleryMisiion" :key="index">
+                        <div class="img-wrapper" v-for="(img, index) in galleryMisiion.slice(0,3)" :key="index">
                             <img :src="img.url" :alt="img.title"  class="about-gallery-imgs"  @click="getImg(img.url)">
                         </div>
                     </div>
@@ -50,7 +51,7 @@ implementation of development plans, programs, objectives and priorities to ensu
             <div class="container">
                 <div class="right-content gallery-content">
                     <div class="left-gallery">
-                        <div class="img-wrapper" v-for="(img, index) in galleryMisiion" :key="index">
+                        <div class="img-wrapper" v-for="(img, index) in galleryMisiion.slice(3,6)" :key="index">
                             <img :src="img.url" :alt="img.title"  class="about-gallery-imgs" @click="getImg(img.url)">
                         </div>
                     </div>
@@ -73,7 +74,25 @@ Public partnership for a sustainable economic development, entrepreneurship and 
                 <h4 class="title" id="about-ocf-title">
                     Our City Officials
                 </h4>
-                <Officials/>
+                <div class="officials-wrapper">
+                    <VueSlickCarousel v-bind="sliderSettings" class="officials-slider">
+                        <div class="official" v-for="(official, index) in officials" :key="index">
+                            <v-avatar
+                                class="profile"
+                                height="117"
+                                width="117"
+                                rounded="true"
+                            >
+                                <img :src="official.profile">
+                            </v-avatar>
+                            <div class="name-and-position">
+                                <p>{{official.name}}</p>
+                                <v-divider class="line"></v-divider>
+                                <span>{{official.position}}</span>
+                            </div>
+                        </div>
+                    </VueSlickCarousel>
+                </div>
             </div>
         </div>
         <modal name="imgpop" width="600px" height="600px">
@@ -98,17 +117,32 @@ export default {
                 {
                     title: 'img1',
                     id: 1,
-                    url: '/images/about1.png',
+                    url: '/images/abt1.png',
                 },
                 {
                     title: 'img2',
                     id: 2,
-                    url: '/images/about2.png',
+                    url: '/images/abt2.png',
                 },
                 {
                     title: 'img3',
                     id: 3,
-                    url: '/images/about3.png',
+                    url: '/images/abt3.png',
+                },
+                {
+                    title: 'img4',
+                    id: 4,
+                    url: '/images/abt4.png',
+                },
+                {
+                    title: 'img5',
+                    id: 5,
+                    url: '/images/abt5.png',
+                },
+                {
+                    title: 'img6',
+                    id: 6,
+                    url: '/images/abt6.png',
                 }
             ],
             imgUrl:'',
@@ -128,7 +162,95 @@ export default {
                 "autoplaySpeed": 5000,
                 "fade": true,
                 "adaptiveHeight": false,
-            }
+            },
+            officials:[
+                {name: 'Hon. Raymund C. Uy', position: 'Calbayog City Mayor', profile: '/images/my.png'}, 
+                {name: 'Daguman, Rex', position: 'Calbayog City Vice-Mayor', profile: '/images/Daguman, Rex.png'},
+                {name: 'Delos Santos, Dolore', position: 'Councilor', profile: '/images/Delos Santos, Dolore.png'}, 
+                {name: 'Enriquez, Bombie', position: 'Councilor', profile: '/images/Enriquez, Bombie.png'}, 
+                {name: 'Gianan, Jessie', position: 'Councilor', profile: '/images/Gianan, Jessie.png'}, 
+                {name: 'Morales, Endo', position: 'Councilor', profile: '/images/Morales, Endo.png'}, 
+                {name: 'Tan, Jormac', position: 'Councilor', profile: '/images/Tan, Jormac.png'}, 
+                {name: 'Irigon, Abbie', position: 'Councilor', profile: '/images/Irigon, Abbie.png'}, 
+                {name: 'Pasacas, Minda', position: 'Councilor', profile: '/images/Pasacas, Minda.png'}, 
+                {name: 'Sumagang, Adjie', position: 'Councilor', profile: '/images/Sumagang, Adjie.png'}, 
+                {name: 'Tafalla, Rhena', position: 'Councilor', profile: '/images/Tafalla, Rhena.png'}, 
+                {name: 'Tan Josie', position: 'Councilor', profile: '/images/Tan Josie red.png'}, 
+                {name: 'Tibo, Edie', position: 'Councilor', profile: '/images/Tibo, Edie.png'}, 
+            ],
+            sliderSettings:{
+                "dots": true,
+                "dotsClass": "slick-dots custom-dot-class",
+                "infinite": false,
+                "slidesToShow": 5,
+                "speed": 300,
+                "rows": 2,
+                "slidesPerRow": 1,
+                "draggable": true,
+                "swipeToSlide": true,
+                "responsive": [
+                        {
+                        "breakpoint": 1300,
+                        "settings": {
+                            "slidesToShow": 4,
+                        }
+                        },
+                        {
+                        "breakpoint": 1200,
+                        "settings": {
+                            "slidesToShow": 3,
+                            
+                        }
+                        },
+                        {
+                        "breakpoint": 1000,
+                            "settings": {
+                                "slidesToShow": 3,
+                                "rows": 1,
+                            }
+                        },
+                        {
+                        "breakpoint": 991,
+                            "settings": {
+                                "slidesToShow": 3,
+                                "rows": 1,
+                                "dots": false,
+                            }
+                        },
+                        {
+                        "breakpoint": 767,
+                            "settings": {
+                                "slidesToShow": 2,
+                                "rows": 1,
+                                "dots": false,
+                            }
+                        },
+                        {
+                        "breakpoint": 600,
+                            "settings": {
+                                "slidesToShow": 2.2,
+                                "rows": 1,
+                                "dots": false,
+                            }
+                        },
+                        {
+                        "breakpoint": 475,
+                            "settings": {
+                                "slidesToShow": 1.3,
+                                "rows": 1,
+                                "dots": false,
+                            }
+                        },
+                        {
+                        "breakpoint": 400,
+                            "settings": {
+                                "slidesToShow": 1,
+                                "rows": 1,
+                                "dots": false,
+                            }
+                        },
+                ]
+            },
         }
     },
     methods:{
