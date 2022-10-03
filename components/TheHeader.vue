@@ -67,7 +67,7 @@
                             <form action="news/_id">
                                 <div class="search-wrapper">
                                     <button type="submit">
-                                        <img :src="require('~/static/images/icon-search.png')">
+                                        <img :src="require('~/static/images/Icon-search.png')">
                                     </button>
                                     <!-- <input type="text" class="search-input" placeholder="Search for News, Events and Departments"> -->
                               
@@ -97,7 +97,7 @@
                                     placeholder="Search for News, Events and Departments"
                                 ></v-autocomplete>
                                 <button class="search-btn"> 
-                                    <img :src="require('~/static/images/icon-search.png')">
+                                    <img :src="require('~/static/images/Icon-search.png')">
                                 </button>
                             </form>
                         </v-app>
