@@ -1608,7 +1608,7 @@ a{
         }
         .officials-wrapper{
             .officials-slider{
-                display: flex;
+                // display: flex;
                 .official{
                     background: linear-gradient(90deg, rgba(238, 0, 0, 0.9976365546) 0%, #a20200 100%);
                     width: 220px!important;
@@ -1634,12 +1634,16 @@ a{
                         // height: 118px;
                         // border-radius: 100px;
                         margin-bottom: 10px;
+                        background-image: url('/images/bg-logo.jpg');
+                        background-size: cover;
+                        background-position: 3px -3px;
                         img{
                             width: 100%;
                             height: 100%;
                             object-fit: cover;
-                            object-position: center -2px;
-        
+                            // object-position: center -2px;
+                            // object-position: center 35px;
+                            object-position: center 17px;
                         }
                     }
                     .name-and-position{

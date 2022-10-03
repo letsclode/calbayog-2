@@ -91,6 +91,31 @@
               </a>
               </v-card>
             </template>
+            <!-- <template>
+              <v-card
+                :class="activeNews == index ? 'active' : ''"
+                @click="newsShowPopup(index)"
+                class="news-card-wrappper vids-wrap"
+                v-for="(item, index) in newsVids" :key="index"
+              >
+              <a href="news/_id">
+                item.frame
+                <v-card-text class="news-content-wrapper">
+                    <p class="news-date">{{item.date}}</p>
+                    <h5 class="news-title">{{item.title}}</h5>
+                    <p class="news-desc">{{item.description}}</p>
+                    <a href="news/_id" class="readmore-a">
+                      <Nuxtlink
+                        text
+                        class="readmore-btn"
+                      >
+                        Read More
+                      </Nuxtlink>
+                    </a>
+                </v-card-text>
+              </a>
+              </v-card>
+            </template> -->
             
           </div>
           <VueSlickCarousel v-bind="newsSettings" class="mobile-news">
@@ -140,11 +165,7 @@
       <div class="overlay">
         <div class="container">
           <h4 class="title">Calendar of Activities</h4>
-          <p class="section-desc">Our aim to provide transparency and accountability
-          to our constituents and to others who take interest in our beloved City 
-          is further extended in this website. As Calbayog consistently delivers good 
-          governance and is an emporium of natural attractions, we are indeed dubbed as a 
-          City “Where Good Things Happen”.
+          <p class="section-desc">During the next few months, you will be learning about the different initiatives through our planned activities, seminar, and special events where you will be able to join in and get hands on experiences. I hope these will help you grow to be more productive and smart.
           </p>
           <div class="events-gallery">
             <div class="img-gallery" v-for="(item, index) in eventGallery" :key="index">
@@ -297,9 +318,9 @@ export default {
           },
             {
             title : 'COA EXIT CONFERENCE for 60 Barangays',
-            date: '15 JULY, 2022',
-            description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
-            img: '/images/news3.png',
+            date: 'September 30, 2022',
+            description: 'COA EXIT CONFERENCE for 60 Barangays CY 2019-2021 @Baypark Hotel, Calbayog City',
+            img: '/images/news2.jpg',
           },
              {
             title : 'The 3-Year (2022-2025) Executive-Legislative Agenda (ELA) Conference. ',
@@ -326,13 +347,27 @@ export default {
             img: '/images/infinite-home.jpg',
           },
         ],
+        newsVids:[
+          
+          {
+            title: 'DAMDAMIN NG BAYAN WITH THE CHIEF EXECUTIVE!',
+            date: 'OCTOBER 1, 2022',
+            description: 'ANG SUMBUNGAN NG BAYAN... AT ANG AMA NG BAYAN',
+            frame: '<iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FIRcalbayog247%2Fvideos%2F3028641717440005%2F&show_text=false&width=560&t=0" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>',
+          },
+          {
+            title: 'THE LEGISLATIVE HOUR WITH VICE MAYOR REX DAGUMAN & CITY COUNCILOR ABBIE IRIGON-YULO',
+            date: 'AUGUST 17, 2022',
+            description: 'MAYOR REX DAGUMAN & CITY COUNCILOR ABBIE IRIGON-YULO KNOW HOW OUR VICE MAYOR RENDER HIS WORKS.',
+            frame: 'https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FIRcalbayog247%2Fvideos%2F781763489628704%2F&show_text=false&width=560&t=0',
+          }
+        ],
         eventGallery: [
           { title: 'October' , img: '/images/spark-oct.jpg'},
           { title: 'September' , img: '/images/sept.png'},
-          { title: 'August' , img: '/images/event1.png'},
-          { title: 'July' , img: '/images/Civic-Parade1.png'},
+          { title: 'August' , img: '/images/aug.png'},
+          { title: 'July' , img: '/images/july1.png'},
           { title: 'June' , img: '/images/2378565_orig.png'},
-         
         ],
         // agencyArray: [
         //   {
@@ -479,33 +514,24 @@ export default {
         limitationList:3,
         screenWidth:0,
         officials:[
-                {name: 'Hon. Raymund C. Uy', position: 'Calbayog City Mayor', profile: '/images/cm.png'}, 
-                {name: 'Jaynard Monterona', position: 'Damdamin ng Bayan', profile: '/images/cm.png'},
-                {name: 'Hon. Raymund C. Uy', position: 'Calbayog City Mayor', profile: '/images/cm.png'}, 
-                {name: 'Jaynard Monterona', position: 'Damdamin ng Bayan', profile: '/images/cm.png'}, 
-                {name: 'Hon. Raymund C. Uy', position: 'Calbayog City Mayor', profile: '/images/cm.png'}, 
-                {name: 'Jaynard Monterona', position: 'Damdamin ng Bayan', profile: '/images/cm.png'}, 
-                {name: 'Hon. Raymund C. Uy', position: 'Calbayog City Mayor', profile: '/images/cm.png'}, 
-                {name: 'Jaynard Monterona', position: 'Damdamin ng Bayan', profile: '/images/cm.png'}, 
-                {name: 'Hon. Raymund C. Uy', position: 'Calbayog City Mayor', profile: '/images/cm.png'}, 
-                {name: 'Jaynard Monterona', position: 'Damdamin ng Bayan', profile: '/images/cm.png'}, 
-                {name: 'Hon. Raymund C. Uy', position: 'Calbayog City Mayor', profile: '/images/cm.png'}, 
-                {name: 'Jaynard Monterona', position: 'Damdamin ng Bayan', profile: '/images/cm.png'}, 
-                {name: 'Hon. Raymund C. Uy', position: 'Calbayog City Mayor', profile: '/images/cm.png'}, 
-                {name: 'Jaynard Monterona', position: 'Damdamin ng Bayan', profile: '/images/cm.png'}, 
-                {name: 'Hon. Raymund C. Uy', position: 'Calbayog City Mayor', profile: '/images/cm.png'}, 
-                {name: 'Jaynard Monterona', position: 'Damdamin ng Bayan', profile: '/images/cm.png'}, 
-                {name: 'Hon. Raymund C. Uy', position: 'Calbayog City Mayor', profile: '/images/cm.png'}, 
-                {name: 'Jaynard Monterona', position: 'Damdamin ng Bayan', profile: '/images/cm.png'}, 
-                {name: 'Hon. Raymund C. Uy', position: 'Calbayog City Mayor', profile: '/images/cm.png'}, 
-                {name: 'Jaynard Monterona', position: 'Damdamin ng Bayan', profile: '/images/cm.png'}, 
-                {name: 'Hon. Raymund C. Uy', position: 'Calbayog City Mayor', profile: '/images/cm.png'}, 
-                {name: 'Jaynard Monterona', position: 'Damdamin ng Bayan', profile: '/images/cm.png'}, 
+                {name: 'Hon. Raymund C. Uy', position: 'Calbayog City Mayor', profile: '/images/my.png'}, 
+                {name: 'Daguman, Rex', position: 'Calbayog City Vice-Mayor', profile: '/images/Daguman, Rex.png'},
+                {name: 'Delos Santos, Dolore', position: 'Councilor', profile: '/images/Delos Santos, Dolore.png'}, 
+                {name: 'Enriquez, Bombie', position: 'Councilor', profile: '/images/Enriquez, Bombie.png'}, 
+                {name: 'Gianan, Jessie', position: 'Councilor', profile: '/images/Gianan, Jessie.png'}, 
+                {name: 'Morales, Endo', position: 'Councilor', profile: '/images/Morales, Endo.png'}, 
+                {name: 'Tan, Jormac', position: 'Councilor', profile: '/images/Tan, Jormac.png'}, 
+                {name: 'Irigon, Abbie', position: 'Councilor', profile: '/images/Irigon, Abbie.png'}, 
+                {name: 'Pasacas, Minda', position: 'Councilor', profile: '/images/Pasacas, Minda.png'}, 
+                {name: 'Sumagang, Adjie', position: 'Councilor', profile: '/images/Sumagang, Adjie.png'}, 
+                {name: 'Tafalla, Rhena', position: 'Councilor', profile: '/images/Tafalla, Rhena.png'}, 
+                {name: 'Tan Josie', position: 'Councilor', profile: '/images/Tan Josie red.png'}, 
+                {name: 'Tibo, Edie', position: 'Councilor', profile: '/images/Tibo, Edie.png'}, 
             ],
             sliderSettings:{
                 "dots": true,
                 "dotsClass": "slick-dots custom-dot-class",
-                "infinite": true,
+                "infinite": false,
                 "slidesToShow": 5,
                 "speed": 300,
                 "rows": 2,
