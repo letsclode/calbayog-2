@@ -3,8 +3,8 @@
         <TheHeader/>
         <!-- <Banners/> -->
         <Nuxt/>
-        <!-- <ToTop/> -->
         <TheFooter/>
+        <ToTop/>
     </div>
 </template>
 

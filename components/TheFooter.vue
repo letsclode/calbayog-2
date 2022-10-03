@@ -55,8 +55,8 @@
                            </div>
                            <div class="col1-info">
                             <NuxtLink to="/news">News</NuxtLink>
-                            <a href="#">Page</a>
-                            <NuxtLink to="/contact">contact</NuxtLink>
+                            <NuxtLink to="/fb">Facebook Pages</NuxtLink>
+                            <NuxtLink to="/contact">Contact</NuxtLink>
                            </div>
                         </div>
                     </div>
