@@ -124,13 +124,13 @@
             </VueSlickCarousel>
           <div class="news-slider-wrapper">
             <div class="viewall-news">
-              <NuxtLink
+              <!-- <NuxtLink
                 to="news"
                 class="news-seemore"
                 outlined
               >
                 See More
-              </NuxtLink>
+              </NuxtLink> -->
             </div>
           </div>
         </div>
@@ -197,8 +197,9 @@
         </div>
         <v-divider vertical class="wss-hr"></v-divider>
         <div class="statement">
-          <p>Welcome to the official website of the City Government of Calbayog!</p><br>
-          <p>Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.</p>
+          <p>National Budget Circular No. 542, issued by the Department of Budget and Management on August 29, 2012, reiterates compliance with Section 93 of the General Appropriations Act of FY 2012. Section 93 is the Transparency Seal provision, to wit:<br>
+            Sec. 93. Transparency Seal. To enhance transparency and enforce accountability, all national government agencies shall maintain a transparency seal on their official websites. The transparency seal shall contain the following information: (i) the agency’s mandates and functions, names of its officials with their position and designation, and contact information; (ii) annual reports, as required under National Budget Circular Nos. 507 and 507-A dated January 31, 2007 and June 12, 2007, respectively, for the last three (3) years; (iii) their respective approved budgets and corresponding targets immediately upon approval of this Act; (iv) major programs and projects categorized in accordance with the five key results areas under E.O. No. 43, s. 2011; (v) the program/projects beneficiaries as identified in the applicable special provisions; (vi) status of implementation and program/project evaluation and/or assessment reports; and (vii) annual procurement plan, contracts awarded and the name of contractors/suppliers/consultants.
+            The respective heads of the agencies shall be responsible for ensuring compliance with this section.</p>
         </div>
       </div>
     </div>
@@ -289,60 +290,49 @@ export default {
       return {
         newsArray: [
           {
-            title : 'Graduation Ceremony',
-            date: '15 JULY, 2022',
-            description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
-            img: '/images/news2.png',
+            title : 'Meeting with the Federation of Pedicab Drivers of Calbayog ',
+            date: 'October 1, 2022',
+            description: 'The members of the federation expressed their willingness to join the city in commemorating its Charter Day in October 16, 2022. They will celebrate Pedicab Drivers Day in October 14, 2022 with some series of activities.',
+            img: '/images/news1.jpg',
           },
             {
-            title : 'Graduation Ceremony',
+            title : 'COA EXIT CONFERENCE for 60 Barangays',
             date: '15 JULY, 2022',
             description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
             img: '/images/news3.png',
           },
              {
-            title : 'Graduation Ceremony',
+            title : 'The 3-Year (2022-2025) Executive-Legislative Agenda (ELA) Conference. ',
+            date: 'September 21, 2022',
+            description: 'The ELA was derived from the series of workshops previously conducted by the Technical Working Group Sectoral Teams with  their PPAs, Goals and Objectives.',
+            img: '/images/news3.jpg',
+          },
+          {
+            title : 'ANG SUMBUNGAN NG BAYAN... AT ANG AMA NG BAYAN... MAGKASAMA NA SA IISANG PROGRAMA ',
             date: '15 JULY, 2022',
-            description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
-            img: '/images/news4.png',
+            description: 'DAMDAMIN NG BAYAN WITH THE CHIEF EXECUTIVE!',
+            img: '/images/infinite-home.jpg',
           },
              {
-            title : 'Graduation Ceremony',
+            title : 'CALBAYOG LGU AT NWSSU... SANIB PWERSA SA PAGPAPALAKAS NG TURISMO SA LUNGSOD',
             date: '15 JULY, 2022',
-            description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
-            img: '/images/news5.png',
-          },
-             {
-            title : 'Graduation Ceremony',
-            date: '15 JULY, 2022',
-            description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
-            img: '/images/news2.png',
+            description: 'SIMULCAST AT OUR YOUTUBE CHANNEL: INFINITE RADIO CALBAYOG',
+            img: '/images/infinite-home.jpg',
           },
           {
             title : 'Graduation Ceremony',
             date: '15 JULY, 2022',
             description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
-            img: '/images/news2.png',
+            img: '/images/infinite-home.jpg',
           },
-          // {
-          //   title : 'Graduation Ceremony',
-          //   date: '15 JULY, 2022',
-          //   description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
-          //   img: '/images/news2.png',
-          // },
-          // {
-          //   title : 'Graduation Ceremony',
-          //   date: '15 JULY, 2022',
-          //   description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
-          //   img: '/images/news2.png',
-          // }
         ],
         eventGallery: [
-          { title: 'September' , img: '/images/event1.png'},
-          { title: 'August' , img: '/images/mutyahansamar2019.png'},
+          { title: 'October' , img: '/images/spark-oct.jpg'},
+          { title: 'September' , img: '/images/sept.png'},
+          { title: 'August' , img: '/images/event1.png'},
           { title: 'July' , img: '/images/Civic-Parade1.png'},
           { title: 'June' , img: '/images/2378565_orig.png'},
-          { title: 'May' , img: '/images/downloadsd.png'}
+         
         ],
         // agencyArray: [
         //   {
@@ -477,11 +467,11 @@ export default {
             {url: 'https://www.philhealth.gov.ph/' , icon: '/images/Www.philhealth.gov.ph.png'},
         ],
         helpLines: [
-          {name: 'Mayor Office' , hotline: '0000-0000'},
-          {name: 'City Council' , hotline: '0000-0000'},
-          {name: 'Police Emergency' , hotline: '0000-0000'},
-          {name: 'Ambulance' , hotline: '0000-0000'},
-          {name: 'E-Service' , hotline: '0000-0000'},
+          {name: 'Mayor Office' , hotline: '09278134896'},
+          {name: 'City Council' , hotline: '09553758304'},
+          {name: 'Police Emergency' , hotline: '09054254511'},
+          {name: 'City Health' , hotline: '2091267 / 09173121174'},
+          {name: 'E-Service' , hotline: '09051234567'},
         ],
         activeNews: '',
         showWelcomeMessage: false,
