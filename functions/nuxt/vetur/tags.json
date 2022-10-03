@@ -1,0 +1,20 @@
+{
+  "Banners": {
+    "description": "Auto imported from components/Banners.vue"
+  },
+  "Officials": {
+    "description": "Auto imported from components/Officials.vue"
+  },
+  "TheFooter": {
+    "description": "Auto imported from components/TheFooter.vue"
+  },
+  "TheHeader": {
+    "description": "Auto imported from components/TheHeader.vue"
+  },
+  "ToTop": {
+    "description": "Auto imported from components/ToTop.vue"
+  },
+  "Tutorial": {
+    "description": "Auto imported from components/Tutorial.vue"
+  }
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "name": "about",
+    "path": "/about",
+    "component": "/home/clode/Desktop/calbayog-1/pages/about.vue",
+    "chunkName": "pages/about",
+    "_name": "_d04d4476"
+  },
+  {
+    "name": "contact",
+    "path": "/contact",
+    "component": "/home/clode/Desktop/calbayog-1/pages/contact.vue",
+    "chunkName": "pages/contact",
+    "_name": "_0975d4d8"
+  },
+  {
+    "name": "departments",
+    "path": "/departments",
+    "component": "/home/clode/Desktop/calbayog-1/pages/departments/index.vue",
+    "chunkName": "pages/departments/index",
+    "_name": "_3e99ef5c"
+  },
+  {
+    "name": "events",
+    "path": "/events",
+    "component": "/home/clode/Desktop/calbayog-1/pages/events/index.vue",
+    "chunkName": "pages/events/index",
+    "_name": "_16847a58"
+  },
+  {
+    "name": "fb",
+    "path": "/fb",
+    "component": "/home/clode/Desktop/calbayog-1/pages/fb.vue",
+    "chunkName": "pages/fb",
+    "_name": "_138a9f34"
+  },
+  {
+    "name": "news",
+    "path": "/news",
+    "component": "/home/clode/Desktop/calbayog-1/pages/news/index.vue",
+    "chunkName": "pages/news/index",
+    "_name": "_5a8c040e"
+  },
+  {
+    "name": "events-sid2",
+    "path": "/events/sid2",
+    "component": "/home/clode/Desktop/calbayog-1/pages/events/sid2.vue",
+    "chunkName": "pages/events/sid2",
+    "_name": "_4c93efdc"
+  },
+  {
+    "name": "news-vids",
+    "path": "/news/vids",
+    "component": "/home/clode/Desktop/calbayog-1/pages/news/vids.vue",
+    "chunkName": "pages/news/vids",
+    "_name": "_d7d59414"
+  },
+  {
+    "name": "departments-id",
+    "path": "/departments/:id",
+    "component": "/home/clode/Desktop/calbayog-1/pages/departments/_id.vue",
+    "chunkName": "pages/departments/_id",
+    "_name": "_d957ce78"
+  },
+  {
+    "name": "events-id",
+    "path": "/events/:id",
+    "component": "/home/clode/Desktop/calbayog-1/pages/events/_id.vue",
+    "chunkName": "pages/events/_id",
+    "_name": "_46732b88"
+  },
+  {
+    "name": "news-id",
+    "path": "/news/:id",
+    "component": "/home/clode/Desktop/calbayog-1/pages/news/_id.vue",
+    "chunkName": "pages/news/_id",
+    "_name": "_7dc7b1f6"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/home/clode/Desktop/calbayog-1/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_90dd8eec"
+  }
+]

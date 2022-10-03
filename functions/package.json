@@ -1,0 +1,37 @@
+{
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "@nuxtjs/firebase": "^8.2.2",
+    "core-js": "^3.19.3",
+    "firebase": "^9.10.0",
+    "firebase-admin": "^10.0.2",
+    "firebase-functions": "^3.18.0",
+    "nuxt-start": "^2.15.8",
+    "vue": "^2.6.14",
+    "vue-js-modal": "^2.0.1",
+    "vue-server-renderer": "^2.6.14",
+    "vue-slick-carousel": "^1.0.6",
+    "vue-template-compiler": "^2.6.14",
+    "webpack": "^4.46.0"
+  },
+  "devDependencies": {
+    "@mdi/font": "^7.0.96",
+    "@nuxtjs/vuetify": "^1.12.3",
+    "firebase-functions-test": "^0.2.0",
+    "sass": "^1.54.5",
+    "sass-loader": "^10.3.1"
+  },
+  "private": true
+}
