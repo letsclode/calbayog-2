@@ -73,8 +73,8 @@
     </div>
   </v-app>
 
-</template>
-<script>
+
+  <script>
 import VueSlickCarousel from "vue-slick-carousel";
 import "vue-slick-carousel/dist/vue-slick-carousel.css";
 // optional style for arrows & dots
@@ -128,7 +128,8 @@ export default {
           logo: "https://scontent.fceb2-2.fna.fbcdn.net/v/t39.30808-6/282036522_3221640744746401_8865543389040696962_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=e0hQ56McdKIAX9GSgIR&_nc_ht=scontent.fceb2-2.fna&oh=00_AT_fLroyUFfGJ2eDko2AIB14q3Xfo8kjtDlC33EO7LGHPQ&oe=633F9110",
         },
         {
-          title: "Calbayog City General Services Office",
+          title: "Calbayog City General Services Office",-static-data-r0cuywdm.web.app [expires 2022-10-06 05:14:08]
+clode@clode-NP:~/Desktop/calbayog-2$ git add .
           fblink: "https://www.facebook.com/profile.php?id=100064686970248",
           logo: "https://scontent.fceb2-2.fna.fbcdn.net/v/t39.30808-6/308862075_462793405886888_1151219921990623863_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=vtPlBC0yIWIAX8qyEkk&_nc_ht=scontent.fceb2-2.fna&oh=00_AT_KApzwfN-Db1RR6q2U-bdjVeJrgfkpY9duGb7NB-AKEw&oe=63400039",
         },
