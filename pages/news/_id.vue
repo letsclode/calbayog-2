@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="$route.params.id">
         <div class="banner-wrapper small-banner">
             <!-- <img :src="require('~/static/images/Calbayog.png')"  alt=""> -->
             <VueSlickCarousel v-bind="sliderHeader" class="officials-slider">
@@ -10,42 +10,20 @@
             <div class="container">
                 <div class="title-search-wrapper">
                     <h3>Activities Post</h3>
-                    <!-- <form action="#">
-                        <div class="search-wrapper">
-                            <button type="submit">
-                                <img :src="require('~/static/images/Icon-search.png')">
-                            </button>
-                            <input type="text" class="search-input">
-                        </div>
-                    </form> -->
                 </div>
                 <div class="nsp-content">
                     <div class="full-img">
-                        <img :src="require('~/static/images/Mask Group 2.png')"   @click="newsShowPopup">
-                    </div>
-                    <div class="grid-img">
-                        <div class="nsp-imgs">
-                            <img :src="require('~/static/images/news2.png')" @click="newsShowPopup">
-                        </div>
-                        <div class="nsp-imgs">
-                            <img :src="require('~/static/images/news3.png')" @click="newsShowPopup">
-                        </div>
-                        <div class="nsp-imgs">
-                            <img :src="require('~/static/images/news4.png')" @click="newsShowPopup">
-                            <p class="more-img-jobs" @click="newsShowPopup">25+</p>
-                        </div>
+                        <img :src="selected_news.cover" @click="newsShowPopup">
                     </div>
                     <div class="nsp-articles">
                         <div class="header">
-                            <h5 class="title">Graduation Cerimony</h5>
-                            <p class="date">15 JULY, 2022</p>
+                            <h5 class="title">{{selected_news.title}}</h5>
+                            <p class="date">{{selected_news.date}}</p>
                         </div>
                         <div class="desc">
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                            <p>{{selected_news.description}}
                             </p>
-                        </div>
+                        </div>  
                     </div>
                 </div>
             </div>
@@ -54,7 +32,7 @@
                     <div class="images-slider">
                         <v-carousel class="news-slider-img">
                             <v-carousel-item
-                                v-for="(item,i) in newsArray"
+                                v-for="(item,i) in selected_news.image"
                                 :key="i"
                                 :src="item.img"
                             ></v-carousel-item>
@@ -66,16 +44,15 @@
                         </div>
                     <div class="title-close-wrapper">
                         <h3 class="title">
-                        Graduation Ceremony
+                            {{selected_news.title}}
                         </h3>
                         <div class="date-info">
-                        <p>15 JULY, 2022</p>
+                        <p>{{selected_news.date}}</p>
                         </div>
                     </div>
                     <div class="news-modal-content">
                         <div class="news-description">
-                        <p>Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente,
-                            Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente
+                        <p>{{selected_news.description}}
                         </p>
                         </div>
                     </div>
@@ -99,58 +76,82 @@ import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
           return {
             newsArray: [
               {
-                title : 'Graduation Ceremony',
-                date: '15 JULY, 2022',
-                description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
-                img: '/images/Mask Group 2.png',
+                tag:1,
+                title : 'Meeting with the Federation of Pedicab Drivers of Calbayog',
+                date: 'October 1, 2022',
+                description: 'The members of the federation expressed their willingness to join the city in commemorating its Charter Day in October 16, 2022. They will celebrate Pedicab Drivers Day in October 14, 2022 with some series of activities. Also present during the meeting was Hon. Rosendo A. Morales, SP Chairman of the Committee on Transportation and Communications',
+                image:[
+                    {
+                        img: '/images/news1.jpg',
+                    }
+                ],
+                cover: '/images/news1.jpg',
               },
-                {
-                title : 'Graduation Ceremony',
-                date: '15 JULY, 2022',
-                description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
-                img: '/images/news2.png',
+              {
+                tag:2,
+                title : 'COA EXIT CONFERENCE for 60 Barangays',
+                date: 'September 30, 2022',
+                description: 'COA EXIT CONFERENCE for 60 Barangays CY 2019-2021 @Baypark Hotel, Calbayog City',
+                image:[
+                    {
+                        img: '/images/news2.jpg',
+                    },
+                    {
+                        img: '/images/news2-min.jpg',
+                    }
+                ],
+                cover: '/images/news2.jpg',
               },
-                 {
-                title : 'Graduation Ceremony',
-                date: '15 JULY, 2022',
-                description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
-                img: '/images/news3.png',
-              },
-                 {
-                title : 'Graduation Ceremony',
-                date: '15 JULY, 2022',
-                description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
-                img: '/images/news5.png',
-              },
-                 {
-                title : 'Graduation Ceremony',
-                date: '15 JULY, 2022',
-                description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
-                img: '/images/news2.png',
+              {
+                tag:3,
+                title : 'The 3-Year (2022-2025) Executive-Legislative Agenda (ELA) Conference.',
+                date: 'September 21, 2022',
+                description: 'The ELA was derived from the series of workshops previously conducted by the Technical Working Group Sectoral Teams with  their PPAs, Goals and Objectives.',
+                image:[
+                    {
+                        img: '/images/news3-min.jpg',
+                    },
+                    {
+                        img: '/images/news3-1-min.jpg',
+                    },
+                    {
+                        img: '/images/news3-2-min.jpg',
+                    },
+                    {
+                        img: '/images/news3-3-min.jpg',
+                    },
+                    {
+                        img: '/images/news3-5-min.jpg',
+                    },
+                    {
+                        img: '/images/news3-6jpg-min.jpg',
+                    },
+                ],
+                cover: '/images/news3-min.jpg',
               },
             ],
             headerCarousel: [
                     { title: 'Cathedral' , img: '/images/Calbayog.png'},
                     { title: 'Falls' , img: '/images/calbcover.png'},
                     { title: 'Falls' , img: '/images/falls.png'},
-                ],
-                sliderHeader:{
-                    "dots": false,
-                    "dotsClass": "slick-dots header-dots",
-                    "infinite": true,
-                    "slidesToShow": 1,
-                    "slidesPerRow": 1,
-                    "autoplay": true,
-                    "speed": 5000,
-                    "autoplaySpeed": 5000,
-                    "fade": true,
-                    "adaptiveHeight": false,
-                }
-           
+            ],
+            sliderHeader:{
+                "dots": false,
+                "dotsClass": "slick-dots header-dots",
+                "infinite": true,
+                "slidesToShow": 1,
+                "slidesPerRow": 1,
+                "autoplay": true,
+                "speed": 5000,
+                "autoplaySpeed": 5000,
+                "fade": true,
+                "adaptiveHeight": false,
+            },
+            selected_news: {},
         }
       },
       mounted () {
-         
+         this.filterNews();
       },
       methods:{
         newsShowPopup(val){
@@ -162,6 +163,14 @@ import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
         },
         readMoreWelcome(){
           this.showWelcomeMessage = !this.showWelcomeMessage;
+        },
+        filterNews(){
+            this.newsArray.forEach((newsArray) => {
+                if (newsArray.tag == this.$route.params.id) {
+                this.selected_news = newsArray;
+                console.log(this.selected_news, "news");
+                }
+            });
         }
       }
     }
