@@ -47,7 +47,10 @@
             v-for="(fb, index) in fblinks"
             :key="index"
           >
-            <a :href="fb.fblink" target="_blank">
+            <a
+              :href="fb.fblink"
+              target="_blank"
+            >
               <div class="inner-info">
                 <div class="dept-logo">
                   <img
@@ -72,7 +75,12 @@
 
     </div>
   </v-app>
+
 </template>
+
+
+
+
   <script>
 import VueSlickCarousel from "vue-slick-carousel";
 import "vue-slick-carousel/dist/vue-slick-carousel.css";
