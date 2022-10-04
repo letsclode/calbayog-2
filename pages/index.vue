@@ -67,9 +67,9 @@
                 :class="activeNews == index ? 'active' : ''"
                 @click="newsShowPopup(index)"
                 class="news-card-wrappper"
-                v-for="(news, index) in newsArray.slice(0,3)" :key="index"
+                v-for="(news, index) in newsArray" :key="index"
               >
-              <a href="news/_id">
+              <a @click="newToSp(news.tag)">
                 <v-img
                   height="210"
                   class="news-card-img"
@@ -79,7 +79,7 @@
                     <p class="news-date">{{news.date}}</p>
                     <h5 class="news-title">{{news.title}}</h5>
                     <p class="news-desc">{{news.description}}</p>
-                    <a href="news/_id" class="readmore-a">
+                    <a @click="testing(news.tag)" class="readmore-a">
                       <Nuxtlink
                         text
                         class="readmore-btn"
@@ -174,7 +174,7 @@
                 <p>
                   {{item.title}}
                 </p>
-                <a href="events/_id">
+                <a  @click="eventToSp(item.tag)">
                   <v-btn
                     class="ma-2 events-btn"
                     outlined
@@ -201,9 +201,9 @@
               </span> -->
               <p class="dep-name">{{agency.title}}</p>
             </div>
-            <div class="back-desc">
+            <div class="back-desc" @click="eventScroll(agency.tag)">
               <!-- <p class="dep-name">{{agency.title}}</p> -->
-              <a href="departments/_id#manadte-scroll" class="desc">{{agency.mandate}}</a>
+              <a  class="desc">{{agency.mandate}}</a>
             </div>
           </div>
         </div>
@@ -311,40 +311,25 @@ export default {
       return {
         newsArray: [
           {
+            tag: 1,
             title : 'Meeting with the Federation of Pedicab Drivers of Calbayog ',
             date: 'October 1, 2022',
             description: 'The members of the federation expressed their willingness to join the city in commemorating its Charter Day in October 16, 2022. They will celebrate Pedicab Drivers Day in October 14, 2022 with some series of activities.',
             img: '/images/news1.jpg',
           },
-            {
+          {
+            tag: 2,
             title : 'COA EXIT CONFERENCE for 60 Barangays',
             date: 'September 30, 2022',
             description: 'COA EXIT CONFERENCE for 60 Barangays CY 2019-2021 @Baypark Hotel, Calbayog City',
             img: '/images/news2.jpg',
           },
-             {
+          {
+            tag: 3,
             title : 'The 3-Year (2022-2025) Executive-Legislative Agenda (ELA) Conference. ',
             date: 'September 21, 2022',
             description: 'The ELA was derived from the series of workshops previously conducted by the Technical Working Group Sectoral Teams with  their PPAs, Goals and Objectives.',
             img: '/images/news3.jpg',
-          },
-          {
-            title : 'ANG SUMBUNGAN NG BAYAN... AT ANG AMA NG BAYAN... MAGKASAMA NA SA IISANG PROGRAMA ',
-            date: '15 JULY, 2022',
-            description: 'DAMDAMIN NG BAYAN WITH THE CHIEF EXECUTIVE!',
-            img: '/images/infinite-home.jpg',
-          },
-             {
-            title : 'CALBAYOG LGU AT NWSSU... SANIB PWERSA SA PAGPAPALAKAS NG TURISMO SA LUNGSOD',
-            date: '15 JULY, 2022',
-            description: 'SIMULCAST AT OUR YOUTUBE CHANNEL: INFINITE RADIO CALBAYOG',
-            img: '/images/infinite-home.jpg',
-          },
-          {
-            title : 'Graduation Ceremony',
-            date: '15 JULY, 2022',
-            description: 'Tumambong Si Calbayog City Mayor Raymund Monmon Uy san graduation ceremony san 123 nga mga bag-o nga graduate san Philippine Army sa camp Vicente Lucban,  Brgy. Maulong, Catbalogan.',
-            img: '/images/infinite-home.jpg',
           },
         ],
         newsVids:[
@@ -372,11 +357,30 @@ export default {
           }
         ],
         eventGallery: [
-          { title: 'October' , img: '/images/spark-oct.jpg'},
-          { title: 'September' , img: '/images/sept.png'},
-          { title: 'August' , img: '/images/aug.png'},
-          { title: 'July' , img: '/images/july1.png'},
-          { title: 'June' , img: '/images/2378565_orig.png'},
+          {
+            tag:1, 
+            title: 'October' ,
+            img: '/images/spark-oct.jpg'
+          },
+          { 
+            tag:2,
+            title: 'September' ,
+            img: '/images/sept.png'
+          },
+          { 
+            tag:3,
+            title: 'August' , 
+            img: '/images/aug.png'
+          },
+          { 
+            tag:4,
+            title: 'July' , 
+            img: '/images/july1.png'
+          },
+          { 
+            title: 'June' , 
+            img: '/images/2378565_orig.png'
+          },
         ],
         // agencyArray: [
         //   {
@@ -442,60 +446,71 @@ export default {
         // ],
         agencyArray: [
           {
+            tag:1,
+            hash:'#accomp',
             title: 'CITY MAYOR`S OFFICE',
             icon: '/images/Icon awesome-leaf.png', 
             name: 'agri',
             mandate: 'The Mayor`s Office Operation coordinates and oversees the management of city governmental operations to promote the efficient and effective delivery of agency services. The office mandate to both provide the operational support for all agencies as well as measure and report on agency performance. Operations helps City agencies to improve productivity by providing recommendations and institutional support in addition to reporting areas of success and identifying the areas of possible improvement.',
           },
           {
+            tag:17,
             title: 'Disaster Risk Reduction', 
             icon: '/images/Icon ionic-md-warning.png', 
             name: 'disaster',
             mandate: 'The office is tasked to conduct and organized disaster preparedness activities to save lives and properties.',
           },
           {
+            tag:15,
             title: 'CITY HOUSING AND DEVELOPMENT', 
             icon: '/images/Icon awesome-graduation-cap.png', 
             name: 'educ',
             mandate: 'Formulate plans and program applicable to the Housing Program of the city based on RA 7279 or otherwise known as Urban Development and Housing Act of 1992',
           },
           {
+            tag:6,
             title: 'Business Permits and Licensing', 
             icon: '/images/Icon awesome-briefcase-medical.png', 
             name: 'health',
             mandate: 'In charge of the business permitting and licensing on private commercial, industrial and other business establishments within the jurisdiction of the local government unit in relation to the implementation of tax ordinances pursuant to the provisions provided under Book II of RA # 7160 otherwise known as the Local Government Code of 1991',
           },
           {
+            tag:0,
             title: 'SANGGUNIANG PANLUNGSOD', 
             icon: '/images/Icon awesome-building.png', 
             name: 'infra',
             mandate: 'Appropriate Funds for expenses of the City Government in accordance with law.',
           },
           {
+            tag:3,
             title: 'CITY ADMINISTRATOR', 
             icon: '/images/Icon awesome-dove.png', 
             name: 'peace',
             mandate: 'Develop management and administrative-related plans and strategies upon approval of the LCE/Delivery of administrative services during and after man-made and natural disasters and calamities.',
           },
           {
+            tag:0,
             title: 'City Civil Registrar', 
             icon: '/images/Icon open-graph.png', 
             name: 'pov',
             mandate: 'Records all vital occurrences of a person, natural or through judicial order, in civil registry forms and books required by law and file, compile, keep and preserve these documents in secure place.',
           },
           {
+            tag:0,
             title: 'Solid Waste Management', 
             icon: '/images/Icon awesome-recycle.png', 
             name: 'waste',
             mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
           },
           {
+            tag:0,
             title: 'CITY GENERAL SERVICES', 
             icon: '/images/Icon awesome-umbrella-beach.png', 
             name: 'tourism',
             mandate: 'The City General Services Office was formally created and established in 1993 by virtue of Local Government Code of 1991 or RA. 7160, empowering local government units or decentralizing government&#39;s operation.',
           },
           {
+            tag:0,
             title: 'City Budget Office', 
             icon: '/images/Icon awesome-traffic-light.png', 
             name: 'transpo',
@@ -665,12 +680,20 @@ export default {
     readMoreWelcome(){
       this.showWelcomeMessage = !this.showWelcomeMessage;
     },
-    // onScroll(e) {
-    //   this.windowTop = window.top.scrollY /* or: e.target.documentElement.scrollTop */
-    //   if(this.windowTop >= 2000){
-
-    //   }
-    // }
+    newToSp(tag) {
+      this.goTo("news-id", { id: tag });
+    },
+    eventToSp(tag) {
+      this.goTo("events-id", {id : tag});
+    },
+    eventScroll(tag) {
+      if(tag == 0){
+        alert('Department still on development');
+      }else{
+        this.goTo("departments-id", { id: tag});
+      }
+      
+    },
   }
 }
 </script>

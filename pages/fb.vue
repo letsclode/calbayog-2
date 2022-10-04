@@ -47,7 +47,7 @@
             v-for="(fb, index) in fblinks"
             :key="index"
           >
-            <a :href="fb.fblink">
+            <a :href="fb.fblink" target="_blank">
               <div class="inner-info">
                 <div class="dept-logo">
                   <img
