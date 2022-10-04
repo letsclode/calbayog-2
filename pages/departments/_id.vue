@@ -6,7 +6,9 @@
         v-bind="sliderHeader"
         class="officials-slider"
       >
+        <img :src="selected_department.banner" alt="" v-if="selected_department.banner">
         <img
+          v-else
           :src="item.img"
           alt=""
           v-for="(item,i) in headerCarousel"
@@ -37,9 +39,13 @@
               <div class="wtc-inner">
                 <h4>{{ 'Welcome to the '+selected_department.title }}</h4>
                 <span
+                  v-if="selected_department.welcome"
                   style="color:white"
                   v-html="selected_department.welcome"
                 ></span>
+                <span
+                  v-else
+                >No data yet</span>
                 <!--panhumalatag-->
                 <!-- <p>
                               Welcome to the official website of the City Government of Calbayog!
@@ -61,22 +67,25 @@
             </div>
           </div>
           <div class="mobile-wt-wrapper">
-            <div class="img-holder">
-              <img
+            <div class="img-holder"
+              style=" background-image: url('/images/bg-logo.jpg'); background-size: cover; background-position: center -3px;"
+            >
+              <!-- <img
                 :src="require('~/static/images/Mayor12 – 10.jpg')"
+                alt=""
+              > -->
+              <img
+                :src="selected_department.img"
                 alt=""
               >
             </div>
             <div class="wtc-inner">
-              <h4>Welcome to Calbayog City</h4>
-              <p>
-                Welcome to the official website of the City Government of Calbayog!
-              </p>
-              <br>
-              <p>
-                Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.
-              </p>
-              <div
+              <h4>{{ 'Welcome to the '+selected_department.title }}</h4>
+              <span
+                  style="color:white"
+                  v-html="selected_department.welcome"
+                ></span>
+              <!-- <div
                 class="hid-message-welcome"
                 :class="{animate : showWelcomeMesDept}"
               >
@@ -86,13 +95,13 @@
                 <p>
                   Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.
                 </p>
-              </div>
+              </div> -->
             </div>
-            <button
+            <!-- <button
               class="read-more"
               @click="readMoreWelcome"
               :class="{animate : showWelcomeMesDept}"
-            >READ MORE</button>
+            >READ MORE</button> -->
           </div>
         </div>
       </div>
@@ -114,7 +123,7 @@
           </a>
         </div>
       </div>
-      <div class="news-single-wrapper">
+      <div class="news-single-wrapper" id="accomp">
         <div class="container">
           <div class="title-search-wrapper">
             <h3>Activities Post</h3>
@@ -195,7 +204,7 @@
               Our Mission
             </h5>
             <div class="content">
-              <p>{{ selected_department.mission ??'No data yet' }}</p>
+              <p>{{ selected_department.mission ?selected_department.mission : 'No data yet' }}</p>
             </div>
           </div>
         </div>
@@ -240,7 +249,7 @@
               Our Vision
             </h5>
             <div class="content">
-              <p>{{ selected_department.vision ??'No data yet' }}</p>
+              <p>{{ selected_department.vision ? selected_department.vision : 'No data yet' }}</p>
             </div>
           </div>
         </div>
@@ -272,10 +281,10 @@
               </div> -->
         <div
           class="officials-wrapper"
-          v-if="selected_department.employees"
-        >
+            v-if="selected_department.employees"
+          >
           <VueSlickCarousel
-            v-bind="sliderSettings"
+          v-bind="sliderSettings"
             class="officials-slider"
           >
             <div
@@ -294,9 +303,10 @@
                 <img :src="official.img">
               </v-avatar>
               <div class="name-and-position">
-                <p>{{official.name??'Name'}}</p>
+                <p>{{official.img ? 'Employee': 'No data yet' }}</p>
+                <!-- <p>{{official.img??'no data yet'}}</p> -->
                 <v-divider class="line"></v-divider>
-                <span>{{official.position ?? 'Position'}}</span>
+                <span>{{official.position ?? ''}}</span>
               </div>
             </div>
           </VueSlickCarousel>
@@ -392,12 +402,14 @@ import VueSlickCarousel from "vue-slick-carousel";
 import "vue-slick-carousel/dist/vue-slick-carousel.css";
 // optional style for arrows & dots
 import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
+import department_datas from "~/components/json/department/departments.json";
 export default {
   name: "About",
   layouts: "default",
   components: { VueSlickCarousel },
   data() {
     return {
+      departments:department_datas,
       officialIndex: "",
       showWelcomeMesDept: false,
       imgUrl: "",
@@ -533,7 +545,7 @@ export default {
       sliderSettings: {
         dots: true,
         dotsClass: "slick-dots custom-dot-class",
-        infinite: true,
+        infinite: false,
         slidesToShow: 5,
         speed: 300,
         rows: 2,
@@ -620,538 +632,827 @@ export default {
         adaptiveHeight: false,
       },
       selected_department: {},
-      departments: [
-        {
-          title: "City Mayors Office",
-          oic: "Raymund C. Uy",
-          position: "CITY MAYOR",
-          img: "/images/Mayor12 – 10.jpg",
-          tag: 1,
-          mission:
-            "The office of the mayor is tasked with promoting the general welfare of the city and its constituents the efficient, effective, relevant and economical governance. It exercises general supervision and control over all programs, projects, services and activities of the City Government which aims to put emphasis on prioritizing the citizens' needs at the core of the development agenda. 'Tao ang una'. The office serves as the coordinating body which goal is to maximize the generation of resources and revenues and apply the same to the effective implementation of development plans, programs, objectives and priorities to ensure",
-          vision:
-            "Good Governance, Better Quality life for empowered God Loving citizens and Private- Public partnership for a sustainable economic development, entrepreneurship and self-reliance.",
-          welcome:
-            "<p>The Mayor's Office Operation coordinates and oversees the management of city governmental operations to promote the efficient and effective delivery of agency services.<br><br> The office mandate to both provide the operational support for all agencies as well as measure and report on agency performance.<br><br> Operations helps City agencies to improve productivity by providing recommendations and institutional support in addition to reporting areas of success and identifying the areas of possible improvement. Vision: Good Governance, Better Quality life for empowered God Loving citizens and Private-Public partnership for a sustainable economic development, entrepreneurship and self-reliance.",
-          employees: [{ img: "" }],
-          programs: [
-            {
-              title: "",
-              description: "",
-              img: "",
-            },
-          ],
-        },
-        {
-          title: "City Vice - Mayor Office",
-          oic: "Rex M. Daguman",
-          position: "CITY VICE - MAYOR",
-          img: "/images/Mayor12 – 10.jpg",
-          tag: 2,
-          mission: "",
-          vision: "",
-          welcome: "",
-          employees: [{ img: "" }],
-        },
-        {
-          title: "City Administrator Office",
-          oic: "Augusto L. Magdaraog",
-          position: "DEPARTMENT HEAD",
-          img: "/images/City_seal.png",
-          tag: 3,
-          mission: "",
-          vision: "",
-          welcome: "",
-          employees: [{ name: "", position: "", img: "" }],
-        },
-        {
-          title: "City Accountant Office",
-          oic: "",
-          position: "DEPARTMENT HEAD",
-          img: "/images/City_seal.png",
-          tag: 4,
-          mission: "",
-          vision: "",
-          welcome: "",
-          employees: [{ name: "", position: "", img: "" }],
-        },
-        {
-          title: "Assesor`s Office",
-          oic: "Joselito A. Montealto, JD",
-          position: "DEPARTMENT HEAD",
-          img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2Fhead%2FJoselito%20A.%20Montealto%2C%20JD%20-%20OIC-%20Assessor.png?alt=media&token=9b0b18db-a995-4217-8788-dd709e4a49d6",
-          tag: 5,
-          mission:
-            "Implement a quick Reference System on Real Property Tax Assessment and Appraisal and come up with real property records management.",
-          vision:
-            "Effective & Efficient Real Property Tax Assessment Office through upgraded assessment techniques, procedures, & practices by automation.",
-          welcome: "",
-          employees: [
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6014-removebg-preview.png?alt=media&token=b13d994e-d9d3-4b7c-9a84-75ec388e4148",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6016-removebg-preview.png?alt=media&token=4ae6f631-d079-44c6-afd0-f58d442578eb",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6020-removebg-preview.png?alt=media&token=0837af96-247b-40be-a581-2abf117f5f09",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6023-removebg-preview.png?alt=media&token=a55b6a22-9f76-483c-a299-b817033c6f76",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6026-removebg-preview.png?alt=media&token=c19a01fa-d9e8-4e40-9724-80dfac069c7a",
-            },
-          ],
-        },
-        {
-          title: "Bussiness Permits and Licensing Office",
-          oic: "Leonardo A. Bedio",
-          position: "DEPARTMENT HEAD",
-          img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/bplo%2Fhead%2FLeonardo%20A.%20Bedio-OIC-%20BPL%20Chief.png?alt=media&token=a5b83c11-6180-41d8-93d6-bf760ed256e2",
-          tag: 6,
-          mission: "",
-          vision: "",
-          welcome:
-            "<p>Welcome to the Business Permit and Licensing Office page. Our Office is in charge of the business permitting and licensing of private commercial, industrial and other business ventures within the jurisdiction of the local government of Calbayog, in relation to the implementation of tax ordinances pursuant to the provisions provided under Book II of RA 7160 otherwise known as the Local Government Code of 1991. We are also tasked to monitor and impose mandatory standards to ensure compliance with applicable laws, rules and regulations in order to protect the interests of the public and promote business activities for the welfare of our city. If you have any concerns please feel free to send us a message or visit BPLO inside the Calbayog City Hall Compound.</p>",
-          employees: [{ name: "", position: "", img: "" }],
-        },
-        {
-          title: "Social Welfare and Development Office",
-          oic: "Betty Jane V. Arnejo",
-          position: "CSWD OFFICER",
-          img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2Fhead%2FBetty%20Jane%20V.%20Arnejo%20-%20CSWD%20Officer.png?alt=media&token=268fa2e0-4cc7-4fa9-87ed-9e9456bbb6c2",
-          tag: 7,
-          mission:
-            "To provide windows of opportunities in cooperation with partner government agencies, non-government agencies and other sectors of the civil society and achieve full implementation of the programs and services gaining empowerment and governance for an improved quality of life.",
-          vision:
-            "Individuals, families and communities empowered through comprehensive and integrated delivery of services, thus, attain an improved quality of life.",
-          welcome: "",
-          employees: [{ name: "", position: "", img: "" }],
-        },
-        {
-          title: "City Planning and Development Office",
-          oic: "Alberto Pablo O. Lucero, Jd",
-          position: "OIC-CPD Coordinator",
-          img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cpdo%2Fhead%2FAlberto%20Pablo%20O.%20Lucero%2C%20JD%20-%20OIC-CPD%20Coordinator.png?alt=media&token=fe864924-923d-4f6b-8671-65e60c7ba6ae",
-          tag: 8,
-          mission:
-            "To formulate viable and responsive plans, projects and programs that will promote sustainable and holistic development of the city and enhance competitiveness for a productive and improved Calbayognons",
-          vision:
-            "A City Planning & Development Office with multi-disciplined public servants, adhering to the values of professionalism, competence and innovation working as a team, responsive to the needs of time towards a balance development of the city of Calbayog",
-          welcome:
-            "<p>The City Planning and Development Office is the department mandated to craft comprehensive development plans and other fiscal and other socio-economic policies. We analyze the income and expenditure pattern of the city government and provide recommendations for consideration of the Local Finance Committee. It is also our responsibility to monitor and evaluate the implementation of the different development programs, projects and activities in our local government, in accordance with the approved Development Plan. Should you have any concerns please feel free to send us a message or visit the City Planning and Development Office in the Calbayog City Hall Compound. We are glad to be of service.</p>",
-          employees: [{ name: "", position: "", img: "" }],
-        },
-        {
-          title: "City Veterenary Office",
-          oic: "Dr. Editha Ancheta",
-          position: "CITY VETERINARIAN",
-          img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2Fhead%2FDr.%20Editha%20Anchet%20-%20City%20veterinarian.png?alt=media&token=4a23af6e-cc0e-4990-b449-8871ddc477c8",
-          tag: 9,
-          mission:
-            "An agency with productive programs feared towards the livestock & poultry sufficiency, and public health and having efficient staff with harmonious working relationship. City Veterinary Office improving lives through sound animal production.",
-          vision:
-            "The City Veterinary Office commits to the attainment of Livestock & Poultry sufficiency & public health through the conduct of participatory research promotion of livestock investment & marketing assistance & human resource development.",
-          welcome:
-            "<p>The City Veterinary Office is the local lead agency on animal welfare and all matters pertaining to the slaughter of animals for human consumption. We regulate the keeping of domestic animals. We likewise regulate and inspect meat, poultry, milk and dairy products for public consumption.<br><br>Moreover, we enforce all laws and regulations for the prevention of cruelty to animals, and implement measures to eradicate, prevent and cure all kinds of animal diseases.<br><br>At present, our office operates a slaughterhouse and handles meat inspection.</p>",
-          employees: [
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7745-removebg-preview.png?alt=media&token=bf2ca656-a629-44c8-b593-36e28552179c",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7747-removebg-preview.png?alt=media&token=33115cea-7bcc-46c3-8649-3a1a5fe9bccd",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7749-removebg-preview.png?alt=media&token=3fd48303-0bcc-46c0-9c3e-359ff2ed5cb2",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7751-removebg-preview.png?alt=media&token=0a9b24cb-2b38-4400-ba83-4f2248579e1e",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7753-removebg-preview.png?alt=media&token=872c0b3d-d9a2-40d7-9f21-7c41a7e54be0",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7755-removebg-preview.png?alt=media&token=26ce5b56-1ede-4797-a722-7f7ae6118613",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7756-removebg-preview.png?alt=media&token=a27cd098-5af4-4850-b29d-ada0d8e79edc",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7758-removebg-preview.png?alt=media&token=746738a7-cc2e-4dbe-98c2-49a4e4b8f6dd",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7760-removebg-preview.png?alt=media&token=793aaf13-3c12-487f-a206-65b6c1ff7825",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7762-removebg-preview.png?alt=media&token=c1d25b5c-e685-483b-9347-63343934ab9c",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7764-removebg-preview.png?alt=media&token=2d4532d6-8468-49e1-9603-0e12a2a09443",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7766-removebg-preview.png?alt=media&token=c4937daa-c318-4253-b4e8-ab7355cdd527",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7769-removebg-preview.png?alt=media&token=4d930357-ba25-486e-b63e-c6b2e35f6edc",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7771-removebg-preview.png?alt=media&token=018beaea-3421-46a3-b791-420ff37ff4e3",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7773-removebg-preview.png?alt=media&token=79e0d111-bce2-49bf-ad8b-ef2fa0500419",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7775-removebg-preview.png?alt=media&token=f626ab2b-b6ec-4cf3-8b52-8c6ae3105ba0",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7777-removebg-preview.png?alt=media&token=87c896b9-584b-45e3-83c1-3918f5602308",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7779-removebg-preview.png?alt=media&token=d6355644-358d-450d-bed5-b7e0a540f009",
-            },
-          ],
-        },
-        {
-          title: "City Population",
-          oic: "Atty. Ma. Cecil Y. Rueda",
-          position: "",
-          img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citypopulation%2Fhead%2FAtty.%20Ma.%20Cecil%20Y.%20Rueda%20-%20City%20Pop.png?alt=media&token=c7c247f6-0ef7-444f-886f-002df2138417",
-          tag: 10,
-          mission:
-            "To realize this vision, the office is committed to ensure that the Calbayognons are well-informed about Population and Development, Responsible Parenthood, Family Planning, Reproductive Health, Gender Sensitivity and Child and Youth Development so that each and every family can be able to make an informed choice with regards to the number and age-spacing of children they are capable of sustaining and for the young men and women to delay early marriage instead engage in beneficial and wholesome relationships with their peers.",
-          vision:
-            "The City Population Office envisions Calbayog City to be a community of well-planned, happy, prosperous and empowered families.",
-          welcome: "",
-          employees: [{ name: "", position: "", img: "" }],
-        },
-        {
-          title: "City Legal Office",
-          oic: "Atty. Agustin M. Avalos",
-          position: "",
-          img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citylegal%2Fhead%2FAtty.%20Agustin%20M.%20Avalon.png?alt=media&token=18982954-99a7-40c4-b74d-0cfde9f07605",
-          tag: 11,
-          mission:
-            "The officers and employees of the CLSO resolve to serve the public with more vigor and, in so doing, become more effective agents in providing information on matters pertaining to the rule of law.",
-          vision:
-            "For the year 2020, the City Legal Services Office, aside from its statutory mandate, endeavors to improve coordination with other offices, both local and national.",
-          welcome: "",
-          employees: [{ name: "", position: "", img: "" }],
-        },
-        {
-          title: "City Cooperatives Office",
-          oic: "Clarita B. Oliver",
-          position: "OIC-COOP",
-          img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citycoop%2Fhead%2FClarita%20B.%20Oliver%20-%20OIC-COOP.png?alt=media&token=68b8009d-e8c2-4178-a19d-039b304acce7",
-          tag: 12,
-          mission:
-            "To encourage the membership of cooperatives to immerse and participate the socio-economic capability building initiatives, thereby assist them to become productive communities.",
-          vision:
-            "A cooperative Calbayog City, pursuing the objectives of social justice and ensuring the socio-economic gains thru a holistic community development with people empowerment.",
-          welcome:
-            "<p>The City Cooperative Office was created in 1993, by virtue of Budget Ordinance No. 93-01002, during the incumbency of the late City Mayor Reynaldo S. Uy.<br><br>Our Office adheres to the policies and mandate spelled-out in the Local Government Code, Republic Act No. 6939 or the Cooperative Development Authority, and Republic Act 9520 or the Cooperative Code of 2008.<br><br>We extend services needed for the growth and development of cooperatives in the City of Calbayog. We also conduct advocacy campaigns to encourage participation in the organization of cooperatives and provide assistance in improving management skills.<br><br>Working together is our heart. Creating great result is the best part.We inspire, we innovate, and we create.Your growth and success will be great.<br><br>Tara na sa City Cooperatives Office.An Opisina nga may pag alakapa Ngan may paghigugma sa kada tagsa.</p>",
-          employees: [{ name: "", position: "", img: "" }],
-        },
-        {
-          title: "City Budget Office",
-          oic: "Agnes R. Dordines",
-          position: "CITY BUDGET OFFICER",
-          img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2Fhead%2FAgnes%20R.%20Dordines%20-%20City%20Budget%20Officer.png?alt=media&token=ce690457-2106-41f0-9ae9-243d7177d7dd",
-          tag: 13,
-          mission:
-            "To carry out all local government activities under a comprehensive development and fiscal plan prepared, authorized and executed in accordance with prevailing status, administrative regulations and principles of sound management.",
-          vision: "",
-          welcome:
-            "<p>Our Office reviews and consolidates budget proposals of different departments and offices of the local government of Calbayog, both annual and supplemental. Hence, we are primarily responsible for the preparation of the Executive Budget and Supplemental Budget.<br><br>As a financial management office, we promote efficient, prudent and effective management utilization of government funds in the implementation of programs, projects and activities. We also provide technical assistance on various budgetary concerns.</p>",
-          employees: [{ name: "", position: "", img: "" }],
-        },
-        {
-          title: "CHR",
-          oic: "",
-          position: "",
-          img: "/images/City_seal.png",
-          tag: 14,
-          mission: "",
-          vision: "",
-          welcome: "",
-          employees: [{ name: "", position: "", img: "" }],
-        },
-        {
-          title: "City Housing and Development Office",
-          oic: "Engr. Ricky A. Moreno",
-          position: "OIC-CHDO",
-          img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2Fhead%2FEngr.%20Ricky%20A.%20Moreno%20-%20OIC-CHDO.png?alt=media&token=f4b2f5a2-34bc-413d-8bde-842f992fb76c",
-          tag: 15,
-          mission:
-            "To provide security of tenure to the under privileged and homeless citizens in the locality.",
-          vision:
-            "To establish and innovative a responsive housing program to attain zero informal settler families by the year 2024.",
-          welcome: "",
-          employees: [{ name: "", position: "", img: "" }],
-        },
-        // {
-        //     title: 'City Mayors Office',
-        //     oic: 'Raymund C. Uy',
-        //     position: 'CITY MAYOR',
-        //     img: '/images/City_seal.png',
-        //     tag:16
-
-        // },
-        {
-          title: "City Environment Office",
-          oic: "Lorenzo C. Raz Jr.",
-          position: "",
-          img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cenro%2Fhead%2FLorenzo%20C.%20Ras%2C%20Jr.png?alt=media&token=a71a82e7-d668-4c17-ad33-0b0766c6acae",
-          tag: 16,
-          mission:
-            "Manage local resources into productive and protected conditions and uphold the value of awareness for the people and environment Ecological balance leading to sustainable development.",
-          vision:
-            "The City Environment and Natural Resource Office is committed to address environmental concern consistent with the policy of efficient conservation to be beneficial to sustain economic growth.",
-          welcome: "",
-          employees: [{ name: "", position: "", img: "" }],
-        },
-        {
-          title: "City Disaster Risk and Management Office",
-          oic: "Dr. Sandro C. Daguman",
-          position: "",
-          img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2Fhead%2FDr.%20Sandro%20C.%20Daguman%20-%20CGDH%201.png?alt=media&token=26434e33-5106-46a7-9ca7-01c438c638ed",
-          tag: 17,
-          mission:
-            "To minimize the disaster's impact to the people, properties and business operation.",
-          vision:
-            "By the year 2021 Calbayog City is equipped with people and facilities in disaster reduction, response and rehabilitation.",
-          welcome: "",
-          employees: [{ name: "", position: "", img: "" }],
-        },
-        {
-          title: "City Drug Abuse Prevention Office",
-          oic: "Dr. Teodoro U. Fortaleza",
-          position: "",
-          img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdapro%2Fhead%2FDr.%20Teodoro%20U.%20Fortaleza%20-%20CGDH%201.png?alt=media&token=925aacb7-f500-4697-bd79-bd66d74b15f0",
-          tag: 18,
-          mission:
-            "We are committed to promote drug abuse prevention and control through Information Dissemination, Diagnosis, Treatment & Rehabilitation and After Care.",
-          vision:
-            "A Drug Free Calbayog that is safe and progressive, through a dynamic and responsive partnership between the local government and its community, contributing towards national effort to eradicate drug abuse.",
-          welcome: "",
-          employees: [{ name: "", position: "", img: "" }],
-        },
-        {
-          title: "City Agriculture Office",
-          oic: "Engr. Teachie G. Pagunsan",
-          position: "OIC-AGRICULTURE",
-          img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2Fhead%2FEngr.%20Teachie%20G.%20%20Pagunsan%2C%20JD%20-%20OIC-%20AGRICULTURE.png?alt=media&token=83901176-4298-4b04-a8be-168a1f4a127c",
-          tag: 19,
-          mission:
-            "To uplift the living conditions of farmers & fisherfolks: promote development without compromising the next generation by adopting effective measures not to disregard the ecologically sound environment, develop economic growth and attain food security through sustainable agriculture",
-          vision:
-            "The City Agriculture Office is envisioned to be manned by professional, competent and public service-oriented employees and at molding self-reliant and self-sufficient farmers and fisherfolks with entrepreneurial capabilities in an ecologically sound environment.",
-          welcome:
-            "<p>Our Office takes the lead in promoting agricultural development by providing the policy framework, public investment and support services, which are needed for domestic and export-oriented enterprises.<br><br>We also adhere to the mandate of the City Agriculturist as provided for in the Local Government Code: Formulate measures to ensure the delivery of basic agricultural services; develop plans and strategies, agricultural programs and projects; and ensure assistance and access to resources in the production and processing of agricultural and fisheries and marine products are extended to farm families and fisher folks;<br><br>We look forward to uplift the living conditions of farmers and fisher folks and  promote development without compromising the welfare of the next generation by adopting effective measures that takes into consideration an ecologically sound environment. We  strive for economic growth and food security through sustainable agriculture.<br><br>“Agriculture is the greatest and fundamentally the most important of our industries. The cities are but the branches of the tree of national life, the roots of which go deeply into the land. We all flourish or decline with the farmer.” - Bernard Baruch<br><br>Should you have an concerns please feel free to contact us or visit  The City Agriculture Office, Brgy. Payahan.",
-          employees: [
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6461-removebg-preview.png?alt=media&token=ebdca730-a0d2-4ab9-9c8b-07c7e54fb1cd",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6464-removebg-preview.png?alt=media&token=9ccc33cc-eab1-4cd8-a499-4adb47c4a025",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6466-removebg-preview.png?alt=media&token=006f97a3-4112-454a-9539-0c80f32edc69",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6468-removebg-preview.png?alt=media&token=e0d16260-6975-422c-a721-54797e4ef8a1",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6471-removebg-preview.png?alt=media&token=454535f7-6467-41e6-b7a4-7df813fbeedc",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6474-removebg-preview.png?alt=media&token=c298335b-9746-475b-83a8-fa60ab93346e",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6476-removebg-preview.png?alt=media&token=0a73baaf-cf08-489d-83c3-10249a779071",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6478-removebg-preview.png?alt=media&token=cb50ba9f-0c5d-4547-a0a8-11f7cc68df9f",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6480-removebg-preview.png?alt=media&token=18241f66-802f-4e7b-aade-22a2ffbc377a",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6482-removebg-preview.png?alt=media&token=9f45f32e-b2d2-40a2-a87f-5d7edb9f390a",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6484-removebg-preview.png?alt=media&token=cd99db9b-04a0-40ac-988b-6d0eb1998982",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6486-removebg-preview.png?alt=media&token=4264d1ae-adcb-4299-93e0-0d118ce2525c",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6488-removebg-preview.png?alt=media&token=ae5d3de6-e46e-4e8e-aadf-d2e57433ceff",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://console.firebase.google.com/project/calbayogapp/storage/calbayogapp.appspot.com/files/~2Fagriculture",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6494-removebg-preview.png?alt=media&token=662a4b90-7ed0-4c09-8ba4-beb93ff7f4b6",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://console.firebase.google.com/project/calbayogapp/storage/calbayogapp.appspot.com/files/~2Fagriculture",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://console.firebase.google.com/project/calbayogapp/storage/calbayogapp.appspot.com/files/~2Fagriculture",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6500-removebg-preview.png?alt=media&token=26f09017-f331-4aaa-9f57-d96dabb31332",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6502-removebg-preview.png?alt=media&token=a816e340-1c70-4f5c-9643-4e2e6113108d",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6504-removebg-preview.png?alt=media&token=873d5fea-de60-4878-917d-a52cacc8c198",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6507-removebg-preview.png?alt=media&token=10ba7a6d-b295-4de4-bfc2-4fe33ae6a609",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6510-removebg-preview.png?alt=media&token=4f881fb4-054a-4152-bd02-fcdb52cc225f",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6515-removebg-preview.png?alt=media&token=51bf09dd-ef2a-497c-bc0a-4f899a2bf075",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6517-removebg-preview.png?alt=media&token=339e7433-4dc5-45e4-9ad1-0dc714e4f412",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6519-removebg-preview.png?alt=media&token=56026b9d-875a-4168-a141-3ea7da7a2746",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6522-removebg-preview.png?alt=media&token=c4369dc0-e4e7-4a5b-9a40-8b3a54d6b29d",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6524-removebg-preview.png?alt=media&token=6b118c9d-91b1-4cfa-82b6-05f1e8d66473",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6526-removebg-preview.png?alt=media&token=7cffd30a-822c-41f7-83f9-43b84558c322",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6528-removebg-preview.png?alt=media&token=31968f70-e9e9-40d0-85f7-7461293980cd",
-            },
-            {
-              name: "",
-              position: "",
-              img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6532-removebg-preview.png?alt=media&token=94544a72-ad9d-41c0-83a6-737031449d82",
-            },
-          ],
-        },
-      ],
+      // departments: [
+      //   {
+      //     title: "City Mayors Office",
+      //     oic: "Raymund C. Uy",
+      //     position: "CITY MAYOR",
+      //     img: "/images/Mayor12 – 10.jpg",
+      //     tag: 1,
+      //     banner:'',
+      //     mission:
+      //       "The office of the mayor is tasked with promoting the general welfare of the city and its constituents the efficient, effective, relevant and economical governance. It exercises general supervision and control over all programs, projects, services and activities of the City Government which aims to put emphasis on prioritizing the citizens' needs at the core of the development agenda. 'Tao ang una'. The office serves as the coordinating body which goal is to maximize the generation of resources and revenues and apply the same to the effective implementation of development plans, programs, objectives and priorities to ensure",
+      //     vision:
+      //       "Good Governance, Better Quality life for empowered God Loving citizens and Private- Public partnership for a sustainable economic development, entrepreneurship and self-reliance.",
+      //     welcome:
+      //       "<p>The Mayor's Office Operation coordinates and oversees the management of city governmental operations to promote the efficient and effective delivery of agency services.<br><br> The office mandate to both provide the operational support for all agencies as well as measure and report on agency performance.<br><br> Operations helps City agencies to improve productivity by providing recommendations and institutional support in addition to reporting areas of success and identifying the areas of possible improvement. Vision: Good Governance, Better Quality life for empowered God Loving citizens and Private-Public partnership for a sustainable economic development, entrepreneurship and self-reliance.",
+      //     employees: [
+      //       {name:"", position:"", img:""}
+      //     ],
+      //   },
+      //   {
+      //     title: "City Vice - Mayor Office",
+      //     oic: "Rex M. Daguman",
+      //     position: "CITY VICE - MAYOR",
+      //     img: "/images/Daguman, Rex.png",
+      //     tag: 2,
+      //     banner:'',
+      //     mission: "",
+      //     vision: "",
+      //     welcome: "",
+      //     employees: [
+      //       {name:"", position:"", img:""}
+      //     ],
+      //   },
+      //   {
+      //     title: "City Administrator Office",
+      //     oic: "Augusto L. Magdaraog",
+      //     position: "DEPARTMENT HEAD",
+      //     img: "/images/City_seal.png",
+      //     tag: 3,
+      //     banner:'',
+      //     mission: "",
+      //     vision: "",
+      //     welcome: "",
+      //     employees: [
+      //       {name:"", position:"", img:""}
+      //     ],
+      //   },
+      //   {
+      //     title: "City Accountant Office",
+      //     oic: "",
+      //     position: "DEPARTMENT HEAD",
+      //     img: "/images/City_seal.png",
+      //     tag: 4,
+      //     banner:'',
+      //     mission: "",
+      //     vision: "",
+      //     welcome: "",
+      //     employees: [
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/accountant%2FIMG_4843-removebg-preview.png?alt=media&token=1e0bb424-87d1-4631-83cf-168e53ba2d4d"},
+      //       {name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/accountant%2FIMG_4847-removebg-preview.png?alt=media&token=dec0eaaa-aa7d-43fc-ab8c-8f023263ae0b"},
+      //       {name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/accountant%2FIMG_4849-removebg-preview.png?alt=media&token=ae9d771f-5f88-42de-9c8a-53b9b4726d08"},
+      //       {name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/accountant%2FIMG_4852-removebg-preview.png?alt=media&token=bb475739-5704-4655-91f4-78ee3bdae56c"},
+      //       {name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/accountant%2FIMG_4855-removebg-preview.png?alt=media&token=e695f79a-587a-4285-9dc2-c0df0de3e305"},
+      //       {name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/accountant%2FIMG_4857-removebg-preview.png?alt=media&token=a33753b7-2d40-428a-b7fb-8ed41dbb8f83"},
+      //       {name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/accountant%2FIMG_4859-removebg-preview.png?alt=media&token=e35cd593-cb3e-4ec1-8d45-9d668da95e7d"},
+      //       {name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/accountant%2FIMG_4862-removebg-preview.png?alt=media&token=a5573b8b-f031-42d3-8073-041e4e93f6bc"},
+      //       {name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/accountant%2FIMG_4866-removebg-preview.png?alt=media&token=20202180-af09-4cd1-935f-030bdbd7d741"},
+      //       {name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/accountant%2FIMG_4868-removebg-preview.png?alt=media&token=f32d66da-366c-40ae-9eac-b774ffbbe353"},
+      //       {name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/accountant%2FIMG_4871-removebg-preview.png?alt=media&token=767b9fc7-9747-41dd-8d83-fdfb23ec6e33"},
+      //       {name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/accountant%2FIMG_4873-removebg-preview.png?alt=media&token=44293a22-67d8-42ac-855a-c225926b7685"},
+      //       {name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/accountant%2FIMG_4876-removebg-preview.png?alt=media&token=d1d0f3cf-5149-44eb-ab63-9791aba52946"},
+      //       {name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/accountant%2FIMG_4880-removebg-preview.png?alt=media&token=065faf83-eb51-4bb5-beaa-afa95c169f2f"},
+      //       {name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/accountant%2FIMG_4883-removebg-preview.png?alt=media&token=3c2770e4-ccc1-43d9-b466-e413e6a7a2b5"},
+      //       {name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/accountant%2FIMG_4887-removebg-preview.png?alt=media&token=09d45527-ec4b-41c9-94b3-9211d0266caa"},
+      //       {name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/accountant%2FIMG_4890-removebg-preview.png?alt=media&token=ba33e40f-05a5-427c-9715-a75525a19789"},
+      //       {name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/accountant%2FIMG_4893-removebg-preview.png?alt=media&token=25a89e89-92db-4c48-877f-58321866da72"},
+      //       {name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/accountant%2FIMG_4897-removebg-preview.png?alt=media&token=129ad693-856e-496f-824c-468e484aca05"},
+      //       {name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/accountant%2FIMG_4899-removebg-preview.png?alt=media&token=042f98ba-8df9-4c8e-8a8f-087eca3b6148"},
+      //       {name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/accountant%2FIMG_4902-removebg-preview.png?alt=media&token=c3454e1d-f077-45e2-ae2b-6ce20ba91731"},
+      //       {name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/accountant%2FIMG_4908-removebg-preview.png?alt=media&token=ba7cb66a-11be-4cbe-b0e0-f2af41d9bff8"},
+      //       {name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/accountant%2FIMG_4910-removebg-preview.png?alt=media&token=fa6adaec-4bcd-4fd6-8924-4a4d871c2c2a"},
+      //       {name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/accountant%2FIMG_4913-removebg-preview.png?alt=media&token=e843201f-96f0-43c5-b88b-78bbbf949b76"},
+      //       {name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/accountant%2FIMG_4916-removebg-preview.png?alt=media&token=f825bc2e-e368-49f9-b33b-aab11b39b221"},
+      //       {name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/accountant%2FIMG_4919-removebg-preview.png?alt=media&token=56673074-a5ba-4d10-8441-bea9113a2f8e"},
+      //       {name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/accountant%2FIMG_4921-removebg-preview.png?alt=media&token=42cd0694-e8ea-45f8-be16-93026d29a25f"},
+      //       {name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/accountant%2FIMG_4924-removebg-preview.png?alt=media&token=dbdbe81b-fb98-40ba-82e9-f251399c6ab8"}
+      //       ]
+      //   },
+      //   {
+      //     title: "Assesor`s Office",
+      //     oic: "Joselito A. Montealto, JD",
+      //     position: "DEPARTMENT HEAD",
+      //     img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2Fhead%2FJoselito%20A.%20Montealto%2C%20JD%20-%20OIC-%20Assessor.png?alt=media&token=9b0b18db-a995-4217-8788-dd709e4a49d6",
+      //     tag: 5,
+      //     banner:'https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2Fhead%2F306908705_110180918512917_1090816531387039624_n.jpg?alt=media&token=2e9e472a-374b-4c05-842a-ea0ddc768c40',
+      //     mission:
+      //       "Implement a quick Reference System on Real Property Tax Assessment and Appraisal and come up with real property records management.",
+      //     vision:
+      //       "Effective & Efficient Real Property Tax Assessment Office through upgraded assessment techniques, procedures, & practices by automation.",
+      //     welcome: "",
+      //     employees: [
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6014-removebg-preview.png?alt=media&token=b13d994e-d9d3-4b7c-9a84-75ec388e4148",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6016-removebg-preview.png?alt=media&token=4ae6f631-d079-44c6-afd0-f58d442578eb",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6020-removebg-preview.png?alt=media&token=0837af96-247b-40be-a581-2abf117f5f09",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6023-removebg-preview.png?alt=media&token=a55b6a22-9f76-483c-a299-b817033c6f76",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6026-removebg-preview.png?alt=media&token=c19a01fa-d9e8-4e40-9724-80dfac069c7a",
+      //       },
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6031-removebg-preview.png?alt=media&token=bd2e0b7e-60f0-4cc1-8045-e1ff18ed8bf1"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6035-removebg-preview.png?alt=media&token=15518644-254e-41ad-8922-a6fe8868bda9"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6037-removebg-preview.png?alt=media&token=7309fbe1-b255-4617-a84f-efa2d286dd4c"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6039-removebg-preview.png?alt=media&token=a77d3eb5-71ae-467b-9c59-e73abd4c864a"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6041-removebg-preview.png?alt=media&token=f4db629c-aed3-45ba-8984-2c6ae51889ca"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6043-removebg-preview.png?alt=media&token=8473f988-96c2-41be-bda5-172ff321671d"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6045-removebg-preview.png?alt=media&token=a468e967-3d50-4c01-ba99-59d586c92540"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6047-removebg-preview.png?alt=media&token=75e6b0bc-1767-45e0-9957-4e12c5792192"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6049-removebg-preview.png?alt=media&token=9b872915-bf5d-4ac5-9547-e118815901b7"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6051-removebg-preview%20(1).png?alt=media&token=b8c49dbd-924f-4650-806b-45eaa7e9c2bb"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6054-removebg-preview%20(1).png?alt=media&token=b0573a06-983d-4125-996c-a149b78d0971"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6056-removebg-preview.png?alt=media&token=cf0a4dc0-f58c-4553-84e4-49569af57122"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6058-removebg-preview.png?alt=media&token=fc4f8ece-7445-498a-af46-1079976383e2"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6060-removebg-preview.png?alt=media&token=e6f8ea39-1f7c-4759-a111-f9f028669a29"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6062-removebg-preview.png?alt=media&token=85180858-c81c-4928-886d-fc70709227a9"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6066-removebg-preview.png?alt=media&token=fab2a4af-c647-4465-aa95-34df527c8c2a"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6068-removebg-preview.png?alt=media&token=77d694d0-dff2-4349-94e1-f8d6e329adfa"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6070-removebg-preview.png?alt=media&token=dd9c56a9-c5f3-49a7-bbbc-9caf2b1cb288"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6072-removebg-preview.png?alt=media&token=6b251101-97de-45e0-961c-bc08a76f7296"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6074-removebg-preview.png?alt=media&token=7ac9bb07-6c3e-4fb7-acdb-45b3396d36e6"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6076-removebg-preview.png?alt=media&token=01ca93b5-2833-412a-8777-236a78d3b74e"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6078-removebg-preview%20(1).png?alt=media&token=b5954d3c-eda6-4cab-9d47-e3f22dbaa6c7"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6080-removebg-preview.png?alt=media&token=551c40de-a6cd-4f00-9ac4-8404483b7c37"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6082-removebg-preview.png?alt=media&token=96ae7bf5-d6b4-40b0-8755-68978ce7d8a0"}
+      //     ],
+      //   },
+      //   {
+      //     title: "Bussiness Permits and Licensing Office",
+      //     oic: "Leonardo A. Bedio",
+      //     position: "DEPARTMENT HEAD",
+      //     img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/bplo%2Fhead%2FLeonardo%20A.%20Bedio-OIC-%20BPL%20Chief.png?alt=media&token=a5b83c11-6180-41d8-93d6-bf760ed256e2",
+      //     tag: 6,
+      //     banner:'https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/bplo%2Fhead%2F305485228_113114638196908_8487048910210644752_n.jpg?alt=media&token=59086be3-7caf-4fe7-b781-50d0fc554be9',
+      //     mission: "",
+      //     vision: "",
+      //     welcome:
+      //       "<p>Welcome to the Business Permit and Licensing Office page. Our Office is in charge of the business permitting and licensing of private commercial, industrial and other business ventures within the jurisdiction of the local government of Calbayog, in relation to the implementation of tax ordinances pursuant to the provisions provided under Book II of RA 7160 otherwise known as the Local Government Code of 1991. We are also tasked to monitor and impose mandatory standards to ensure compliance with applicable laws, rules and regulations in order to protect the interests of the public and promote business activities for the welfare of our city. If you have any concerns please feel free to send us a message or visit BPLO inside the Calbayog City Hall Compound.</p>",
+      //       employees: [
+      //           { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/bplo%2FIMG_5924-removebg-preview.png?alt=media&token=237a9524-d3c0-4c48-87b1-1f3b62a98ec8" },
+      //           { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/bplo%2FIMG_5926-removebg-preview.png?alt=media&token=2c42f06b-9858-4b22-a0f6-411ee43e2256" },
+      //           { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/bplo%2FIMG_5928-removebg-preview.png?alt=media&token=66a4d25c-fa42-424d-8db4-4301a95a0ea7" },
+      //           { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/bplo%2FIMG_5930-removebg-preview.png?alt=media&token=4a12d4c8-93fb-4af8-bef6-5dc02e2f01fd" },
+      //           { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/bplo%2FIMG_5932-removebg-preview.png?alt=media&token=e836e1bc-b893-48b5-962d-d4dd4ed17c8a" },
+      //           { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/bplo%2FIMG_5934-removebg-preview.png?alt=media&token=3c9e82ec-3cdb-41af-82d7-ac70a00c2215" },
+      //           { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/bplo%2FIMG_5938-removebg-preview.png?alt=media&token=f7c4147c-c659-4c24-a66d-d4e3221adadb" },
+      //           { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/bplo%2FIMG_5940-removebg-preview.png?alt=media&token=b85eb3c1-9e7f-4ce2-adea-6f32c2a254bd" },
+      //           { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/bplo%2FIMG_5942-removebg-preview.png?alt=media&token=cf78257c-a8a1-4862-b251-77808eaddb68" },
+      //           { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/bplo%2FIMG_5945-removebg-preview.png?alt=media&token=1a57c19c-e448-40d5-b181-8bbc9558ce05" },
+      //           { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/bplo%2FIMG_5948-removebg-preview.png?alt=media&token=77a84b86-f43d-47d8-853d-f7f600e0cb00" }
+      //       ],
+      //   },
+      //   {
+      //     title: "Social Welfare and Development Office",
+      //     oic: "Betty Jane V. Arnejo",
+      //     position: "CSWD OFFICER",
+      //     img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2Fhead%2FBetty%20Jane%20V.%20Arnejo%20-%20CSWD%20Officer.png?alt=media&token=268fa2e0-4cc7-4fa9-87ed-9e9456bbb6c2",
+      //     tag: 7,
+      //     banner:'',
+      //     mission:
+      //       "To provide windows of opportunities in cooperation with partner government agencies, non-government agencies and other sectors of the civil society and achieve full implementation of the programs and services gaining empowerment and governance for an improved quality of life.",
+      //     vision:
+      //       "Individuals, families and communities empowered through comprehensive and integrated delivery of services, thus, attain an improved quality of life.",
+      //     welcome: "",
+      //     employees: [
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6696-removebg-preview.png?alt=media&token=1a65a9c7-56cf-4165-8f01-fa2649dff985"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6698-removebg-preview.png?alt=media&token=bfaafc71-790c-4645-9823-143913849253"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6700-removebg-preview.png?alt=media&token=4fd2555f-c10b-4437-88af-13724fa191de"},
+      //       { name:"",position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6702-removebg-preview.png?alt=media&token=c0bc0a4a-b166-4e52-bfae-17dc3c6195c7"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6704-removebg-preview.png?alt=media&token=f1f07684-7d12-4066-b0a3-c7ec979e5377"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6706-removebg-preview.png?alt=media&token=e2f9604c-a9a2-4258-bc70-522b41ad794e"},
+      //       { name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6708-removebg-preview.png?alt=media&token=db8d2739-8e24-49f5-821c-67036fb9ed36"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6710-removebg-preview.png?alt=media&token=b99304a8-ce70-4891-b416-61a97877d622"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6712-removebg-preview.png?alt=media&token=18b61af6-ce5d-4ad9-9f9f-be58379d096e"},
+      //       { name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6715-removebg-preview.png?alt=media&token=cf82a06c-c0b9-40bb-9f0a-ee2738d42415"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6717-removebg-preview.png?alt=media&token=4b1cd79d-9f03-4468-9361-dfa78608797b"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6719-removebg-preview.png?alt=media&token=f415cb72-52a7-48ca-ab64-11f641864ea4"},
+      //       { name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6721-removebg-preview.png?alt=media&token=bd8e8f52-b03f-4d5d-b93a-7a40b443aa2c"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6723-removebg-preview.png?alt=media&token=f421edff-cc61-4f53-8ad3-0ab46c36f982"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6726-removebg-preview.png?alt=media&token=947cb9e2-68d4-4f26-8ad0-8e1d57135948"},
+      //       { name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6729-removebg-preview.png?alt=media&token=38429903-3e94-46e8-80bc-2c0859a30d06"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6731-removebg-preview.png?alt=media&token=974ad58e-0e4d-4638-a51e-c914868652bd"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6733-removebg-preview.png?alt=media&token=5dee2e54-0e2b-46aa-8434-e19da41a43f0"},
+      //       { name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6735-removebg-preview.png?alt=media&token=40ca7c07-6bfb-4d34-9ed6-26ec983c9b1b"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6737-removebg-preview.png?alt=media&token=15cdc900-aeb7-4b42-8e86-961a70c3365f"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6739-removebg-preview.png?alt=media&token=ac098000-8b45-4c8e-98d5-05aed61f1746"},
+      //       { name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6741-removebg-preview.png?alt=media&token=e44347d8-9456-4a29-9122-829035b17d60"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6743-removebg-preview.png?alt=media&token=de9fc509-c62e-407a-b473-7a57b06c9167"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6745-removebg-preview.png?alt=media&token=5eba388a-3126-494d-b179-3388488a165b"},
+      //       { name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6747-removebg-preview.png?alt=media&token=d9863a14-1660-4e23-bece-61b6072e03b4"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6749-removebg-preview.png?alt=media&token=ef5ab6f1-dc85-4ec9-8558-1386639d4253"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6751-removebg-preview.png?alt=media&token=3098bbf2-fd8a-475e-b401-c4699d53d5ea"},
+      //       { name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6753-removebg-preview.png?alt=media&token=70da677c-95e3-49df-a17d-9a908650e097"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6755-removebg-preview.png?alt=media&token=a4445d36-8b06-4a2e-88af-db4bab5d70ec"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6757-removebg-preview.png?alt=media&token=dd0a4d85-2062-4850-aa76-6a4fd9d30c16"},
+      //       { name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6761-removebg-preview.png?alt=media&token=c62c595d-9b4c-48a1-8bec-626566da4829"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6763-removebg-preview.png?alt=media&token=6e0e89de-7378-44fa-9eb1-273d2b7a4990"},
+      //       { name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6765-removebg-preview.png?alt=media&token=d9f91d07-0afd-442a-8be4-7e608b44414b"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6767-removebg-preview.png?alt=media&token=84cf6744-b125-4cc0-a6fc-3da331ddf0ef"},
+      //       { name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6769-removebg-preview.png?alt=media&token=6494aa4d-7458-4667-9020-d19989172b66"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6774-removebg-preview.png?alt=media&token=bfdb2ac5-a4df-4139-8be9-792953be7ba2"},
+      //       { name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6776-removebg-preview.png?alt=media&token=ea718046-4837-471e-b13d-73249bc3aea8"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6778-removebg-preview.png?alt=media&token=d1bede6a-1008-4eb5-b912-4e5c3c9ffd2e"},
+      //       { name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6780-removebg-preview.png?alt=media&token=930b63d0-6466-42e0-aea8-0df32e1ba8c8"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6782-removebg-preview.png?alt=media&token=f2348b59-79ce-4416-a16c-fc88abfb7751"},
+      //       { name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6784-removebg-preview.png?alt=media&token=befe0835-8ec3-4cb1-a547-8eb2748860b3"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6786-removebg-preview.png?alt=media&token=b42e9b69-33b9-4b76-b1d4-0d1fb1b7d074"},
+      //       { name:"", position:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6788-removebg-preview.png?alt=media&token=4fcb157c-df72-44ee-9292-4864ecc74c99"},
+      //       {name:"", postion:"", img:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cswd%2FIMG_6790-removebg-preview.png?alt=media&token=0093f65e-7a7a-4280-83b4-a9ca4db6a576"}
+      //     ],
+      //   },
+      //   {
+      //     title: "City Planning and Development Office",
+      //     oic: "Alberto Pablo O. Lucero, Jd",
+      //     position: "OIC-CPD Coordinator",
+      //     img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cpdo%2Fhead%2FAlberto%20Pablo%20O.%20Lucero%2C%20JD%20-%20OIC-CPD%20Coordinator.png?alt=media&token=fe864924-923d-4f6b-8671-65e60c7ba6ae",
+      //     tag: 8,
+      //     banner:'https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cpdo%2Fhead%2Fwall.jpg?alt=media&token=55377a1a-827a-4015-8d59-f037fb8883ba',
+      //     mission:
+      //       "To formulate viable and responsive plans, projects and programs that will promote sustainable and holistic development of the city and enhance competitiveness for a productive and improved Calbayognons",
+      //     vision:
+      //       "A City Planning & Development Office with multi-disciplined public servants, adhering to the values of professionalism, competence and innovation working as a team, responsive to the needs of time towards a balance development of the city of Calbayog",
+      //     welcome:
+      //       "<p>The City Planning and Development Office is the department mandated to craft comprehensive development plans and other fiscal and other socio-economic policies. We analyze the income and expenditure pattern of the city government and provide recommendations for consideration of the Local Finance Committee. It is also our responsibility to monitor and evaluate the implementation of the different development programs, projects and activities in our local government, in accordance with the approved Development Plan. Should you have any concerns please feel free to send us a message or visit the City Planning and Development Office in the Calbayog City Hall Compound. We are glad to be of service.</p>",
+      //     employees: [
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cpdo%2FIMG_5194-removebg-preview.png?alt=media&token=ba70fc42-5014-4d33-ae68-1325e401062b" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cpdo%2FIMG_5196-removebg-preview.png?alt=media&token=fb00269f-2171-4220-b72d-e16c0a8bfe9d" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cpdo%2FIMG_5198-removebg-preview.png?alt=media&token=6e06ac58-ffb3-48a4-ba9f-c2bd018c3b86" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cpdo%2FIMG_5201-removebg-preview.png?alt=media&token=9da66135-264f-4b73-8d87-952d4a441502" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cpdo%2FIMG_5205-removebg-preview.png?alt=media&token=3d12f0bd-e820-4503-b3df-cb8ab6d5bc22" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cpdo%2FIMG_5207-removebg-preview.png?alt=media&token=a06524de-0578-4b63-a721-b504b3ead79a" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cpdo%2FIMG_5209-removebg-preview.png?alt=media&token=98d80fd0-3bc4-46c1-bc61-a02ae2a54085" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cpdo%2FIMG_5211-removebg-preview.png?alt=media&token=dfdfb78b-8a1b-443d-aff8-0ea317508f4b" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cpdo%2FIMG_5213-removebg-preview.png?alt=media&token=11d0fc6c-9071-4d9b-813e-0f5489ec2643" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cpdo%2FIMG_5215-removebg-preview.png?alt=media&token=f4047d4a-5983-4935-8361-beaab8c84526" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cpdo%2FIMG_5218-removebg-preview.png?alt=media&token=e75c7761-b251-43ec-af21-d34caf2ba830" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cpdo%2FIMG_5220-removebg-preview.png?alt=media&token=d1c70b6b-828f-49d5-be7c-5b8aec818a6f" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cpdo%2FIMG_5222-removebg-preview.png?alt=media&token=61e09f42-3713-4bd5-8baf-20ae02d35bcd" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cpdo%2FIMG_5224-removebg-preview.png?alt=media&token=1a0422ac-e1aa-4dcb-9bce-167a5fa87ae6" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cpdo%2FIMG_5226-removebg-preview.png?alt=media&token=979a2698-2cb4-4533-9891-2b73865cf21e" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cpdo%2FIMG_5228-removebg-preview.png?alt=media&token=5b16dd6a-830a-4f10-9fb2-6e5bdfe3011c" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cpdo%2FIMG_5230-removebg-preview.png?alt=media&token=814930c3-58cc-4e32-a516-d4a41ebb6163" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cpdo%2FIMG_5233-removebg-preview.png?alt=media&token=37815aad-3eb5-4189-ba4a-6256e380ce71" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cpdo%2FIMG_5236-removebg-preview.png?alt=media&token=e1d32e4f-07f8-483c-a579-af326f1d2392" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cpdo%2FIMG_5239-removebg-preview.png?alt=media&token=cd9fddb4-4b68-4ae6-bf09-4ba9bf0f3942" }
+      //     ],
+      //   },
+      //   {
+      //     title: "City Veterenary Office",
+      //     oic: "Dr. Editha Ancheta",
+      //     position: "CITY VETERINARIAN",
+      //     img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2Fhead%2FDr.%20Editha%20Anchet%20-%20City%20veterinarian.png?alt=media&token=4a23af6e-cc0e-4990-b449-8871ddc477c8",
+      //     tag: 9,
+      //     banner:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2Fhead%2Fwall.jpg?alt=media&token=61122411-7d67-484f-9edb-d1f02a42b504",
+      //     mission:
+      //       "An agency with productive programs feared towards the livestock & poultry sufficiency, and public health and having efficient staff with harmonious working relationship. City Veterinary Office improving lives through sound animal production.",
+      //     vision:
+      //       "The City Veterinary Office commits to the attainment of Livestock & Poultry sufficiency & public health through the conduct of participatory research promotion of livestock investment & marketing assistance & human resource development.",
+      //     welcome:
+      //       "<p>The City Veterinary Office is the local lead agency on animal welfare and all matters pertaining to the slaughter of animals for human consumption. We regulate the keeping of domestic animals. We likewise regulate and inspect meat, poultry, milk and dairy products for public consumption.<br><br>Moreover, we enforce all laws and regulations for the prevention of cruelty to animals, and implement measures to eradicate, prevent and cure all kinds of animal diseases.<br><br>At present, our office operates a slaughterhouse and handles meat inspection.</p>",
+      //     employees: [
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7745-removebg-preview.png?alt=media&token=bf2ca656-a629-44c8-b593-36e28552179c",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7747-removebg-preview.png?alt=media&token=33115cea-7bcc-46c3-8649-3a1a5fe9bccd",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7749-removebg-preview.png?alt=media&token=3fd48303-0bcc-46c0-9c3e-359ff2ed5cb2",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7751-removebg-preview.png?alt=media&token=0a9b24cb-2b38-4400-ba83-4f2248579e1e",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7753-removebg-preview.png?alt=media&token=872c0b3d-d9a2-40d7-9f21-7c41a7e54be0",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7755-removebg-preview.png?alt=media&token=26ce5b56-1ede-4797-a722-7f7ae6118613",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7756-removebg-preview.png?alt=media&token=a27cd098-5af4-4850-b29d-ada0d8e79edc",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7758-removebg-preview.png?alt=media&token=746738a7-cc2e-4dbe-98c2-49a4e4b8f6dd",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7760-removebg-preview.png?alt=media&token=793aaf13-3c12-487f-a206-65b6c1ff7825",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7762-removebg-preview.png?alt=media&token=c1d25b5c-e685-483b-9347-63343934ab9c",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7764-removebg-preview.png?alt=media&token=2d4532d6-8468-49e1-9603-0e12a2a09443",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7766-removebg-preview.png?alt=media&token=c4937daa-c318-4253-b4e8-ab7355cdd527",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7769-removebg-preview.png?alt=media&token=4d930357-ba25-486e-b63e-c6b2e35f6edc",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7771-removebg-preview.png?alt=media&token=018beaea-3421-46a3-b791-420ff37ff4e3",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7773-removebg-preview.png?alt=media&token=79e0d111-bce2-49bf-ad8b-ef2fa0500419",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7775-removebg-preview.png?alt=media&token=f626ab2b-b6ec-4cf3-8b52-8c6ae3105ba0",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7777-removebg-preview.png?alt=media&token=87c896b9-584b-45e3-83c1-3918f5602308",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cityvet%2FIMG_7779-removebg-preview.png?alt=media&token=d6355644-358d-450d-bed5-b7e0a540f009",
+      //       },
+      //     ],
+      //   },
+      //   {
+      //     title: "City Population",
+      //     oic: "Atty. Ma. Cecil Y. Rueda",
+      //     position: "",
+      //     img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citypopulation%2Fhead%2FAtty.%20Ma.%20Cecil%20Y.%20Rueda%20-%20City%20Pop.png?alt=media&token=c7c247f6-0ef7-444f-886f-002df2138417",
+      //     tag: 10,
+      //     banner:'https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citypopulation%2Fhead%2F277678894_114481874546113_735097662795900248_n.jpg?alt=media&token=83f7a176-d2b5-47ea-9abe-e91124d647f3',
+      //     mission:
+      //       "To realize this vision, the office is committed to ensure that the Calbayognons are well-informed about Population and Development, Responsible Parenthood, Family Planning, Reproductive Health, Gender Sensitivity and Child and Youth Development so that each and every family can be able to make an informed choice with regards to the number and age-spacing of children they are capable of sustaining and for the young men and women to delay early marriage instead engage in beneficial and wholesome relationships with their peers.",
+      //     vision:
+      //       "The City Population Office envisions Calbayog City to be a community of well-planned, happy, prosperous and empowered families.",
+      //     welcome: "",
+      //     employees: [
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citypopulation%2FIMG_7811-removebg-preview.png?alt=media&token=0b418ae2-5502-4542-8645-53112d303c99" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citypopulation%2FIMG_7813-removebg-preview.png?alt=media&token=e38a5b40-a5f5-4f64-822a-bfbc6c8c31d6" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citypopulation%2FIMG_7815-removebg-preview.png?alt=media&token=82aff384-49ab-471d-b49d-33c0cb62589d" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citypopulation%2FIMG_7817-removebg-preview.png?alt=media&token=94896dc9-356d-4ce5-8980-c6e931449925" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citypopulation%2FIMG_7819-removebg-preview.png?alt=media&token=924d875f-2890-4383-ab0f-177bc3ee480c" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citypopulation%2FIMG_7821-removebg-preview.png?alt=media&token=bcb64c1d-f1bf-49d7-bf9e-f206ec57fd21" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citypopulation%2FIMG_7825-removebg-preview.png?alt=media&token=2029ded7-db30-403c-bade-bff9cc21d1d2" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citypopulation%2FIMG_7827-removebg-preview.png?alt=media&token=3ab89fd0-4210-4c99-a1b3-1bfb9ee63b0d" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citypopulation%2FIMG_7829-removebg-preview.png?alt=media&token=0cc4c050-1623-454a-bc49-ca35502bb0ce" }
+      //     ],
+      //   },
+      //   {
+      //     title: "City Legal Office",
+      //     oic: "Atty. Agustin M. Avalos",
+      //     position: "",
+      //     img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citylegal%2Fhead%2FAtty.%20Agustin%20M.%20Avalon.png?alt=media&token=18982954-99a7-40c4-b74d-0cfde9f07605",
+      //     tag: 11,
+      //     banner:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citylegal%2Fhead%2F301949250_111846631652481_5690428383560857065_n.jpg?alt=media&token=a54b4925-d0a3-4f63-969b-41890a0e6247",
+      //     mission:
+      //       "The officers and employees of the CLSO resolve to serve the public with more vigor and, in so doing, become more effective agents in providing information on matters pertaining to the rule of law.",
+      //     vision:
+      //       "For the year 2020, the City Legal Services Office, aside from its statutory mandate, endeavors to improve coordination with other offices, both local and national.",
+      //     welcome: "",
+      //     employees: [
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citylegal%2FIMG_6094-removebg-preview.png?alt=media&token=9606bd46-bead-4b5f-89a2-714e5587a3be" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citylegal%2FIMG_6098-removebg-preview.png?alt=media&token=4528de9b-3096-444c-a05b-25c0585cdbbc" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citylegal%2FIMG_6100-removebg-preview.png?alt=media&token=577aa31a-6111-468d-a165-3145cdceaf12" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citylegal%2FIMG_6102-removebg-preview.png?alt=media&token=2e96fbd1-709c-47af-93f3-38382623af2c" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citylegal%2FIMG_6105-removebg-preview.png?alt=media&token=488f727f-99f7-4f7d-a144-e4d890f1db5e" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citylegal%2FIMG_6107-removebg-preview.png?alt=media&token=863ee359-efe2-4e21-beb9-99356357bf31" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citylegal%2FIMG_6109-removebg-preview.png?alt=media&token=56d490d2-c157-412b-a71c-62ee126528d1" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citylegal%2FIMG_6112-removebg-preview.png?alt=media&token=8875b807-379e-4291-bd2d-1b041988cc4e" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citylegal%2FIMG_6114-removebg-preview.png?alt=media&token=aad878f9-8027-407a-ae8d-18cce683f134" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citylegal%2FIMG_6116-removebg-preview.png?alt=media&token=2d01e228-1634-4b34-bb0c-dbafea7570ec" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citylegal%2FIMG_6118-removebg-preview.png?alt=media&token=7ddd9496-4493-4b7f-9850-acb3d4ac7a47" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citylegal%2FIMG_6120-removebg-preview.png?alt=media&token=c8bd0738-d1c3-4c52-abda-a75cfbee3a7b" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citylegal%2FIMG_6123-removebg-preview.png?alt=media&token=0c881e18-936d-42f4-9fef-a73c7c8295c0" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citylegal%2FIMG_6236-removebg-preview.png?alt=media&token=799c7fe2-c871-4e62-bb88-434af9f75efe" }
+      //     ],
+      //   },
+      //   {
+      //     title: "City Cooperatives Office",
+      //     oic: "Clarita B. Oliver",
+      //     position: "OIC-COOP",
+      //     img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citycoop%2Fhead%2FClarita%20B.%20Oliver%20-%20OIC-COOP.png?alt=media&token=68b8009d-e8c2-4178-a19d-039b304acce7",
+      //     tag: 12,
+      //     banner:"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citycoop%2Fhead%2Fwall.jpg?alt=media&token=08dd2c57-fe44-439d-9691-474041f6be2d",
+      //     mission:
+      //       "To encourage the membership of cooperatives to immerse and participate the socio-economic capability building initiatives, thereby assist them to become productive communities.",
+      //     vision:
+      //       "A cooperative Calbayog City, pursuing the objectives of social justice and ensuring the socio-economic gains thru a holistic community development with people empowerment.",
+      //     welcome:
+      //       "<p>The City Cooperative Office was created in 1993, by virtue of Budget Ordinance No. 93-01002, during the incumbency of the late City Mayor Reynaldo S. Uy.<br><br>Our Office adheres to the policies and mandate spelled-out in the Local Government Code, Republic Act No. 6939 or the Cooperative Development Authority, and Republic Act 9520 or the Cooperative Code of 2008.<br><br>We extend services needed for the growth and development of cooperatives in the City of Calbayog. We also conduct advocacy campaigns to encourage participation in the organization of cooperatives and provide assistance in improving management skills.<br><br>Working together is our heart. Creating great result is the best part.We inspire, we innovate, and we create.Your growth and success will be great.<br><br>Tara na sa City Cooperatives Office.An Opisina nga may pag alakapa Ngan may paghigugma sa kada tagsa.</p>",
+      //     employees: [
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citycoop%2FIMG_6798-removebg-preview.png?alt=media&token=c9837917-95ec-4471-97c3-2c6c4dc09dc5" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citycoop%2FIMG_6801-removebg-preview.png?alt=media&token=4391d1dc-fa04-4450-91ea-b90e21d083b9" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citycoop%2FIMG_6803-removebg-preview.png?alt=media&token=9cd1e0ba-b1c2-46e3-8dd8-16ed017ca2cd" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citycoop%2FIMG_6805-removebg-preview.png?alt=media&token=51048c18-d9d6-4177-abea-d00cc3b77ad3" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citycoop%2FIMG_6807-removebg-preview.png?alt=media&token=58c4dbaa-b70c-409d-88b3-70f543e316ef" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citycoop%2FIMG_6809-removebg-preview.png?alt=media&token=de90f351-bade-4f55-b3c6-0e48c22ad2a1" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citycoop%2FIMG_6811-removebg-preview.png?alt=media&token=48f4591d-8ebc-4e57-82a9-c611ba3d23b3" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citycoop%2FIMG_6815-removebg-preview.png?alt=media&token=e26dad7f-d663-4029-bf61-b48e2f5dfc64" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citycoop%2FIMG_6817-removebg-preview.png?alt=media&token=57a4d141-14c0-49c4-967f-600867048d08" }
+           
+      //     ],
+      //   },
+      //   {
+      //     title: "City Budget Office",
+      //     oic: "Agnes R. Dordines",
+      //     position: "CITY BUDGET OFFICER",
+      //     img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2Fhead%2FAgnes%20R.%20Dordines%20-%20City%20Budget%20Officer.png?alt=media&token=ce690457-2106-41f0-9ae9-243d7177d7dd",
+      //     tag: 13,
+      //     banner:'https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2Fhead%2Fwall.jpg?alt=media&token=fc20c243-6c9a-44cc-8392-686337c227cb',
+      //     mission:
+      //       "To carry out all local government activities under a comprehensive development and fiscal plan prepared, authorized and executed in accordance with prevailing status, administrative regulations and principles of sound management.",
+      //     vision: "",
+      //     welcome:
+      //       "<p>Our Office reviews and consolidates budget proposals of different departments and offices of the local government of Calbayog, both annual and supplemental. Hence, we are primarily responsible for the preparation of the Executive Budget and Supplemental Budget.<br><br>As a financial management office, we promote efficient, prudent and effective management utilization of government funds in the implementation of programs, projects and activities. We also provide technical assistance on various budgetary concerns.</p>",
+      //     employees: [
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5102-removebg-preview.png?alt=media&token=3e1b6ba6-3351-4047-8ca5-6474c142b043" }, 
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5104-removebg-preview.png?alt=media&token=23654775-ab3a-4a41-be74-c6f10469d1f3" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5107-removebg-preview.png?alt=media&token=0dff203d-8c66-47a4-90c5-5712cff7988b" }, 
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5110-removebg-preview.png?alt=media&token=c4c268d8-52f5-42b0-85bb-8cd9434e0dae" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5112-removebg-preview.png?alt=media&token=403210b6-9666-446e-857f-adf1c85c8962" }, 
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5115-removebg-preview.png?alt=media&token=31894e78-d6c8-4d3b-ad82-e5689f860811" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5117-removebg-preview.png?alt=media&token=bfb668d5-7229-4d87-b5fa-0241d0c22202" }, 
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5119-removebg-preview.png?alt=media&token=742c76e2-3351-44a3-9f71-bfe6b6b3f012" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5122-removebg-preview.png?alt=media&token=3610569e-6e7c-4823-a7a9-ac6a8c4b2f0c" }, 
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5124-removebg-preview.png?alt=media&token=55bebaab-44c5-4546-b9c2-1a415accd13a" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5126-removebg-preview.png?alt=media&token=d8fa6bba-ae67-43b9-8d06-25af5c5f62d9" }, 
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5128-removebg-preview.png?alt=media&token=e78bade8-03e6-418e-9f8c-ae5e4f32715e" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5130-removebg-preview.png?alt=media&token=c49a4ced-ded7-4bdd-95e0-2486986bcc34" }, 
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5132-removebg-preview.png?alt=media&token=998e205a-8da8-44f5-9400-5936fd6775f5" }
+      //     ],
+      //   },
+      //   {
+      //     title: "CHR",
+      //     oic: "",
+      //     position: "",
+      //     img: "",
+      //     tag: 14,
+      //     mission: "",
+      //     vision: "",
+      //     welcome: "",
+      //     employees: [
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chr%2FIMG_4784-removebg-preview.png?alt=media&token=5c72d2ba-48b0-4b35-a79c-47d4423435b6" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chr%2FIMG_4789-removebg-preview.png?alt=media&token=acdb482b-7730-451e-aec4-3effca5b687c" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chr%2FIMG_4793-removebg-preview.png?alt=media&token=f52f472b-d517-4acd-b517-246cb14a062d" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chr%2FIMG_4797-removebg-preview.png?alt=media&token=92e47e9b-799e-450b-92bf-f5d660ba43b2" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chr%2FIMG_4800-removebg-preview.png?alt=media&token=66b6a24d-f272-4d04-9209-7450d6d47fa9" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chr%2FIMG_4804-removebg-preview.png?alt=media&token=39b5d2b1-1448-44ac-b0e9-694218e2ea90" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chr%2FIMG_4810-removebg-preview.png?alt=media&token=19e4ee12-7b14-4dfb-ab4f-14bf34f307c3" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chr%2FIMG_4813-removebg-preview.png?alt=media&token=0d826125-63a4-453b-b1b0-9ffd60102fd9" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chr%2FIMG_4816-removebg-preview.png?alt=media&token=6702e136-a493-428d-8365-7d0cc283a677" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chr%2FIMG_4820-removebg-preview.png?alt=media&token=d28f1114-8eab-4b73-83c6-f1c67055444d" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chr%2FIMG_4824-removebg-preview.png?alt=media&token=761c2a05-e694-412b-b3d1-1dd30fb772d8" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chr%2FIMG_4827-removebg-preview.png?alt=media&token=6239b7b5-d5d5-4bed-a8f3-25f6913dce40" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chr%2FIMG_4830-removebg-preview.png?alt=media&token=7c2c2847-ed29-4b7b-a797-5dfc369bfb4f" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chr%2FIMG_4832-removebg-preview.png?alt=media&token=69ba1a7b-3e20-48a9-9c56-245047da5f0e" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chr%2FIMG_4835-removebg-preview.png?alt=media&token=56c8055c-319d-4f7f-a273-a7ae464b4ba7" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chr%2FIMG_4838-removebg-preview.png?alt=media&token=4bae6773-0b02-4220-a7fd-7feb8257834c" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chr%2FIMG_4841-removebg-preview.png?alt=media&token=54d87560-b601-4af1-be50-33c8a9e18685" }
+      //     ],
+      //   },
+      //   {
+      //     title: "City Housing and Development Office",
+      //     oic: "Engr. Ricky A. Moreno",
+      //     position: "OIC-CHDO",
+      //     img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2Fhead%2FEngr.%20Ricky%20A.%20Moreno%20-%20OIC-CHDO.png?alt=media&token=f4b2f5a2-34bc-413d-8bde-842f992fb76c",
+      //     tag: 15,
+      //     banner:'https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2Fhead%2Fwall.jpg?alt=media&token=89fcaac4-60c5-4320-aa08-b320e20d23fe',
+      //     mission:
+      //       "To provide security of tenure to the under privileged and homeless citizens in the locality.",
+      //     vision:
+      //       "To establish and innovative a responsive housing program to attain zero informal settler families by the year 2024.",
+      //     welcome: "",
+      //     employees: [
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5699-removebg-preview.png?alt=media&token=74621e19-9560-4b83-8588-4a1ec6325c37" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5701-removebg-preview.png?alt=media&token=5a16bf4c-d2b7-4e1b-b5eb-07cd967c76c2" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5703-removebg-preview.png?alt=media&token=e9585fc6-9cfa-44b1-8b4b-56214f1e7c0c" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5705-removebg-preview.png?alt=media&token=08317e0e-38fb-42d9-9484-94b5cb1f7ad2" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5707-removebg-preview.png?alt=media&token=0bf881ce-b9c1-4d01-87b5-c6c9f432ee81" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5710-removebg-preview.png?alt=media&token=bf538645-aa44-4dc2-b6ad-00d21d138b62" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5712-removebg-preview.png?alt=media&token=1d582b95-f819-4358-b8c9-d0995412cea8" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5714-removebg-preview.png?alt=media&token=80ec6977-3d95-44dc-950b-979f2bb6c881" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5716-removebg-preview.png?alt=media&token=733d0f15-9c63-46e9-ac29-cadd6b972d51" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5718-removebg-preview.png?alt=media&token=4472e596-87f2-4efb-a193-883cf41fd6e0" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5720-removebg-preview.png?alt=media&token=0a9c71f6-b11e-4be5-8c10-4f9fe3c89392" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5725-removebg-preview.png?alt=media&token=11788bd8-6bb3-472a-b730-57dad7fa8cd0" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5727-removebg-preview.png?alt=media&token=4f238130-86e7-490b-b29f-a66fc0f72344" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5729-removebg-preview.png?alt=media&token=1fd7b2f5-99e7-4b7b-9928-d23b83ad56ea" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5732-removebg-preview.png?alt=media&token=0bce5803-274a-4858-853c-4716f8a7a099" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5735-removebg-preview.png?alt=media&token=3eae2166-bfa9-45d6-96a0-33777f38a627" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5737-removebg-preview.png?alt=media&token=4da50bc8-62cc-4783-9817-277edce4b7a7" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5739-removebg-preview.png?alt=media&token=9bd98684-a567-4943-b874-0d95eaefb1b9" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5742-removebg-preview.png?alt=media&token=2c4f8850-d3ab-46b9-9336-10b3a44569cf" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5744-removebg-preview.png?alt=media&token=33fbc37b-1883-4c5d-a1b7-2dad3a96cf1a" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5754-removebg-preview.png?alt=media&token=decf0ac7-d5d8-40b6-add7-27fa4f90e6cd" }
+      //     ],
+      //   },
+      //   {
+      //     title: "City Environment Office",
+      //     oic: "Lorenzo C. Raz Jr.",
+      //     position: "",
+      //     img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cenro%2Fhead%2FLorenzo%20C.%20Ras%2C%20Jr.png?alt=media&token=a71a82e7-d668-4c17-ad33-0b0766c6acae",
+      //     tag: 16,
+      //     banner:'https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cenro%2Fhead%2Fwall.jpg?alt=media&token=fe0c0d71-7a6b-4c54-98cf-4474a5240ae0',
+      //     mission:
+      //       "Manage local resources into productive and protected conditions and uphold the value of awareness for the people and environment Ecological balance leading to sustainable development.",
+      //     vision:
+      //       "The City Environment and Natural Resource Office is committed to address environmental concern consistent with the policy of efficient conservation to be beneficial to sustain economic growth.",
+      //     welcome: "",
+      //     employees: [
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cenro%2FIMG_7785-removebg-preview.png?alt=media&token=50d9a023-58cc-4bcb-8559-6af7aeea59ae" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cenro%2FIMG_7787-removebg-preview.png?alt=media&token=5d8451d1-a5b2-46c6-b684-53a9e58262b2" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cenro%2FIMG_7789-removebg-preview.png?alt=media&token=80ca6a11-9b94-4b83-900f-8d5e8192f924" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cenro%2FIMG_7791-removebg-preview.png?alt=media&token=69fdc3c0-3c55-4b3f-8e75-74c35303f54b" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cenro%2FIMG_7794-removebg-preview.png?alt=media&token=61e5ec32-ed7a-4f18-9795-a1c810c10e46" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cenro%2FIMG_7796-removebg-preview.png?alt=media&token=22aededa-24d8-4c4d-83e2-e3e2c7e6385a" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cenro%2FIMG_7798-removebg-preview.png?alt=media&token=c5db3be7-af49-4b61-ae24-334a3a59400f" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cenro%2FIMG_7800-removebg-preview.png?alt=media&token=f74681e3-0427-4d82-98f7-dc7643ad7ed4" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cenro%2FIMG_7802-removebg-preview.png?alt=media&token=379606d4-ea79-41a8-adbc-24c90f9bde92" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cenro%2FIMG_7805-removebg-preview.png?alt=media&token=21ad82dc-614c-4111-bda5-b325af130ce5" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cenro%2FIMG_7807-removebg-preview.png?alt=media&token=e6757ac7-2174-4240-adc7-a74dbb0e60e1" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cenro%2FIMG_7809-removebg-preview.png?alt=media&token=dcfec3a4-bc58-44c9-974d-013aa8de7305" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cenro%2FIMG_7831-removebg-preview.png?alt=media&token=5ef2b80e-8826-4e21-9e99-33515d9aff35" },
+      //     ],
+      //   },
+      //   {
+      //     title: "City Disaster Risk and Management Office",
+      //     oic: "Dr. Sandro C. Daguman",
+      //     position: "",
+      //     img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2Fhead%2FDr.%20Sandro%20C.%20Daguman%20-%20CGDH%201.png?alt=media&token=26434e33-5106-46a7-9ca7-01c438c638ed",
+      //     tag: 17,
+      //     banner:'https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2Fhead%2Fwall.jpg?alt=media&token=387a0eb0-74a7-4352-adc8-5017108ff88a',
+      //     mission:
+      //       "To minimize the disaster's impact to the people, properties and business operation.",
+      //     vision:
+      //       "By the year 2021 Calbayog City is equipped with people and facilities in disaster reduction, response and rehabilitation.",
+      //     welcome: "",
+      //     employees: [
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2FIMG_6535-removebg-preview.png?alt=media&token=53ebb6ed-6bcf-45a1-b76c-804cdfb6c0b9" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2FIMG_6537-removebg-preview.png?alt=media&token=b624aa69-c771-466c-8060-e6cb5871e600" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2FIMG_6539-removebg-preview.png?alt=media&token=e764b0f2-e359-44cb-9861-979c9e266cb5" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2FIMG_6541-removebg-preview.png?alt=media&token=6a3c295e-e5e4-455c-bfb4-39e7d8360467" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2FIMG_6544-removebg-preview.png?alt=media&token=ba8ee246-40f7-409f-85e2-6992bffdd932" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2FIMG_6546-removebg-preview.png?alt=media&token=d9c77d1f-03d8-47a8-ba5b-0194d7edeeeb" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2FIMG_6548-removebg-preview.png?alt=media&token=a9e4c7cc-3e1e-4926-8a99-298a0c8421eb" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2FIMG_6550-removebg-preview.png?alt=media&token=f8d7c22b-6cdf-46d2-9b4a-b88c3853e722" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2FIMG_6552-removebg-preview.png?alt=media&token=2a2e9f87-f7ef-4a00-96c0-c1851e0a7d6e" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2FIMG_6554-removebg-preview.png?alt=media&token=cddc318e-de40-463e-9593-576f4555b1a8" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2FIMG_6556-removebg-preview.png?alt=media&token=790b371d-0dab-45eb-8697-bd55df1201bd" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2FIMG_6561-removebg-preview.png?alt=media&token=d637560e-a1c4-4245-a713-8914d414a32f" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2FIMG_6563-removebg-preview.png?alt=media&token=3e4f6330-2c6c-4282-94d3-28925c33e72e" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2FIMG_6565-removebg-preview.png?alt=media&token=ba4f9ea7-b183-4542-b635-c81fc9ef90c2" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2FIMG_6567-removebg-preview.png?alt=media&token=6c735524-9334-46b1-ab6a-f97ed1bc0f23" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2FIMG_6569-removebg-preview.png?alt=media&token=719115de-6175-4c86-9f99-f5787d902aee" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2FIMG_6571-removebg-preview.png?alt=media&token=c9502b77-1d83-4559-9d87-07674823a6ed" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2FIMG_6574-removebg-preview.png?alt=media&token=b248fcee-77bf-4e96-9d7f-391c4c1e98fd" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2FIMG_6576-removebg-preview.png?alt=media&token=2d2f49ba-d7df-487e-bfe4-9940364afedd" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2FIMG_6582-removebg-preview.png?alt=media&token=3b894d0f-5fc3-4dfe-9c19-440e59b8936a" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2FIMG_6584-removebg-preview.png?alt=media&token=e55c4aff-b628-4162-b4d1-d5ad68347571" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2FIMG_6586-removebg-preview.png?alt=media&token=61c9d4fb-82bd-4f6f-93ae-44ab15d7c8d9" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2FIMG_6588-removebg-preview.png?alt=media&token=e163e753-e789-4458-8608-b3f08ab8b23a" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2FIMG_6590-removebg-preview.png?alt=media&token=717f89f4-0d6a-4648-8e88-e06574c45bd1" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2FIMG_6593-removebg-preview.png?alt=media&token=cceaea34-79bf-4baf-ac37-f32e6518cec5" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2FIMG_6595-removebg-preview.png?alt=media&token=a25eacdc-c6c4-41a5-8f46-680284c06d50" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2FIMG_6610-removebg-preview.png?alt=media&token=ff2390a4-5dcc-46c7-addd-683944a5cda0" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2FIMG_6637-removebg-preview.png?alt=media&token=ce7451b2-8160-4bda-8861-33a0e5e64fda" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2FIMG_6641-removebg-preview.png?alt=media&token=0ad8acd8-1f32-43a4-a78d-04fd78388903" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdrrmo%2Fhead%2FIMG_6643-removebg-preview.png?alt=media&token=15288c22-31fa-4110-a26c-d60acbc8eabc" },
+      //     ],
+      //   },
+      //   {
+      //     title: "City Drug Abuse Prevention Office",
+      //     oic: "Dr. Teodoro U. Fortaleza",
+      //     position: "",
+      //     img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdapro%2Fhead%2FDr.%20Teodoro%20U.%20Fortaleza%20-%20CGDH%201.png?alt=media&token=925aacb7-f500-4697-bd79-bd66d74b15f0",
+      //     tag: 18,
+      //     banner:'https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdapro%2Fhead%2Fwall.jpg?alt=media&token=14b0ba0e-ba87-4631-8dd8-9447b8e821cf',
+      //     mission:
+      //       "We are committed to promote drug abuse prevention and control through Information Dissemination, Diagnosis, Treatment & Rehabilitation and After Care.",
+      //     vision:
+      //       "A Drug Free Calbayog that is safe and progressive, through a dynamic and responsive partnership between the local government and its community, contributing towards national effort to eradicate drug abuse.",
+      //     welcome: "",
+      //     employees: [
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdapro%2FIMG_5034-removebg-preview.png?alt=media&token=384514f2-1212-4a0f-9670-43d651561d3f" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdapro%2FIMG_5037-removebg-preview.png?alt=media&token=62dca40f-90e4-4b1b-8388-bc7a3cf0b82d" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdapro%2FIMG_5040-removebg-preview.png?alt=media&token=4ecce4ed-959b-4a5d-be39-26d892a1dd2f" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdapro%2FIMG_5042-removebg-preview.png?alt=media&token=8c2f0d95-bbed-4c2c-b544-1f5177ebb92a" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdapro%2FIMG_5045-removebg-preview.png?alt=media&token=d67d13f6-c120-4a16-9efd-a275323b366d" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdapro%2FIMG_5048-removebg-preview.png?alt=media&token=57ca5724-1d03-4028-bcbb-f7976f992c32" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdapro%2FIMG_5050-removebg-preview.png?alt=media&token=c72f9c79-680e-4c56-9b05-cc0f7e68dcea" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdapro%2FIMG_5054-removebg-preview.png?alt=media&token=b768d02c-0290-4390-b6e7-e36f858c54d4" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdapro%2FIMG_5057-removebg-preview.png?alt=media&token=f328c129-cab1-417d-a077-0aaec19956c1" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdapro%2FIMG_5060-removebg-preview.png?alt=media&token=6b81336d-909b-44a3-bb4d-787a1724929d" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdapro%2FIMG_5063-removebg-preview.png?alt=media&token=335e213d-77ff-4929-b697-9709755d14fd" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdapro%2FIMG_5069-removebg-preview.png?alt=media&token=d5d40c4b-32a9-4e45-88eb-07473221bec3" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdapro%2FIMG_5072-removebg-preview.png?alt=media&token=5a051620-98fe-40d6-849c-ef0ee32b1f3c" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdapro%2FIMG_5074-removebg-preview.png?alt=media&token=2726d96c-83b2-4d8b-807e-ff86e0404ad7" },
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/cdapro%2FIMG_5077-removebg-preview.png?alt=media&token=0fb47d19-8df1-46e3-a0f5-3b2e1d88d2ce" },
+      //     ],
+      //   },
+      //   {
+      //     title: "City Agriculture Office",
+      //     oic: "Engr. Teachie G. Pagunsan",
+      //     position: "OIC-AGRICULTURE",
+      //     img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2Fhead%2FEngr.%20Teachie%20G.%20%20Pagunsan%2C%20JD%20-%20OIC-%20AGRICULTURE.png?alt=media&token=83901176-4298-4b04-a8be-168a1f4a127c",
+      //     tag: 19,
+      //     banner:'https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2Fhead%2Fwall.jpg?alt=media&token=bff5eef3-249c-4029-9752-2687123f82b3',
+      //     mission:
+      //       "To uplift the living conditions of farmers & fisherfolks: promote development without compromising the next generation by adopting effective measures not to disregard the ecologically sound environment, develop economic growth and attain food security through sustainable agriculture",
+      //     vision:
+      //       "The City Agriculture Office is envisioned to be manned by professional, competent and public service-oriented employees and at molding self-reliant and self-sufficient farmers and fisherfolks with entrepreneurial capabilities in an ecologically sound environment.",
+      //     welcome:
+      //       "<p>Our Office takes the lead in promoting agricultural development by providing the policy framework, public investment and support services, which are needed for domestic and export-oriented enterprises.<br><br>We also adhere to the mandate of the City Agriculturist as provided for in the Local Government Code: Formulate measures to ensure the delivery of basic agricultural services; develop plans and strategies, agricultural programs and projects; and ensure assistance and access to resources in the production and processing of agricultural and fisheries and marine products are extended to farm families and fisher folks;<br><br>We look forward to uplift the living conditions of farmers and fisher folks and  promote development without compromising the welfare of the next generation by adopting effective measures that takes into consideration an ecologically sound environment. We  strive for economic growth and food security through sustainable agriculture.<br><br>“Agriculture is the greatest and fundamentally the most important of our industries. The cities are but the branches of the tree of national life, the roots of which go deeply into the land. We all flourish or decline with the farmer.” - Bernard Baruch<br><br>Should you have an concerns please feel free to contact us or visit  The City Agriculture Office, Brgy. Payahan.",
+      //     employees: [
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6461-removebg-preview.png?alt=media&token=ebdca730-a0d2-4ab9-9c8b-07c7e54fb1cd",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6464-removebg-preview.png?alt=media&token=9ccc33cc-eab1-4cd8-a499-4adb47c4a025",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6466-removebg-preview.png?alt=media&token=006f97a3-4112-454a-9539-0c80f32edc69",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6468-removebg-preview.png?alt=media&token=e0d16260-6975-422c-a721-54797e4ef8a1",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6471-removebg-preview.png?alt=media&token=454535f7-6467-41e6-b7a4-7df813fbeedc",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6474-removebg-preview.png?alt=media&token=c298335b-9746-475b-83a8-fa60ab93346e",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6476-removebg-preview.png?alt=media&token=0a73baaf-cf08-489d-83c3-10249a779071",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6478-removebg-preview.png?alt=media&token=cb50ba9f-0c5d-4547-a0a8-11f7cc68df9f",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6480-removebg-preview.png?alt=media&token=18241f66-802f-4e7b-aade-22a2ffbc377a",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6482-removebg-preview.png?alt=media&token=9f45f32e-b2d2-40a2-a87f-5d7edb9f390a",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6484-removebg-preview.png?alt=media&token=cd99db9b-04a0-40ac-988b-6d0eb1998982",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6486-removebg-preview.png?alt=media&token=4264d1ae-adcb-4299-93e0-0d118ce2525c",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6488-removebg-preview.png?alt=media&token=ae5d3de6-e46e-4e8e-aadf-d2e57433ceff",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6496-removebg-preview.png?alt=media&token=a508b806-cb2f-4ef4-a243-857b3987eab9",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6494-removebg-preview.png?alt=media&token=662a4b90-7ed0-4c09-8ba4-beb93ff7f4b6",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6498-removebg-preview.png?alt=media&token=51401473-ccef-4633-ad1f-87db07c304b8",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6500-removebg-preview.png?alt=media&token=26f09017-f331-4aaa-9f57-d96dabb31332",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6502-removebg-preview.png?alt=media&token=a816e340-1c70-4f5c-9643-4e2e6113108d",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6504-removebg-preview.png?alt=media&token=873d5fea-de60-4878-917d-a52cacc8c198",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6507-removebg-preview.png?alt=media&token=10ba7a6d-b295-4de4-bfc2-4fe33ae6a609",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6510-removebg-preview.png?alt=media&token=4f881fb4-054a-4152-bd02-fcdb52cc225f",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6515-removebg-preview.png?alt=media&token=51bf09dd-ef2a-497c-bc0a-4f899a2bf075",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6517-removebg-preview.png?alt=media&token=339e7433-4dc5-45e4-9ad1-0dc714e4f412",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6519-removebg-preview.png?alt=media&token=56026b9d-875a-4168-a141-3ea7da7a2746",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6522-removebg-preview.png?alt=media&token=c4369dc0-e4e7-4a5b-9a40-8b3a54d6b29d",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6524-removebg-preview.png?alt=media&token=6b118c9d-91b1-4cfa-82b6-05f1e8d66473",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6526-removebg-preview.png?alt=media&token=7cffd30a-822c-41f7-83f9-43b84558c322",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6528-removebg-preview.png?alt=media&token=31968f70-e9e9-40d0-85f7-7461293980cd",
+      //       },
+      //       {
+      //         name: "",
+      //         position: "",
+      //         img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/agriculture%2FIMG_6532-removebg-preview.png?alt=media&token=94544a72-ad9d-41c0-83a6-737031449d82",
+      //       },
+      //     ],
+      //   },
+      // ],
     };
   },
   mounted() {
     this.filterDepartments();
+    // const el = this.$refs.scroll;
+    // el.scrollIntoView({ behavior: "smooth" });
   },
   methods: {
     // getImg(val){
@@ -1187,6 +1488,7 @@ export default {
         }
       });
     },
+    
   },
 };
 </script>
