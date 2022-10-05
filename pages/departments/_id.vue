@@ -181,19 +181,23 @@
       <div class="container">
         <h4 class="title">Programs and Accomplishments</h4>
         <div
+          v-if="selected_programs"
           class="mandate-gal"
           id="manadte-scroll"
         >
-          <div
+        <div
             class="img-gal-wrapper"
-            v-for="(img, index) in mandates"
+            v-for="(item, index) in selected_programs"
             :key="index"
-            @click="programmesModal"
+            @click="programmesModal(item)"
           >
-            <img :src="img.img">
-            <p class="title-m">{{img.title}}</p>
+            <img :src="item.img">
+            <p class="title-m">{{item.title}}</p>
           </div>
         </div>
+        <div
+          v-else
+        >On development</div>
       </div>
     </div>
     <div class="mission-section mission-visons-sections">
@@ -258,7 +262,7 @@
     <div class="official-section">
       <div class="container">
         <h4 class="title">
-          Your Calbayog City Public Servants
+          Department Employees
         </h4>
         <!-- <div class="officials-wrapper">
                   <VueSlickCarousel v-bind="sliderSettings" class="officials-slider">
@@ -279,7 +283,7 @@
                       </div>
                   </VueSlickCarousel>
               </div> -->
-        <div
+        <!-- <div
           class="officials-wrapper"
             v-if="selected_department.employees"
           >
@@ -304,12 +308,14 @@
               </v-avatar>
               <div class="name-and-position">
                 <p>{{official.img ? 'Employee': 'No data yet' }}</p>
-                <!-- <p>{{official.img??'no data yet'}}</p> -->
                 <v-divider class="line"></v-divider>
                 <span>{{official.position ?? ''}}</span>
               </div>
             </div>
           </VueSlickCarousel>
+        </div> -->
+        <div class="image-banner-employee"  v-for="(allemp, index) in selected_department.allEmp" :key="index">
+          <img style="margin-bottom: 10px" :src="allemp.allinImg">
         </div>
       </div>
     </div>
@@ -353,12 +359,13 @@
       name="progModal"
       width="100%"
       height="100%"
+      
     >
-      <div class="newspopup">
+      <div class="newspopup" id="idmo">
         <div class="images-slider">
-          <v-carousel class="news-slider-img">
+          <v-carousel class="news-slider-img" v-bind="progslider">
             <v-carousel-item
-              v-for="(item,i) in mandates"
+              v-for="(item,i) in programs_clicked_item"
               :key="i"
               :src="item.img"
             ></v-carousel-item>
@@ -373,13 +380,14 @@
           </div>
           <div class="title-close-wrapper">
             <h3 class="title">
-              Programmes and Accomplishment
+              Programs and Accomplishment
             </h3>
           </div>
           <div class="news-modal-content">
             <div class="news-description">
-              <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-              </p>
+              <span 
+                v-html="programs_clicked_item_description"
+              ></span>
             </div>
           </div>
         </div>
@@ -403,6 +411,7 @@ import "vue-slick-carousel/dist/vue-slick-carousel.css";
 // optional style for arrows & dots
 import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
 import department_datas from "~/components/json/department/departments.json";
+import department_programs_accomplishments from "~/components/json/department/programs_accomplishment.json";
 export default {
   name: "About",
   layouts: "default",
@@ -410,6 +419,7 @@ export default {
   data() {
     return {
       departments:department_datas,
+      department_programs:department_programs_accomplishments,
       officialIndex: "",
       showWelcomeMesDept: false,
       imgUrl: "",
@@ -631,7 +641,14 @@ export default {
         fade: true,
         adaptiveHeight: false,
       },
+      progslider:{
+          "dots": false,
+          "arrows": false,
+      },
       selected_department: {},
+      selected_programs: [],
+      programs_clicked_item: [],
+      programs_clicked_item_description:''
       // departments: [
       //   {
       //     title: "City Mayors Office",
@@ -1451,8 +1468,7 @@ export default {
   },
   mounted() {
     this.filterDepartments();
-    // const el = this.$refs.scroll;
-    // el.scrollIntoView({ behavior: "smooth" });
+    this.filterPrograms();
   },
   methods: {
     // getImg(val){
@@ -1470,9 +1486,16 @@ export default {
     closeNewsModal() {
       this.$modal.hide("jobsModal");
     },
-    programmesModal() {
+    programmesModal(val) {
+      this.programs_clicked_item = []
+      this.programs_clicked_item.push(val)
+      this.programs_clicked_item_description = val.description
+      console.log(this.programs_clicked_item, 'test')
       this.$modal.show("progModal");
     },
+    // programmesModal() {
+    //   this.$modal.show("progModal");
+    // },
     closeProgrammesModal() {
       this.$modal.hide("progModal");
     },
@@ -1488,7 +1511,20 @@ export default {
         }
       });
     },
+    filterPrograms() {
+      this.selected_programs = this.department_programs.filter(x=>{
+        if(x.tag==this.$route.params.id) 
+        return x
+      })
+      console.log(this.selected_programs, 'programs')
+    }
     
   },
 };
 </script>
+
+<style scoped>
+  #idmo .images-slider .news-slider-img .v-window__container .v-window__prev{
+     display: none!important;
+  }
+  </style>

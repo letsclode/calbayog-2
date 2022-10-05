@@ -239,6 +239,41 @@ export default {
           logo: "/images/City_seal.png",
           tag: 19,
         },
+        {
+          title: "The Solid Waste Management Office (SWMO)",
+          oic: "Engr. Reynaldo L. Gonzaga",
+          position: "CGDH1",
+          logo: "/images/City_seal.png",
+          tag: 20,
+        },
+        {
+          title: "City Economic Enterprise Development and Management Office",
+          oic: "Felipe F. Gonzaga",
+          position: "OIC",
+          logo: "/images/City_seal.png",
+          tag: 21,
+        },
+        {
+          title: "City Engineering Office (CEEO)",
+          oic: "Engr. Ashley M. Albaña",
+          position: "City Engineer",
+          logo: "/images/City_seal.png",
+          tag: 22,
+        },
+        {
+          title: "GSO",
+          oic: "Atty. Isagani G. Togonon",
+          position: "General Services Officer",
+          logo: "/images/City_seal.png",
+          tag: 23,
+        },
+        {
+          title: "City Treasures`s Office",
+          oic: "MA. EVELYN OBONG JUNIO",
+          position: "Acting City Treasurer",
+          logo: "/images/City_seal.png",
+          tag: 24,
+        }
       ],
       items: [
         "City Mayors Office",
