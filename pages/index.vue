@@ -12,19 +12,21 @@
                     <div class="wtc-inner">
                         <h4>Welcome to Calbayog City</h4>
                         <p>
-                        Welcome to the official website of the City Government of Calbayog!
+                          Welcome to the website of the Local Government of Calbayog City. 
                         </p>
-                        <br>
+                    <br>
                         <p>
-                        Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.
+                          We are pleased to introduce to you the different departments and offices of the city government and the links to their online pages.
                         </p>
+                        <p>
+                            We want to reach out to our stakeholder and encourage feedback from them. It is our vision to develop an empowered people with a high sense of community belongingness.  We want our community to actively engage in the affairs of the city and the task of city-building.
+                          </p>
                         <div class="hid-message-welcome" :class="{animate : showWelcomeMessage}">
                           <p>
-                            Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.
+                            Your city government envisions a family of truly dedicated and hard-working public servants worthy of the trust and confidence of Calbayagnons and other clients. We commit to deliver timely and efficient services the best we can.
                           </p>
-                          <p>
-                            Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.
-                          </p>
+                          <p>We assure you that we will be responsive to your inquiries for information and services.</p>
+                          <p>Happy browsing.</p>
                         </div>
                     </div>
                     <button class="read-more" @click="readMoreWelcome" :class="{animate : showWelcomeMessage}">READ MORE</button>
@@ -37,19 +39,21 @@
                 <div class="wtc-inner">
                         <h4>Welcome to Calbayog City</h4>
                         <p>
-                        Welcome to the official website of the City Government of Calbayog!
+                          Welcome to the website of the Local Government of Calbayog City. 
                         </p>
                         <br>
                         <p>
-                        Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.
+                          We are pleased to introduce to you the different departments and offices of the city government and the links to their online pages.
                         </p>
+                        <p>
+                            We want to reach out to our stakeholder and encourage feedback from them. It is our vision to develop an empowered people with a high sense of community belongingness.  We want our community to actively engage in the affairs of the city and the task of city-building.
+                          </p>
                         <div class="hid-message-welcome" :class="{animate : showWelcomeMessage}">
                           <p>
-                            Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.
+                            Your city government envisions a family of truly dedicated and hard-working public servants worthy of the trust and confidence of Calbayagnons and other clients. We commit to deliver timely and efficient services the best we can.
                           </p>
-                          <p>
-                            Our aim to provide transparency and accountability to our constituents and to others who take interest in our beloved City is further extended in this website. As Calbayog consistently delivers good governance and is an emporium of natural attractions, we are indeed dubbed as a City “Where Good Things Happen”.
-                          </p>
+                          <p>We assure you that we will be responsive to your inquiries for information and services.</p>
+                          <p>Happy browsing.</p>
                         </div>
                     </div>
                     <button class="read-more" @click="readMoreWelcome" :class="{animate : showWelcomeMessage}">READ MORE</button>
@@ -224,8 +228,14 @@
         </div>
       </div>
     </div>
+<<<<<<< Updated upstream
    
     <div class="mapouter"><div class="gmap_canvas"><iframe class="gmap_iframe" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=2048&amp;height=432&amp;hl=en&amp;q=calbayog city hall&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://mcpenation.com/">Minecraft Website</a></div><style>.mapouter{position:relative;text-align:right;width:2048px;height:432px;}.gmap_canvas {overflow:hidden;background:none!important;width:2048px;height:432px;}.gmap_iframe {width:2048px!important;height:432px!important;}</style></div>
+=======
+    <div class="maps-section">
+    <iframe width=100% height="783" id="gmap_canvas" src="https://maps.google.com/maps?q=calbayog%20city%20hall&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+    </div>
+>>>>>>> Stashed changes
     <div class="services-section">
       <div class="container services-con">
         <div class="services-offer">
@@ -603,6 +613,13 @@ export default {
           {
             tag:8,
             title: 'CITY PLANNING AND DEVELOPMENT OFFICE', 
+            icon: '/images/Icon awesome-traffic-light.png', 
+            name: 'peace',
+            mandate: 'Formulate integrated economic, social, physical and other development plans and policies for consideration of Local Development Council.',
+          },
+          {
+            tag:4,
+            title: 'CITY ACCOUNTANT OFFICE', 
             icon: '/images/Icon awesome-traffic-light.png', 
             name: 'peace',
             mandate: 'Formulate integrated economic, social, physical and other development plans and policies for consideration of Local Development Council.',

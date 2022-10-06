@@ -108,7 +108,11 @@
     {
       "title": "Assesor`s Office",
       "oic": "Joselito A. Montealto, JD",
+<<<<<<< Updated upstream
       "position": "OIC-AO",
+=======
+      "position": "OIC-Assissor",
+>>>>>>> Stashed changes
       "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2Fhead%2FJoselito%20A.%20Montealto%2C%20JD%20-%20OIC-%20Assessor.png?alt=media&token=9b0b18db-a995-4217-8788-dd709e4a49d6",
       "tag": 5,
       "banner":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2Fhead%2F306908705_110180918512917_1090816531387039624_n.jpg?alt=media&token=2e9e472a-374b-4c05-842a-ea0ddc768c40",
