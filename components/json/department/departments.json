@@ -108,7 +108,7 @@
     {
       "title": "Assesor`s Office",
       "oic": "Joselito A. Montealto, JD",
-      "position": "DEPARTMENT HEAD",
+      "position": "OIC-AO",
       "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2Fhead%2FJoselito%20A.%20Montealto%2C%20JD%20-%20OIC-%20Assessor.png?alt=media&token=9b0b18db-a995-4217-8788-dd709e4a49d6",
       "tag": 5,
       "banner":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2Fhead%2F306908705_110180918512917_1090816531387039624_n.jpg?alt=media&token=2e9e472a-374b-4c05-842a-ea0ddc768c40",
@@ -1002,6 +1002,47 @@
       "allEmp":[
         {
           "allinImg":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/employees%2Ftreasurer.jpg?alt=media&token=135b5ae4-83f0-4d6b-a814-f7c6589a27fe"
+        }
+      ]
+    },
+    {
+      "title": "City Assessor's Office",
+      "oic": "Engr. Ricky A. Moreno",
+      "position": "OIC-CHDO",
+      "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2Fhead%2FEngr.%20Ricky%20A.%20Moreno%20-%20OIC-CHDO.png?alt=media&token=f4b2f5a2-34bc-413d-8bde-842f992fb76c",
+      "tag": 5,
+      "banner":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2Fhead%2Fwall.jpg?alt=media&token=89fcaac4-60c5-4320-aa08-b320e20d23fe",
+      "mission":
+        "Implement a quick Reference System on Real Property Tax Assessment and Appraisal and come up with real property records management.",
+      "vision":
+        "Effective &amp; Efficient Real Property Tax Assessment Office through upgraded assessment techniques, procedures, &amp; practices by automation.",
+      "welcome": "",
+      "employees": [
+        { "name": "", "position": "", "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5699-removebg-preview.png?alt=media&token=74621e19-9560-4b83-8588-4a1ec6325c37" },
+        { "name": "", "position": "", "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5701-removebg-preview.png?alt=media&token=5a16bf4c-d2b7-4e1b-b5eb-07cd967c76c2" },
+        { "name": "", "position": "", "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5703-removebg-preview.png?alt=media&token=e9585fc6-9cfa-44b1-8b4b-56214f1e7c0c" },
+        { "name": "", "position": "", "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5705-removebg-preview.png?alt=media&token=08317e0e-38fb-42d9-9484-94b5cb1f7ad2" },
+        { "name": "", "position": "", "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5707-removebg-preview.png?alt=media&token=0bf881ce-b9c1-4d01-87b5-c6c9f432ee81" },
+        { "name": "", "position": "", "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5710-removebg-preview.png?alt=media&token=bf538645-aa44-4dc2-b6ad-00d21d138b62" },
+        { "name": "", "position": "", "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5712-removebg-preview.png?alt=media&token=1d582b95-f819-4358-b8c9-d0995412cea8" },
+        { "name": "", "position": "", "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5714-removebg-preview.png?alt=media&token=80ec6977-3d95-44dc-950b-979f2bb6c881" },
+        { "name": "", "position": "", "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5716-removebg-preview.png?alt=media&token=733d0f15-9c63-46e9-ac29-cadd6b972d51" },
+        { "name": "", "position": "", "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5718-removebg-preview.png?alt=media&token=4472e596-87f2-4efb-a193-883cf41fd6e0" },
+        { "name": "", "position": "", "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5720-removebg-preview.png?alt=media&token=0a9c71f6-b11e-4be5-8c10-4f9fe3c89392" },
+        { "name": "", "position": "", "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5725-removebg-preview.png?alt=media&token=11788bd8-6bb3-472a-b730-57dad7fa8cd0" },
+        { "name": "", "position": "", "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5727-removebg-preview.png?alt=media&token=4f238130-86e7-490b-b29f-a66fc0f72344" },
+        { "name": "", "position": "", "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5729-removebg-preview.png?alt=media&token=1fd7b2f5-99e7-4b7b-9928-d23b83ad56ea" },
+        { "name": "", "position": "", "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5732-removebg-preview.png?alt=media&token=0bce5803-274a-4858-853c-4716f8a7a099" },
+        { "name": "", "position": "", "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5735-removebg-preview.png?alt=media&token=3eae2166-bfa9-45d6-96a0-33777f38a627" },
+        { "name": "", "position": "", "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5737-removebg-preview.png?alt=media&token=4da50bc8-62cc-4783-9817-277edce4b7a7" },
+        { "name": "", "position": "", "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5739-removebg-preview.png?alt=media&token=9bd98684-a567-4943-b874-0d95eaefb1b9" },
+        { "name": "", "position": "", "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5742-removebg-preview.png?alt=media&token=2c4f8850-d3ab-46b9-9336-10b3a44569cf" },
+        { "name": "", "position": "", "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5744-removebg-preview.png?alt=media&token=33fbc37b-1883-4c5d-a1b7-2dad3a96cf1a" },
+        { "name": "", "position": "", "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2FIMG_5754-removebg-preview.png?alt=media&token=decf0ac7-d5d8-40b6-add7-27fa4f90e6cd" }
+      ],
+      "allEmp":[
+        {
+          "allinImg":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/employees%2FEEDMO.jpg?alt=media&token=e6e14d04-7ceb-40ed-be27-2f229bd20a4a"
         }
       ]
     }

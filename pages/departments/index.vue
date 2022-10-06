@@ -106,7 +106,7 @@ export default {
           tag: 1,
         },
         {
-          title: "City Vice - Mayor Office",
+          title: "The Sangguniang Panlunsod Office",
           oic: "Rex M. Daguman",
           position: "CITY VICE - MAYOR",
           logo: "/images/City_seal.png",
@@ -203,14 +203,7 @@ export default {
           logo: "/images/City_seal.png",
           tag: 15,
         },
-        // {
-        //     title: 'City Mayors Office',
-        //     oic: 'Raymund C. Uy',
-        //     position: 'CITY MAYOR',
-        //     logo: '/images/City_seal.png',
-        //     tag:16
-
-        // },
+        
         {
           title: "City Environment Office",
           oic: "Lorenzo C. Raz Jr.",
