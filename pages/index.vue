@@ -228,14 +228,10 @@
         </div>
       </div>
     </div>
-<<<<<<< Updated upstream
-   
-    <div class="mapouter"><div class="gmap_canvas"><iframe class="gmap_iframe" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=2048&amp;height=432&amp;hl=en&amp;q=calbayog city hall&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://mcpenation.com/">Minecraft Website</a></div><style>.mapouter{position:relative;text-align:right;width:2048px;height:432px;}.gmap_canvas {overflow:hidden;background:none!important;width:2048px;height:432px;}.gmap_iframe {width:2048px!important;height:432px!important;}</style></div>
-=======
     <div class="maps-section">
     <iframe width=100% height="783" id="gmap_canvas" src="https://maps.google.com/maps?q=calbayog%20city%20hall&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
     </div>
->>>>>>> Stashed changes
+
     <div class="services-section">
       <div class="container services-con">
         <div class="services-offer">
