@@ -1440,6 +1440,8 @@ a{
         }
     }
 }
+.mapouter{position:relative;text-align:right;height:500px;width:1080px;}
+.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:1080px;}
 
 .maps-section{
     height: 783px;
