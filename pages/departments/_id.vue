@@ -123,19 +123,23 @@
           </a>
         </div>
       </div>
-      <div class="news-single-wrapper" id="accomp">
+      <div class="news-single-wrapper" id="accomp" v-if="selected_activity.title != ''">
         <div class="container">
           <div class="title-search-wrapper">
-            <h3>Activities Post</h3>
+            <h3>Activity Post</h3>
           </div>
-          <div class="nsp-content">
-            <div class="full-img">
-              <img
+          <div class="nsp-content"  >
+            <div class="full-img"  @click="jobsModal(selected_activity)">
+              <!-- <img
                 :src="require('~/static/images/300819481_120140560796856_1936510054696472107_n.png')"
                 @click="jobsModal"
+              > -->
+              <img
+                :src="selected_activity.cover"
+               
               >
             </div>
-            <div class="grid-img">
+            <!-- <div class="grid-img">
               <div class="nsp-imgs">
                 <img
                   :src="require('~/static/images/301651196_120137000797212_6510033162591886582_n.png')"
@@ -158,22 +162,20 @@
                   @click="jobsModal"
                 >25+</p>
               </div>
-            </div>
+            </div> -->
             <div class="nsp-articles">
-              <div class="desc">
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                </p>
-                <br>
-                <p>
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                </p>
-                <br>
-                <p>
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                </p>
+              <div class="desc" v-html="selected_activity.description">
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="news-single-wrapper" id="accomp" v-else>
+        <div class="container">
+          <div class="title-search-wrapper">
+            <h3>No Activity Post</h3>
+          </div>
+          
         </div>
       </div>
     </div>
@@ -328,7 +330,7 @@
         <div class="images-slider">
           <v-carousel class="news-slider-img">
             <v-carousel-item
-              v-for="(item,i) in jobs"
+              v-for="(item,i) in activity_modal"
               :key="i"
               :src="item.img"
             ></v-carousel-item>
@@ -343,13 +345,13 @@
           </div>
           <div class="title-close-wrapper">
             <h3 class="title">
-              Activities Post
+              Activity Post
             </h3>
           </div>
           <div class="news-modal-content">
             <div class="news-description">
-              <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-              </p>
+              <span v-html="activity_modal_desc">
+              </span>
             </div>
           </div>
         </div>
@@ -412,6 +414,7 @@ import "vue-slick-carousel/dist/vue-slick-carousel.css";
 import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
 import department_datas from "~/components/json/department/departments.json";
 import department_programs_accomplishments from "~/components/json/department/programs_accomplishment.json";
+import activity_post2 from "~/components/json/department/activity_post2.json";
 export default {
   name: "About",
   layouts: "default",
@@ -420,6 +423,7 @@ export default {
     return {
       departments:department_datas,
       department_programs:department_programs_accomplishments,
+      activity_post:activity_post2,
       officialIndex: "",
       showWelcomeMesDept: false,
       imgUrl: "",
@@ -648,7 +652,10 @@ export default {
       selected_department: {},
       selected_programs: [],
       programs_clicked_item: [],
-      programs_clicked_item_description:''
+      programs_clicked_item_description:'',
+      selected_activity:{},
+      activity_modal:[],
+      activity_modal_desc:[]
       // departments: [
       //   {
       //     title: "City Mayors Office",
@@ -1469,6 +1476,7 @@ export default {
   mounted() {
     this.filterDepartments();
     this.filterPrograms();
+    this.filterActivities();
   },
   methods: {
     // getImg(val){
@@ -1480,7 +1488,11 @@ export default {
     readMoreWelcome() {
       this.showWelcomeMesDept = !this.showWelcomeMesDept;
     },
-    jobsModal() {
+    jobsModal(val) {
+      this.activity_modal = []
+      this.activity_modal = val.images
+      this.activity_modal_desc = val.description
+      console.log(this.activity_modal, 'test')
       this.$modal.show("jobsModal");
     },
     closeNewsModal() {
@@ -1517,6 +1529,14 @@ export default {
         return x
       })
       console.log(this.selected_programs, 'programs')
+    },
+    filterActivities() {
+      this.activity_post.forEach((activity_post) => {
+        if (activity_post.tag == this.$route.params.id) {
+          this.selected_activity = activity_post;
+          console.log(this.selected_activity, "activiies");
+        }
+      });
     }
     
   },
