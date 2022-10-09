@@ -1,0 +1,2 @@
+assessor = 5
+lgu = 1
