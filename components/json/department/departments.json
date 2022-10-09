@@ -106,75 +106,6 @@
         ]
     },
     {
-      "title": "Assesor`s Office",
-      "oic": "Joselito A. Montealto, JD",
-      "position": "OIC-Assissor",
-      "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2Fhead%2FJoselito%20A.%20Montealto%2C%20JD%20-%20OIC-%20Assessor.png?alt=media&token=9b0b18db-a995-4217-8788-dd709e4a49d6",
-      "tag": 5,
-      "banner":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2Fhead%2F306908705_110180918512917_1090816531387039624_n.jpg?alt=media&token=2e9e472a-374b-4c05-842a-ea0ddc768c40",
-      "mission":
-        "Implement a quick Reference System on Real Property Tax Assessment and Appraisal and come up with real property records management.",
-      "vision":
-        "Effective & Efficient Real Property Tax Assessment Office through upgraded assessment techniques, procedures, & practices by automation.",
-      "welcome": "",
-      "employees": [
-        {
-          "name": "",
-          "position": "",
-          "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6014-removebg-preview.png?alt=media&token=b13d994e-d9d3-4b7c-9a84-75ec388e4148"
-        },
-        {
-          "name": "",
-          "position": "",
-          "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6016-removebg-preview.png?alt=media&token=4ae6f631-d079-44c6-afd0-f58d442578eb"
-        },
-        {
-          "name": "",
-          "position": "",
-          "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6020-removebg-preview.png?alt=media&token=0837af96-247b-40be-a581-2abf117f5f09"
-        },
-        {
-          "name": "",
-          "position": "",
-          "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6023-removebg-preview.png?alt=media&token=a55b6a22-9f76-483c-a299-b817033c6f76"
-        },
-        {
-          "name": "",
-          "position": "",
-          "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6026-removebg-preview.png?alt=media&token=c19a01fa-d9e8-4e40-9724-80dfac069c7a"
-        },
-        {"name":"", "postion":"", "img":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6031-removebg-preview.png?alt=media&token=bd2e0b7e-60f0-4cc1-8045-e1ff18ed8bf1"},
-        {"name":"", "postion":"", "img":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6035-removebg-preview.png?alt=media&token=15518644-254e-41ad-8922-a6fe8868bda9"},
-        {"name":"", "postion":"", "img":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6037-removebg-preview.png?alt=media&token=7309fbe1-b255-4617-a84f-efa2d286dd4c"},
-        {"name":"", "postion":"", "img":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6039-removebg-preview.png?alt=media&token=a77d3eb5-71ae-467b-9c59-e73abd4c864a"},
-        {"name":"", "postion":"", "img":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6041-removebg-preview.png?alt=media&token=f4db629c-aed3-45ba-8984-2c6ae51889ca"},
-        {"name":"", "postion":"", "img":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6043-removebg-preview.png?alt=media&token=8473f988-96c2-41be-bda5-172ff321671d"},
-        {"name":"", "postion":"", "img":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6045-removebg-preview.png?alt=media&token=a468e967-3d50-4c01-ba99-59d586c92540"},
-        {"name":"", "postion":"", "img":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6047-removebg-preview.png?alt=media&token=75e6b0bc-1767-45e0-9957-4e12c5792192"},
-        {"name":"", "postion":"", "img":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6049-removebg-preview.png?alt=media&token=9b872915-bf5d-4ac5-9547-e118815901b7"},
-        {"name":"", "postion":"", "img":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6051-removebg-preview%20(1).png?alt=media&token=b8c49dbd-924f-4650-806b-45eaa7e9c2bb"},
-        {"name":"", "postion":"", "img":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6054-removebg-preview%20(1).png?alt=media&token=b0573a06-983d-4125-996c-a149b78d0971"},
-        {"name":"", "postion":"", "img":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6056-removebg-preview.png?alt=media&token=cf0a4dc0-f58c-4553-84e4-49569af57122"},
-        {"name":"", "postion":"", "img":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6058-removebg-preview.png?alt=media&token=fc4f8ece-7445-498a-af46-1079976383e2"},
-        {"name":"", "postion":"", "img":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6060-removebg-preview.png?alt=media&token=e6f8ea39-1f7c-4759-a111-f9f028669a29"},
-        {"name":"", "postion":"", "img":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6062-removebg-preview.png?alt=media&token=85180858-c81c-4928-886d-fc70709227a9"},
-        {"name":"", "postion":"", "img":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6066-removebg-preview.png?alt=media&token=fab2a4af-c647-4465-aa95-34df527c8c2a"},
-        {"name":"", "postion":"", "img":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6068-removebg-preview.png?alt=media&token=77d694d0-dff2-4349-94e1-f8d6e329adfa"},
-        {"name":"", "postion":"", "img":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6070-removebg-preview.png?alt=media&token=dd9c56a9-c5f3-49a7-bbbc-9caf2b1cb288"},
-        {"name":"", "postion":"", "img":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6072-removebg-preview.png?alt=media&token=6b251101-97de-45e0-961c-bc08a76f7296"},
-        {"name":"", "postion":"", "img":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6074-removebg-preview.png?alt=media&token=7ac9bb07-6c3e-4fb7-acdb-45b3396d36e6"},
-        {"name":"", "postion":"", "img":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6076-removebg-preview.png?alt=media&token=01ca93b5-2833-412a-8777-236a78d3b74e"},
-        {"name":"", "postion":"", "img":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6078-removebg-preview%20(1).png?alt=media&token=b5954d3c-eda6-4cab-9d47-e3f22dbaa6c7"},
-        {"name":"", "postion":"", "img":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6080-removebg-preview.png?alt=media&token=551c40de-a6cd-4f00-9ac4-8404483b7c37"},
-        {"name":"", "postion":"", "img":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2FIMG_6082-removebg-preview.png?alt=media&token=96ae7bf5-d6b4-40b0-8755-68978ce7d8a0"}
-      ],
-      "allEmp":[
-        {
-          "allinImg":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/employees%2FAssessor.jpg?alt=media&token=2997b132-2df2-470b-aef7-41c8f276de2e"
-        }
-      ]
-    },
-    {
       "title": "Bussiness Permits and Licensing Office",
       "oic": "Leonardo A. Bedio",
       "position": "DEPARTMENT HEAD",
@@ -1007,9 +938,9 @@
     },
     {
       "title": "City Assessor's Office",
-      "oic": "Engr. Ricky A. Moreno",
-      "position": "OIC-CHDO",
-      "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2Fhead%2FEngr.%20Ricky%20A.%20Moreno%20-%20OIC-CHDO.png?alt=media&token=f4b2f5a2-34bc-413d-8bde-842f992fb76c",
+      "oic": "Joselito A. Montealto, JD",
+      "position": "OIC-Assissor",
+      "img": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assesors%2Fhead%2FJoselito%20A.%20Montealto%2C%20JD%20-%20OIC-%20Assessor.png?alt=media&token=9b0b18db-a995-4217-8788-dd709e4a49d6",
       "tag": 5,
       "banner":"https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/chdo%2Fhead%2Fwall.jpg?alt=media&token=89fcaac4-60c5-4320-aa08-b320e20d23fe",
       "mission":
