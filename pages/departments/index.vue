@@ -99,7 +99,7 @@ export default {
     return {
       departments: [
         {
-          title: "City Mayors Office",
+          title: "City Mayor's Office",
           oic: "Raymund C. Uy",
           position: "CITY MAYOR",
           logo: "/images/City_seal.png",
@@ -113,7 +113,7 @@ export default {
           tag: 2,
         },
         {
-          title: "City Administrator Office",
+          title: "City Administrator's Office",
           oic: "Augusto L. Magdaraog",
           position: "DEPARTMENT HEAD",
           logo: "/images/City_seal.png",
@@ -121,7 +121,7 @@ export default {
         },
         {
           title: "City Accountant Office",
-          oic: "",
+          oic: "Ma. Rissa T. Colico",
           position: "DEPARTMENT HEAD",
           logo: "/images/City_seal.png",
           tag: 4,
@@ -134,7 +134,7 @@ export default {
           tag: 5,
         },
         {
-          title: "Bussiness Permits and Licensing Office",
+          title: "Business Permits and Licensing Office",
           oic: "Leonardo A. Bedio",
           position: "DEPARTMENT HEAD",
           logo: "/images/City_seal.png",
@@ -155,14 +155,14 @@ export default {
           tag: 8,
         },
         {
-          title: "City Veterenary Office",
+          title: "City Veterinary Office",
           oic: "Dr. Editha Ancheta",
           position: "CITY VETERINARIAN",
           logo: "/images/City_seal.png",
           tag: 9,
         },
         {
-          title: "City Population",
+          title: "City Population Office",
           oic: "Atty. Ma. Cecil Y. Rueda",
           position: "",
           logo: "/images/City_seal.png",
@@ -190,7 +190,7 @@ export default {
           tag: 13,
         },
         {
-          title: "CHR",
+          title: "City Human Resource Management Office",
           oic: "",
           position: "",
           logo: "/images/City_seal.png",
@@ -203,16 +203,16 @@ export default {
           logo: "/images/City_seal.png",
           tag: 15,
         },
-        
+
         {
-          title: "City Environment Office",
-          oic: "Lorenzo C. Raz Jr.",
+          title: "City Environment and Natural Resources Office",
+          oic: "Lorenzo C. Ras Jr.",
           position: "",
           logo: "/images/City_seal.png",
           tag: 16,
         },
         {
-          title: "City Disaster Risk and Management Office",
+          title: "City Disaster Risk Reduction and Management Office",
           oic: "Dr. Sandro C. Daguman",
           position: "",
           logo: "/images/City_seal.png",
@@ -233,7 +233,7 @@ export default {
           tag: 19,
         },
         {
-          title: "The Solid Waste Management Office (SWMO)",
+          title: "Solid Waste Management Office",
           oic: "Engr. Reynaldo L. Gonzaga",
           position: "CGDH1",
           logo: "/images/City_seal.png",
@@ -247,31 +247,31 @@ export default {
           tag: 21,
         },
         {
-          title: "City Engineering Office (CEEO)",
+          title: "City Engineering Office",
           oic: "Engr. Ashley M. Albaña",
           position: "City Engineer",
           logo: "/images/City_seal.png",
           tag: 22,
         },
         {
-          title: "GSO",
+          title: "General Service Office",
           oic: "Atty. Isagani G. Togonon",
           position: "General Services Officer",
           logo: "/images/City_seal.png",
           tag: 23,
         },
         {
-          title: "City Treasures`s Office",
+          title: "City Treasurer`s Office",
           oic: "MA. EVELYN OBONG JUNIO",
           position: "Acting City Treasurer",
           logo: "/images/City_seal.png",
           tag: 24,
-        }
+        },
       ],
       items: [
-        "City Mayors Office",
+        "City Mayor's Office",
         "City Vice - Mayor Office",
-        "City Administrator Office",
+        "City Administrator's Office",
         "City Accountant Office",
         "Assesor`s Office",
         "BPLO",
