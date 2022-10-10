@@ -191,6 +191,11 @@ export default {
             "https://scontent.fceb2-1.fna.fbcdn.net/v/t1.18169-9/10639714_274422119424344_978357608409355447_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=rR0Y1gALphIAX_0IMT0&_nc_ht=scontent.fceb2-1.fna&oh=00_AT9wafP8vTf9dSi4q1hle__JkkPX0NbhjcnYUkr3am56pw&oe=635F34B1",
           logo: "/images/facebook-f-logo-2019.png",
         },
+        {
+          title: "City Tourism and Information Office",
+          fblink: "",
+          logo: "",
+        },
       ],
       items: [
         "City Mayors Office",

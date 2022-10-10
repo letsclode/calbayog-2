@@ -267,6 +267,13 @@ export default {
           logo: "/images/City_seal.png",
           tag: 24,
         },
+        {
+          title: "City Tourism and Information Office",
+          oic: "",
+          position: "",
+          logo: "",
+          tag: 25,
+        },
       ],
       items: [
         "City Mayor's Office",

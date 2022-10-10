@@ -409,174 +409,192 @@ export default {
     return {
       newsArray: [
         {
+          title: "Opening Ceremony",
+          date: "3 OCTOBER, 2022",
+          description:
+            "We invite all participating entries in the following competitions to be present during the opening ceremonies and awarding of winners later at the Calbayog City Convention Center at 6 pm.",
+          frame:
+            "https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FIRcalbayog247%2Fvideos%2F496738412041957%2F&show_text=false&width=560&t=0 ",
+          url: "news/vid1",
+        },
 
-            title: 'Opening Ceremony',
-            date: '3 OCTOBER, 2022',
-            description: 'We invite all participating entries in the following competitions to be present during the opening ceremonies and awarding of winners later at the Calbayog City Convention Center at 6 pm.',
-            frame: 'https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FIRcalbayog247%2Fvideos%2F496738412041957%2F&show_text=false&width=560&t=0 ',
-            url: 'news/vid1',
-          },
-          
-          {
-            title: 'SANGGUNIANG PANLUNGSOD PUBLIC HEARING',
-            date: '21 SEPTEMBER, 2022',
-            description: 'SAMELCO 1 UMATUBANG SA KONSEHO SAN CALBAYOG PARA BATUNON AN MGA PAKIANA HIUNONG SAN SOBRA NGA PAGHATAAS SAN SUKOT SA KURYENTE',
-            frame: 'https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FIRcalbayog247%2Fvideos%2F465375588855152%2F&show_text=false&width=560&t=0',
-            url: 'news/vid2',
-          },
-          {
-            title: 'THE LEGISLATIVE HOUR WITH VICE MAYOR REX DAGUMAN & CITY COUNCILOR ABBIE IRIGON-YULO',
-            date: 'AUGUST 17, 2022',
-            description: 'MAYOR REX DAGUMAN & CITY COUNCILOR ABBIE IRIGON-YULO KNOW HOW OUR VICE MAYOR RENDER HIS WORKS.',
-            frame: 'https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FIRcalbayog247%2Fvideos%2F781763489628704%2F&show_text=false&width=560&t=0',
-            url: 'news/vid3',
-          }
-        ],
-        eventGallery: [
-          {
-            tag:1, 
-            title: 'October' ,
-            img: '/images/spark-oct.jpg'
-          },
-          { 
-            tag:2,
-            title: 'September' ,
-            img: '/images/sept.png'
-          },
-          { 
-            tag:3,
-            title: 'August' , 
-            img: '/images/aug.png'
-          },
-          { 
-            tag:4,
-            title: 'July' , 
-            img: '/images/july1.png'
-          },
-          { 
-            title: 'June' , 
-            img: '/images/2378565_orig.png'
-          },
-        ],
-        agencyArray: [
-          {
-            tag:1,
-            title: 'CITY MAYOR`S OFFICE',
-            icon: '/images/Icon awesome-leaf.png', 
-            name: 'agri',
-            mandate: 'The Mayor`s Office Operation coordinates and oversees the management of city governmental operations to promote the efficient and effective delivery of agency services. The office mandate to both provide the operational support for all agencies as well as measure and report on agency performance. Operations helps City agencies to improve productivity by providing recommendations and institutional support in addition to reporting areas of success and identifying the areas of possible improvement.',
-          },
-          {
-            tag:2,
-            title: 'Sangguniang Panglunsod', 
-            icon: '/images/Icon ionic-md-warning.png', 
-            name: 'disaster',
-            mandate: '',
-          },
-          {
-            tag:3,
-            title: 'City Administrator`s Office', 
-            icon: '/images/Icon awesome-graduation-cap.png', 
-            name: 'educ',
-            mandate: '',
-          },
-          {
-            tag:4,
-            title: 'City Accountanting Office', 
-            icon: '/images/Icon awesome-briefcase-medical.png', 
-            name: 'health',
-            mandate: 'Formulate integrated economic, social, physical and other development plans and policies for consideration of Local Development Council.',
-          },
-          {
-            tag:5,
-            title: 'Assesor`s Office', 
-            icon: '/images/Icon awesome-building.png', 
-            name: 'infra',
-            mandate: 'R.A. 7160 Title Two Sections 197 to 283 of the Local Government Code',
-          },
-          {
-            tag:6,
-            title: 'Business Permits and Licensing Office', 
-            icon: '/images/Icon awesome-dove.png', 
-            name: 'peace',
-            mandate: 'In charge of the business permitting and licensing on private commercial, industrial and other business establishments within the jurisdiction of the local government unit in relation to the implementation of tax ordinances pursuant to the provisions provided under Book II of RA # 7160 otherwise known as the Local Government Code of 1991',
-          },
-          {
-            tag:7,
-            title: 'Social Welfare and Development Office', 
-            icon: '/images/Icon open-graph.png', 
-            name: 'pov',
-            mandate: '',
-          },
-          {
-            tag:8,
-            title: 'City Planning and Development Office', 
-            icon: '/images/Icon awesome-recycle.png', 
-            name: 'waste',
-            mandate: 'Formulate integrated economic, social, physical and other development plans and policies for consideration of Local Development Council.',
-          },
-          {
-            tag:9,
-            title: 'City Veterinary Office', 
-            icon: '/images/Icon awesome-umbrella-beach.png', 
-            name: 'tourism',
-            mandate: 'Formulate measures for the consideration of the Sanggunian &amp; provide technical assistance &amp; support to the Mayor in carrying out measures to ensure the delivery of basic services. Develop plans &amp; strategies &amp; upon approval hereto by the mayor, implement the same particularly those which have to do with the veterinary related activities w/c the mayor is empowered to implement &amp; w/c the Sanggunian is empowered to provide for under this code.In addition to the forgoing duties &amp; functions, the veterinarian shall:',
-          },
-          {
-            tag:10,
-            title: 'City Population Office', 
-            icon: '/images/Icon awesome-traffic-light.png', 
-            name: 'transpo',
-            mandate: 'Formulate measures for the consideration of the Sanggunian and provide technical assistance and support to the Governor or Mayor, as the case may be, in carrying out measurers to ensure the delivery of basic services and provision of adequate facilities relative to the integration of the population development principles and in providing assess to said services and facilities;',
-          },
-          {
-            tag:11,
-            title: 'City Legal Office', 
-            icon: '/images/Icon awesome-traffic-light.png', 
-            name: 'agri',
-            mandate: 'Pursuant to Section 481 of R.A. 7160, otherwise known as the Local Government Code of 1991, and through the effort and initiative of then City Mayor, Roberto S. Rosales, and the support of then City Vice Mayor and SP Presiding Officer, Dr. Reynaldo S. Uy, and the other members of the Sangguniang Panlungsod, the City Legal Services Office was created in the Local Government Unit (LGU) of Calbayog City in 1993.',
-          },
-          {
-            tag:12,
-            title: 'City Cooperatives Office', 
-            icon: '/images/Icon awesome-traffic-light.png', 
-            name: 'disaster',
-            mandate: 'The City Cooperatives Office was created in 1993 during the incumbency of the late honorable City Mayor Reynaldo S. Uy, M. D., with the strong support of the Sanggunian Panlungsod led by the former honorable City Vice Mayor Mel Senen S. Sarmiento, by virtue of Budget Ordinance 93-01-001.',
-          },
-          {
-            tag:13,
-            title: 'City Budget Office', 
-            icon: '/images/Icon awesome-traffic-light.png', 
-            name: 'transpo',
-            mandate: 'Provide periodic review and disclosure of budgetary status of the Local Government',
-          },
-          {
-            tag:14,
-            title: 'City Human Resource Management Office', 
-            icon: '/images/Icon awesome-traffic-light.png', 
-            name: 'peace',
-            mandate: '',
-          },
-          {
-            tag:15,
-            title: 'City Housing and Development Office', 
-            icon: '/images/Icon awesome-traffic-light.png', 
-            name: 'infra',
-            mandate: 'Formulate plans and program applicable to the Housing Program of the city based on RA 7279 or otherwise known as Urban Development and Housing Act of 1992',
-          },
-          {
-            tag:16,
-            title: 'City Environment and natural resources Office', 
-            icon: '/images/Icon awesome-traffic-light.png', 
-            name: 'waste',
-            mandate: 'Management & Develop Natural Resource of the City',
-          },
-          {
-            tag:17,
-            title: 'City Disaster Risk reduction and Management Office', 
-            icon: '/images/Icon awesome-traffic-light.png', 
-            name: 'agri',
-            mandate: 'The office is tasked to conduct and organized disaster preparedness activities to save lives and properties.',
+        {
+          title: "SANGGUNIANG PANLUNGSOD PUBLIC HEARING",
+          date: "21 SEPTEMBER, 2022",
+          description:
+            "SAMELCO 1 UMATUBANG SA KONSEHO SAN CALBAYOG PARA BATUNON AN MGA PAKIANA HIUNONG SAN SOBRA NGA PAGHATAAS SAN SUKOT SA KURYENTE",
+          frame:
+            "https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FIRcalbayog247%2Fvideos%2F465375588855152%2F&show_text=false&width=560&t=0",
+          url: "news/vid2",
+        },
+        {
+          title:
+            "THE LEGISLATIVE HOUR WITH VICE MAYOR REX DAGUMAN & CITY COUNCILOR ABBIE IRIGON-YULO",
+          date: "AUGUST 17, 2022",
+          description:
+            "MAYOR REX DAGUMAN & CITY COUNCILOR ABBIE IRIGON-YULO KNOW HOW OUR VICE MAYOR RENDER HIS WORKS.",
+          frame:
+            "https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FIRcalbayog247%2Fvideos%2F781763489628704%2F&show_text=false&width=560&t=0",
+          url: "news/vid3",
+        },
+      ],
+      eventGallery: [
+        {
+          tag: 1,
+          title: "October",
+          img: "/images/spark-oct.jpg",
+        },
+        {
+          tag: 2,
+          title: "September",
+          img: "/images/sept.png",
+        },
+        {
+          tag: 3,
+          title: "August",
+          img: "/images/aug.png",
+        },
+        {
+          tag: 4,
+          title: "July",
+          img: "/images/july1.png",
+        },
+        {
+          title: "June",
+          img: "/images/2378565_orig.png",
+        },
+      ],
+      agencyArray: [
+        {
+          tag: 1,
+          title: "CITY MAYOR`S OFFICE",
+          icon: "/images/Icon awesome-leaf.png",
+          name: "agri",
+          mandate:
+            "The Mayor`s Office Operation coordinates and oversees the management of city governmental operations to promote the efficient and effective delivery of agency services. The office mandate to both provide the operational support for all agencies as well as measure and report on agency performance. Operations helps City agencies to improve productivity by providing recommendations and institutional support in addition to reporting areas of success and identifying the areas of possible improvement.",
+        },
+        {
+          tag: 2,
+          title: "Sangguniang Panglunsod",
+          icon: "/images/Icon ionic-md-warning.png",
+          name: "disaster",
+          mandate: "",
+        },
+        {
+          tag: 3,
+          title: "City Administrator`s Office",
+          icon: "/images/Icon awesome-graduation-cap.png",
+          name: "educ",
+          mandate: "",
+        },
+        {
+          tag: 4,
+          title: "City Accountanting Office",
+          icon: "/images/Icon awesome-briefcase-medical.png",
+          name: "health",
+          mandate:
+            "Formulate integrated economic, social, physical and other development plans and policies for consideration of Local Development Council.",
+        },
+        {
+          tag: 5,
+          title: "Assesor`s Office",
+          icon: "/images/Icon awesome-building.png",
+          name: "infra",
+          mandate:
+            "R.A. 7160 Title Two Sections 197 to 283 of the Local Government Code",
+        },
+        {
+          tag: 6,
+          title: "Business Permits and Licensing Office",
+          icon: "/images/Icon awesome-dove.png",
+          name: "peace",
+          mandate:
+            "In charge of the business permitting and licensing on private commercial, industrial and other business establishments within the jurisdiction of the local government unit in relation to the implementation of tax ordinances pursuant to the provisions provided under Book II of RA # 7160 otherwise known as the Local Government Code of 1991",
+        },
+        {
+          tag: 7,
+          title: "Social Welfare and Development Office",
+          icon: "/images/Icon open-graph.png",
+          name: "pov",
+          mandate: "",
+        },
+        {
+          tag: 8,
+          title: "City Planning and Development Office",
+          icon: "/images/Icon awesome-recycle.png",
+          name: "waste",
+          mandate:
+            "Formulate integrated economic, social, physical and other development plans and policies for consideration of Local Development Council.",
+        },
+        {
+          tag: 9,
+          title: "City Veterinary Office",
+          icon: "/images/Icon awesome-umbrella-beach.png",
+          name: "tourism",
+          mandate:
+            "Formulate measures for the consideration of the Sanggunian &amp; provide technical assistance &amp; support to the Mayor in carrying out measures to ensure the delivery of basic services. Develop plans &amp; strategies &amp; upon approval hereto by the mayor, implement the same particularly those which have to do with the veterinary related activities w/c the mayor is empowered to implement &amp; w/c the Sanggunian is empowered to provide for under this code.In addition to the forgoing duties &amp; functions, the veterinarian shall:",
+        },
+        {
+          tag: 10,
+          title: "City Population Office",
+          icon: "/images/Icon awesome-traffic-light.png",
+          name: "transpo",
+          mandate:
+            "Formulate measures for the consideration of the Sanggunian and provide technical assistance and support to the Governor or Mayor, as the case may be, in carrying out measurers to ensure the delivery of basic services and provision of adequate facilities relative to the integration of the population development principles and in providing assess to said services and facilities;",
+        },
+        {
+          tag: 11,
+          title: "City Legal Office",
+          icon: "/images/Icon awesome-traffic-light.png",
+          name: "agri",
+          mandate:
+            "Pursuant to Section 481 of R.A. 7160, otherwise known as the Local Government Code of 1991, and through the effort and initiative of then City Mayor, Roberto S. Rosales, and the support of then City Vice Mayor and SP Presiding Officer, Dr. Reynaldo S. Uy, and the other members of the Sangguniang Panlungsod, the City Legal Services Office was created in the Local Government Unit (LGU) of Calbayog City in 1993.",
+        },
+        {
+          tag: 12,
+          title: "City Cooperatives Office",
+          icon: "/images/Icon awesome-traffic-light.png",
+          name: "disaster",
+          mandate:
+            "The City Cooperatives Office was created in 1993 during the incumbency of the late honorable City Mayor Reynaldo S. Uy, M. D., with the strong support of the Sanggunian Panlungsod led by the former honorable City Vice Mayor Mel Senen S. Sarmiento, by virtue of Budget Ordinance 93-01-001.",
+        },
+        {
+          tag: 13,
+          title: "City Budget Office",
+          icon: "/images/Icon awesome-traffic-light.png",
+          name: "transpo",
+          mandate:
+            "Provide periodic review and disclosure of budgetary status of the Local Government",
+        },
+        {
+          tag: 14,
+          title: "City Human Resource Management Office",
+          icon: "/images/Icon awesome-traffic-light.png",
+          name: "peace",
+          mandate: "",
+        },
+        {
+          tag: 15,
+          title: "City Housing and Development Office",
+          icon: "/images/Icon awesome-traffic-light.png",
+          name: "infra",
+          mandate:
+            "Formulate plans and program applicable to the Housing Program of the city based on RA 7279 or otherwise known as Urban Development and Housing Act of 1992",
+        },
+        {
+          tag: 16,
+          title: "City Environment and natural resources Office",
+          icon: "/images/Icon awesome-traffic-light.png",
+          name: "waste",
+          mandate: "Management & Develop Natural Resource of the City",
+        },
+        {
+          tag: 17,
+          title: "City Disaster Risk reduction and Management Office",
+          icon: "/images/Icon awesome-traffic-light.png",
+          name: "agri",
+          mandate:
+            "The office is tasked to conduct and organized disaster preparedness activities to save lives and properties.",
 
           tag: 1,
           title: "Meeting with the Federation of Pedicab Drivers of Calbayog ",
@@ -906,6 +924,14 @@ export default {
           mandate:
             "Formulate integrated economic, social, physical and other development plans and policies for consideration of Local Development Council.",
         },
+
+        {
+          tag: 25,
+          title: "CITY TOURISM AND INFORMATION OFFICE",
+          icon: "/images/Icon awesome-traffic-light.png",
+          name: "peace",
+          mandate: "",
+        },
       ],
       servicesArray: [
         {
@@ -1075,7 +1101,6 @@ export default {
               rows: 1,
               dots: false,
             },
-
           },
         ],
       },
@@ -1090,231 +1115,270 @@ export default {
         swipeToSlide: true,
         responsive: [
           {
-
-            tag:18,
-            title: 'City Drug Abuse Prevention Office', 
-            icon: '/images/Icon awesome-traffic-light.png', 
-            name: 'waste',
-            mandate: '',
+            tag: 18,
+            title: "City Drug Abuse Prevention Office",
+            icon: "/images/Icon awesome-traffic-light.png",
+            name: "waste",
+            mandate: "",
           },
           {
-            tag:19,
-            title: 'City Agriculture Office', 
-            icon: '/images/Icon awesome-traffic-light.png', 
-            name: 'peace',
-            mandate: 'To promote agricultural development by providing the policy framework, public investment and support services, which re needed for domestic and export-oriented enterprise',
+            tag: 19,
+            title: "City Agriculture Office",
+            icon: "/images/Icon awesome-traffic-light.png",
+            name: "peace",
+            mandate:
+              "To promote agricultural development by providing the policy framework, public investment and support services, which re needed for domestic and export-oriented enterprise",
           },
           {
-            tag:20,
-            title: 'Solid Waste Management Office (SWMO)', 
-            icon: '/images/Icon awesome-traffic-light.png', 
-            name: 'disaster',
-            mandate: '',
+            tag: 20,
+            title: "Solid Waste Management Office (SWMO)",
+            icon: "/images/Icon awesome-traffic-light.png",
+            name: "disaster",
+            mandate: "",
           },
           {
-            tag:21,
-            title: 'City Economic Enterprise Development and Management Office', 
-            icon: '/images/Icon awesome-traffic-light.png', 
-            name: 'peace',
-            mandate: '',
+            tag: 21,
+            title: "City Economic Enterprise Development and Management Office",
+            icon: "/images/Icon awesome-traffic-light.png",
+            name: "peace",
+            mandate: "",
           },
           {
-            tag:22,
-            title: 'City Engineering Office', 
-            icon: '/images/Icon awesome-traffic-light.png', 
-            name: 'disaster',
-            mandate: '',
+            tag: 22,
+            title: "City Engineering Office",
+            icon: "/images/Icon awesome-traffic-light.png",
+            name: "disaster",
+            mandate: "",
           },
           {
-            tag:23,
-            title: 'General Services office', 
-            icon: '/images/Icon awesome-traffic-light.png', 
-            name: 'agri',
-            mandate: '',
+            tag: 23,
+            title: "General Services office",
+            icon: "/images/Icon awesome-traffic-light.png",
+            name: "agri",
+            mandate: "",
           },
           {
-            tag:24,
-            title: 'City Treasurer`s Office', 
-            icon: '/images/Icon awesome-traffic-light.png', 
-            name: 'waste',
-            mandate: '',
+            tag: 24,
+            title: "City Treasurer`s Office",
+            icon: "/images/Icon awesome-traffic-light.png",
+            name: "waste",
+            mandate: "",
           },
         ],
-        servicesArray:[
-            {url: 'https://www.bir.gov.ph/' , icon: '/images/Bureau_of_Internal_Revenue_(BIR).svg.png'},
-            {url: 'https://www.prc.gov.ph/' , icon: '/images/g7646.png'},
-            {url: 'https://www.gsis.gov.ph/' , icon: '/images/Government_Service_Insurance_System_(Philippines)_(logo).svg.png'},
-            {url: 'http://www.csc.gov.ph/' , icon: '/images/Civil_Service_Commission.svg.png'},
-            {url: 'https://www.sss.gov.ph/' , icon: '/images/sss-logo-medium.png'},
-            {url: 'https://www.philhealth.gov.ph/' , icon: '/images/Www.philhealth.gov.ph.png'},
+        servicesArray: [
+          {
+            url: "https://www.bir.gov.ph/",
+            icon: "/images/Bureau_of_Internal_Revenue_(BIR).svg.png",
+          },
+          { url: "https://www.prc.gov.ph/", icon: "/images/g7646.png" },
+          {
+            url: "https://www.gsis.gov.ph/",
+            icon: "/images/Government_Service_Insurance_System_(Philippines)_(logo).svg.png",
+          },
+          {
+            url: "http://www.csc.gov.ph/",
+            icon: "/images/Civil_Service_Commission.svg.png",
+          },
+          {
+            url: "https://www.sss.gov.ph/",
+            icon: "/images/sss-logo-medium.png",
+          },
+          {
+            url: "https://www.philhealth.gov.ph/",
+            icon: "/images/Www.philhealth.gov.ph.png",
+          },
         ],
         helpLines: [
           // {name: 'Mayor Office' , hotline: '09278134896'},
           // {name: 'City Council' , hotline: '09553758304'},
-          {name: 'CDRRMO' , hotline: '0955 375 8304 / 0927 813 4896'},
-          {name: 'Police Emergency' , hotline: '0905 425 4511'},
-          {name: 'City Health' , hotline: '2091267 / 0917 312 1174'},
-          {name: 'Fire Station' , hotline: '376 / 2096064 / 0927 127 9488'},
-          {name: 'Coast Guard' , hotline: '0917 771 1263'},
+          { name: "CDRRMO", hotline: "0955 375 8304 / 0927 813 4896" },
+          { name: "Police Emergency", hotline: "0905 425 4511" },
+          { name: "City Health", hotline: "2091267 / 0917 312 1174" },
+          { name: "Fire Station", hotline: "376 / 2096064 / 0927 127 9488" },
+          { name: "Coast Guard", hotline: "0917 771 1263" },
         ],
-        activeNews: '',
+        activeNews: "",
         showWelcomeMessage: false,
         items: [],
-        limitationList:3,
-        screenWidth:0,
-        officials:[
-                {name: 'Hon. Raymund C. Uy', position: 'Calbayog City Mayor', profile: '/images/my.png'}, 
-                {name: 'Daguman, Rex', position: 'Calbayog City Vice-Mayor', profile: '/images/Daguman, Rex.png'},
-                {name: 'Delos Santos, Dolore', position: 'Councilor', profile: '/images/Delos Santos, Dolore.png'}, 
-                {name: 'Enriquez, Bombie', position: 'Councilor', profile: '/images/Enriquez, Bombie.png'}, 
-                {name: 'Gianan, Jessie', position: 'Councilor', profile: '/images/Gianan, Jessie.png'}, 
-                {name: 'Morales, Endo', position: 'Councilor', profile: '/images/Morales, Endo.png'}, 
-                {name: 'Tan, Jormac', position: 'Councilor', profile: '/images/Tan, Jormac.png'}, 
-                {name: 'Irigon, Abbie', position: 'Councilor', profile: '/images/Irigon, Abbie.png'}, 
-                {name: 'Pasacas, Minda', position: 'Councilor', profile: '/images/Pasacas, Minda.png'}, 
-                {name: 'Sumagang, Adjie', position: 'Councilor', profile: '/images/Sumagang, Adjie.png'}, 
-                {name: 'Tafalla, Rhena', position: 'Councilor', profile: '/images/Tafalla, Rhena.png'}, 
-                {name: 'Tan Josie', position: 'Councilor', profile: '/images/Tan Josie red.png'}, 
-                {name: 'Tibo, Edie', position: 'Councilor', profile: '/images/Tibo, Edie.png'}, 
-            ],
-            sliderSettings:{
-                "dots": true,
-                "dotsClass": "slick-dots custom-dot-class",
-                "infinite": false,
-                "slidesToShow": 5,
-                "speed": 300,
-                "rows": 2,
-                "slidesPerRow": 1,
-                "draggable": true,
-                "swipeToSlide": true,
-                "responsive": [
-                        {
-                        "breakpoint": 1300,
-                        "settings": {
-                            "slidesToShow": 4,
-                        }
-                        },
-                        {
-                        "breakpoint": 1200,
-                        "settings": {
-                            "slidesToShow": 3,
-                            
-                        }
-                        },
-                        {
-                        "breakpoint": 1000,
-                            "settings": {
-                                "slidesToShow": 3,
-                                "rows": 1,
-                            }
-                        },
-                        {
-                        "breakpoint": 991,
-                            "settings": {
-                                "slidesToShow": 3,
-                                "rows": 1,
-                                "dots": false,
-                            }
-                        },
-                        {
-                        "breakpoint": 767,
-                            "settings": {
-                                "slidesToShow": 2,
-                                "rows": 1,
-                                "dots": false,
-                            }
-                        },
-                        {
-                        "breakpoint": 600,
-                            "settings": {
-                                "slidesToShow": 2.2,
-                                "rows": 1,
-                                "dots": false,
-                            }
-                        },
-                        {
-                        "breakpoint": 475,
-                            "settings": {
-                                "slidesToShow": 1.3,
-                                "rows": 1,
-                                "dots": false,
-                            }
-                        },
-                        {
-                        "breakpoint": 400,
-                            "settings": {
-                                "slidesToShow": 1,
-                                "rows": 1,
-                                "dots": false,
-                            }
-                        },
-                ]
-            },
-            newsSettings:{
-                "dots": false,
-                "infinite": true,
-                "slidesToShow": 1.4,
-                "speed": 300,
-                "rows": 1,
-                "slidesPerRow": 1,
-                "draggable": true,
-                "swipeToSlide": true,
-                "responsive": [
-                        {
-                        "breakpoint": 475,
-                            "settings": {
-                                "slidesToShow": 1.3,
-                                "rows": 1,
-                                "dots": false,
-                            }
-                        },
-                        {
-                        "breakpoint": 400,
-                            "settings": {
-                                "slidesToShow": 1.2,
-                                "rows": 1,
-                                "dots": false,
-                            }
-                        },
-                        {
-                        "breakpoint": 360,
-                            "settings": {
-                                "slidesToShow": 1,
-                                "rows": 1,
-                                "dots": false,
-                            }
-                        },
-                    ]
-            }
-    }
-
-            breakpoint: 475,
-            settings: {
-              slidesToShow: 1.3,
-              rows: 1,
-              dots: false,
-            },
+        limitationList: 3,
+        screenWidth: 0,
+        officials: [
+          {
+            name: "Hon. Raymund C. Uy",
+            position: "Calbayog City Mayor",
+            profile: "/images/my.png",
           },
           {
-            breakpoint: 400,
-            settings: {
-              slidesToShow: 1.2,
-              rows: 1,
-              dots: false,
-            },
+            name: "Daguman, Rex",
+            position: "Calbayog City Vice-Mayor",
+            profile: "/images/Daguman, Rex.png",
           },
           {
-            breakpoint: 360,
-            settings: {
-              slidesToShow: 1,
-              rows: 1,
-              dots: false,
-            },
+            name: "Delos Santos, Dolore",
+            position: "Councilor",
+            profile: "/images/Delos Santos, Dolore.png",
+          },
+          {
+            name: "Enriquez, Bombie",
+            position: "Councilor",
+            profile: "/images/Enriquez, Bombie.png",
+          },
+          {
+            name: "Gianan, Jessie",
+            position: "Councilor",
+            profile: "/images/Gianan, Jessie.png",
+          },
+          {
+            name: "Morales, Endo",
+            position: "Councilor",
+            profile: "/images/Morales, Endo.png",
+          },
+          {
+            name: "Tan, Jormac",
+            position: "Councilor",
+            profile: "/images/Tan, Jormac.png",
+          },
+          {
+            name: "Irigon, Abbie",
+            position: "Councilor",
+            profile: "/images/Irigon, Abbie.png",
+          },
+          {
+            name: "Pasacas, Minda",
+            position: "Councilor",
+            profile: "/images/Pasacas, Minda.png",
+          },
+          {
+            name: "Sumagang, Adjie",
+            position: "Councilor",
+            profile: "/images/Sumagang, Adjie.png",
+          },
+          {
+            name: "Tafalla, Rhena",
+            position: "Councilor",
+            profile: "/images/Tafalla, Rhena.png",
+          },
+          {
+            name: "Tan Josie",
+            position: "Councilor",
+            profile: "/images/Tan Josie red.png",
+          },
+          {
+            name: "Tibo, Edie",
+            position: "Councilor",
+            profile: "/images/Tibo, Edie.png",
           },
         ],
+        sliderSettings: {
+          dots: true,
+          dotsClass: "slick-dots custom-dot-class",
+          infinite: false,
+          slidesToShow: 5,
+          speed: 300,
+          rows: 2,
+          slidesPerRow: 1,
+          draggable: true,
+          swipeToSlide: true,
+          responsive: [
+            {
+              breakpoint: 1300,
+              settings: {
+                slidesToShow: 4,
+              },
+            },
+            {
+              breakpoint: 1200,
+              settings: {
+                slidesToShow: 3,
+              },
+            },
+            {
+              breakpoint: 1000,
+              settings: {
+                slidesToShow: 3,
+                rows: 1,
+              },
+            },
+            {
+              breakpoint: 991,
+              settings: {
+                slidesToShow: 3,
+                rows: 1,
+                dots: false,
+              },
+            },
+            {
+              breakpoint: 767,
+              settings: {
+                slidesToShow: 2,
+                rows: 1,
+                dots: false,
+              },
+            },
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 2.2,
+                rows: 1,
+                dots: false,
+              },
+            },
+            {
+              breakpoint: 475,
+              settings: {
+                slidesToShow: 1.3,
+                rows: 1,
+                dots: false,
+              },
+            },
+            {
+              breakpoint: 400,
+              settings: {
+                slidesToShow: 1,
+                rows: 1,
+                dots: false,
+              },
+            },
+          ],
+        },
+        newsSettings: {
+          dots: false,
+          infinite: true,
+          slidesToShow: 1.4,
+          speed: 300,
+          rows: 1,
+          slidesPerRow: 1,
+          draggable: true,
+          swipeToSlide: true,
+          responsive: [
+            {
+              breakpoint: 475,
+              settings: {
+                slidesToShow: 1.3,
+                rows: 1,
+                dots: false,
+              },
+            },
+            {
+              breakpoint: 400,
+              settings: {
+                slidesToShow: 1.2,
+                rows: 1,
+                dots: false,
+              },
+            },
+            {
+              breakpoint: 360,
+              settings: {
+                slidesToShow: 1,
+                rows: 1,
+                dots: false,
+              },
+            },
+          ],
+        },
       },
     };
-
   },
   // mounted() {
   //   window.addEventListener("scroll", this.onScroll)
