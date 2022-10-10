@@ -918,7 +918,7 @@ export default {
         },
         {
           tag: 4,
-          title: "CITY ACCOUNTANT OFFICE",
+          title: "CITY ACCOUNTING OFFICE",
           icon: "/images/Icon awesome-traffic-light.png",
           name: "peace",
           mandate:

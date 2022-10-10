@@ -90,7 +90,7 @@ export default {
     return {
       fblinks: [
         {
-          title: "City Mayors Office",
+          title: "City Mayor's Office",
           fblink:
             "https://www.facebook.com/people/City-Mayors-Office-Calbayog-City/100083591768956",
           logo: "https://scontent.fceb2-2.fna.fbcdn.net/v/t39.30808-6/292955720_100527139410467_6836119874521204716_n.png?_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=ED7SO7Yp7e4AX9RWJ6k&_nc_ht=scontent.fceb2-2.fna&oh=00_AT_Wx___tA8vIF53Sqw-ovd9kchk96HJwCc-Q4FXdgCTog&oe=633F3A71",
@@ -186,7 +186,7 @@ export default {
           logo: "https://scontent.fceb2-1.fna.fbcdn.net/v/t39.30808-6/243027320_162911592681143_6671997828696323685_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=PVeGJfX2hscAX8xlOaY&_nc_ht=scontent.fceb2-1.fna&oh=00_AT-BaPYcRB30HteJn01LViAGE7Jp3hRykpgEBXjdRN3GsQ&oe=633FAECC",
         },
         {
-          title: "Sangguniang Panlungsod",
+          title: "Sangguniang Panglunsod",
           fblink:
             "https://scontent.fceb2-1.fna.fbcdn.net/v/t1.18169-9/10639714_274422119424344_978357608409355447_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=rR0Y1gALphIAX_0IMT0&_nc_ht=scontent.fceb2-1.fna&oh=00_AT9wafP8vTf9dSi4q1hle__JkkPX0NbhjcnYUkr3am56pw&oe=635F34B1",
           logo: "/images/facebook-f-logo-2019.png",
@@ -198,9 +198,9 @@ export default {
         },
       ],
       items: [
-        "City Mayors Office",
+        "City Mayor's Office",
         "City Vice - Mayor Office",
-        "City Administrator Office",
+        "City Administrator's Office",
         "City Accountant Office",
         "Assesor`s Office",
         "BPLO",
