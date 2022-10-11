@@ -6,7 +6,11 @@
         v-bind="sliderHeader"
         class="officials-slider"
       >
-        <img :src="selected_department.banner" alt="" v-if="selected_department.banner">
+        <img
+          :src="selected_department.banner"
+          alt=""
+          v-if="selected_department.banner"
+        >
         <img
           v-else
           :src="item.img"
@@ -43,9 +47,7 @@
                   style="color:white"
                   v-html="selected_department.welcome"
                 ></span>
-                <span
-                  v-else
-                >No data yet</span>
+                <span v-else>No data yet</span>
                 <!--panhumalatag-->
                 <!-- <p>
                               Welcome to the official website of the City Government of Calbayog!
@@ -67,7 +69,8 @@
             </div>
           </div>
           <div class="mobile-wt-wrapper">
-            <div class="img-holder"
+            <div
+              class="img-holder"
               style=" background-image: url('/images/bg-logo.jpg'); background-size: cover; background-position: center -3px;"
             >
               <!-- <img
@@ -82,9 +85,9 @@
             <div class="wtc-inner">
               <h4>{{ 'Welcome to the '+selected_department.title }}</h4>
               <span
-                  style="color:white"
-                  v-html="selected_department.welcome"
-                ></span>
+                style="color:white"
+                v-html="selected_department.welcome"
+              ></span>
               <!-- <div
                 class="hid-message-welcome"
                 :class="{animate : showWelcomeMesDept}"
@@ -123,21 +126,25 @@
           </a>
         </div>
       </div>
-      <div class="news-single-wrapper" id="accomp" v-if="selected_activity.title != ''">
+      <div
+        class="news-single-wrapper"
+        id="accomp"
+        v-if="selected_activity.title != ''"
+      >
         <div class="container">
           <div class="title-search-wrapper">
             <h3>Activity Post</h3>
           </div>
-          <div class="nsp-content"  >
-            <div class="full-img"  @click="jobsModal(selected_activity)">
+          <div class="nsp-content">
+            <div
+              class="full-img"
+              @click="jobsModal(selected_activity)"
+            >
               <!-- <img
                 :src="require('~/static/images/300819481_120140560796856_1936510054696472107_n.png')"
                 @click="jobsModal"
               > -->
-              <img
-                :src="selected_activity.cover"
-               
-              >
+              <img :src="selected_activity.cover">
             </div>
             <!-- <div class="grid-img">
               <div class="nsp-imgs">
@@ -164,18 +171,25 @@
               </div>
             </div> -->
             <div class="nsp-articles">
-              <div class="desc" v-html="selected_activity.description">
+              <div
+                class="desc"
+                v-html="selected_activity.description"
+              >
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="news-single-wrapper" id="accomp" v-else>
+      <div
+        class="news-single-wrapper"
+        id="accomp"
+        v-else
+      >
         <div class="container">
           <div class="title-search-wrapper">
             <h3>No Activity Post</h3>
           </div>
-          
+
         </div>
       </div>
     </div>
@@ -187,7 +201,7 @@
           class="mandate-gal"
           id="manadte-scroll"
         >
-        <div
+          <div
             class="img-gal-wrapper"
             v-for="(item, index) in selected_programs"
             :key="index"
@@ -197,9 +211,7 @@
             <p class="title-m">{{item.title}}</p>
           </div>
         </div>
-        <div
-          v-else
-        >On development</div>
+        <div v-else>On development</div>
       </div>
     </div>
     <div class="mission-section mission-visons-sections">
@@ -316,8 +328,15 @@
             </div>
           </VueSlickCarousel>
         </div> -->
-        <div class="image-banner-employee"  v-for="(allemp, index) in selected_department.allEmp" :key="index">
-          <img style="margin-bottom: 10px" :src="allemp.allinImg">
+        <div
+          class="image-banner-employee"
+          v-for="(allemp, index) in selected_department.allEmp"
+          :key="index"
+        >
+          <img
+            style="margin-bottom: 10px"
+            :src="allemp.allinImg"
+          >
         </div>
       </div>
     </div>
@@ -361,11 +380,16 @@
       name="progModal"
       width="100%"
       height="100%"
-      
     >
-      <div class="newspopup" id="idmo">
+      <div
+        class="newspopup"
+        id="idmo"
+      >
         <div class="images-slider">
-          <v-carousel class="news-slider-img" v-bind="progslider">
+          <v-carousel
+            class="news-slider-img"
+            v-bind="progslider"
+          >
             <v-carousel-item
               v-for="(item,i) in programs_clicked_item"
               :key="i"
@@ -387,9 +411,7 @@
           </div>
           <div class="news-modal-content">
             <div class="news-description">
-              <span 
-                v-html="programs_clicked_item_description"
-              ></span>
+              <span v-html="programs_clicked_item_description"></span>
             </div>
           </div>
         </div>
@@ -412,18 +434,33 @@ import VueSlickCarousel from "vue-slick-carousel";
 import "vue-slick-carousel/dist/vue-slick-carousel.css";
 // optional style for arrows & dots
 import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
-import department_datas from "~/components/json/department/departments.json";
-import department_programs_accomplishments from "~/components/json/department/programs_accomplishment.json";
-import activity_post2 from "~/components/json/department/activity_post2.json";
+// import department_datas from "~/components/json/department/departments.json";
+// import department_programs_accomplishments from "~/components/json/department/programs_accomplishment.json";
+// import activity_post2 from "~/components/json/department/activity_post2.json";
 export default {
   name: "About",
   layouts: "default",
   components: { VueSlickCarousel },
+  async asyncData({ $axios }) {
+    const ip = await $axios.$get(
+      "https://gist.githubusercontent.com/letsclode/139c94dccc0dab994c243cfb9bb411bf/raw/3213c47176402fc2c6b25c9cdb31daf208f6f830/departments.json"
+    );
+
+    const ip2 = await $axios.$get(
+      "https://gist.githubusercontent.com/letsclode/73378e946e223814e018ea91a1013b6f/raw/3861d7bf6982a2e1a73a43e2b17525b15ec7a288/programs.json"
+    );
+
+    const ip3 = await $axios.$get(
+      "https://gist.githubusercontent.com/letsclode/130811607f5377fc4392b4232c1083c9/raw/d5a6a84d405fe711f81ceaa6acfa523427d1dac4/activity.json"
+    );
+    return { departments: ip, department_programs: ip2, activity_post: ip3 };
+  },
+
   data() {
     return {
-      departments:department_datas,
-      department_programs:department_programs_accomplishments,
-      activity_post:activity_post2,
+      // departments: ip,
+      // department_programs: department_programs_accomplishments,
+      // activity_post: activity_post2,
       officialIndex: "",
       showWelcomeMesDept: false,
       imgUrl: "",
@@ -645,17 +682,17 @@ export default {
         fade: true,
         adaptiveHeight: false,
       },
-      progslider:{
-          "dots": false,
-          "arrows": false,
+      progslider: {
+        dots: false,
+        arrows: false,
       },
       selected_department: {},
       selected_programs: [],
       programs_clicked_item: [],
-      programs_clicked_item_description:'',
-      selected_activity:{},
-      activity_modal:[],
-      activity_modal_desc:[]
+      programs_clicked_item_description: "",
+      selected_activity: {},
+      activity_modal: [],
+      activity_modal_desc: [],
       // departments: [
       //   {
       //     title: "City Mayors Office",
@@ -1109,7 +1146,7 @@ export default {
       //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citycoop%2FIMG_6811-removebg-preview.png?alt=media&token=48f4591d-8ebc-4e57-82a9-c611ba3d23b3" },
       //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citycoop%2FIMG_6815-removebg-preview.png?alt=media&token=e26dad7f-d663-4029-bf61-b48e2f5dfc64" },
       //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citycoop%2FIMG_6817-removebg-preview.png?alt=media&token=57a4d141-14c0-49c4-967f-600867048d08" }
-           
+
       //     ],
       //   },
       //   {
@@ -1125,19 +1162,19 @@ export default {
       //     welcome:
       //       "<p>Our Office reviews and consolidates budget proposals of different departments and offices of the local government of Calbayog, both annual and supplemental. Hence, we are primarily responsible for the preparation of the Executive Budget and Supplemental Budget.<br><br>As a financial management office, we promote efficient, prudent and effective management utilization of government funds in the implementation of programs, projects and activities. We also provide technical assistance on various budgetary concerns.</p>",
       //     employees: [
-      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5102-removebg-preview.png?alt=media&token=3e1b6ba6-3351-4047-8ca5-6474c142b043" }, 
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5102-removebg-preview.png?alt=media&token=3e1b6ba6-3351-4047-8ca5-6474c142b043" },
       //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5104-removebg-preview.png?alt=media&token=23654775-ab3a-4a41-be74-c6f10469d1f3" },
-      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5107-removebg-preview.png?alt=media&token=0dff203d-8c66-47a4-90c5-5712cff7988b" }, 
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5107-removebg-preview.png?alt=media&token=0dff203d-8c66-47a4-90c5-5712cff7988b" },
       //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5110-removebg-preview.png?alt=media&token=c4c268d8-52f5-42b0-85bb-8cd9434e0dae" },
-      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5112-removebg-preview.png?alt=media&token=403210b6-9666-446e-857f-adf1c85c8962" }, 
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5112-removebg-preview.png?alt=media&token=403210b6-9666-446e-857f-adf1c85c8962" },
       //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5115-removebg-preview.png?alt=media&token=31894e78-d6c8-4d3b-ad82-e5689f860811" },
-      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5117-removebg-preview.png?alt=media&token=bfb668d5-7229-4d87-b5fa-0241d0c22202" }, 
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5117-removebg-preview.png?alt=media&token=bfb668d5-7229-4d87-b5fa-0241d0c22202" },
       //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5119-removebg-preview.png?alt=media&token=742c76e2-3351-44a3-9f71-bfe6b6b3f012" },
-      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5122-removebg-preview.png?alt=media&token=3610569e-6e7c-4823-a7a9-ac6a8c4b2f0c" }, 
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5122-removebg-preview.png?alt=media&token=3610569e-6e7c-4823-a7a9-ac6a8c4b2f0c" },
       //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5124-removebg-preview.png?alt=media&token=55bebaab-44c5-4546-b9c2-1a415accd13a" },
-      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5126-removebg-preview.png?alt=media&token=d8fa6bba-ae67-43b9-8d06-25af5c5f62d9" }, 
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5126-removebg-preview.png?alt=media&token=d8fa6bba-ae67-43b9-8d06-25af5c5f62d9" },
       //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5128-removebg-preview.png?alt=media&token=e78bade8-03e6-418e-9f8c-ae5e4f32715e" },
-      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5130-removebg-preview.png?alt=media&token=c49a4ced-ded7-4bdd-95e0-2486986bcc34" }, 
+      //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5130-removebg-preview.png?alt=media&token=c49a4ced-ded7-4bdd-95e0-2486986bcc34" },
       //       { name: "", position: "", img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/citybudget%2FIMG_5132-removebg-preview.png?alt=media&token=998e205a-8da8-44f5-9400-5936fd6775f5" }
       //     ],
       //   },
@@ -1489,20 +1526,20 @@ export default {
       this.showWelcomeMesDept = !this.showWelcomeMesDept;
     },
     jobsModal(val) {
-      this.activity_modal = []
-      this.activity_modal = val.images
-      this.activity_modal_desc = val.description
-      console.log(this.activity_modal, 'test')
+      this.activity_modal = [];
+      this.activity_modal = val.images;
+      this.activity_modal_desc = val.description;
+      console.log(this.activity_modal, "test");
       this.$modal.show("jobsModal");
     },
     closeNewsModal() {
       this.$modal.hide("jobsModal");
     },
     programmesModal(val) {
-      this.programs_clicked_item = []
-      this.programs_clicked_item.push(val)
-      this.programs_clicked_item_description = val.description
-      console.log(this.programs_clicked_item, 'test')
+      this.programs_clicked_item = [];
+      this.programs_clicked_item.push(val);
+      this.programs_clicked_item_description = val.description;
+      console.log(this.programs_clicked_item, "test");
       this.$modal.show("progModal");
     },
     // programmesModal() {
@@ -1524,11 +1561,10 @@ export default {
       });
     },
     filterPrograms() {
-      this.selected_programs = this.department_programs.filter(x=>{
-        if(x.tag==this.$route.params.id) 
-        return x
-      })
-      console.log(this.selected_programs, 'programs')
+      this.selected_programs = this.department_programs.filter((x) => {
+        if (x.tag == this.$route.params.id) return x;
+      });
+      console.log(this.selected_programs, "programs");
     },
     filterActivities() {
       this.activity_post.forEach((activity_post) => {
@@ -1537,14 +1573,13 @@ export default {
           console.log(this.selected_activity, "activiies");
         }
       });
-    }
-    
+    },
   },
 };
 </script>
 
 <style scoped>
-  #idmo .images-slider .news-slider-img .v-window__container .v-window__prev{
-     display: none!important;
-  }
-  </style>
+#idmo .images-slider .news-slider-img .v-window__container .v-window__prev {
+  display: none !important;
+}
+</style>
