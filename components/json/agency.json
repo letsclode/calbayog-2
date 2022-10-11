@@ -124,10 +124,91 @@
     },
     {
       "tag": 17,
-      "title": "City Disaster Risk reduction and Management Office",
+      "title": "City Disaster Risk Reduction and Management Office",
       "icon": "/images/Icon awesome-traffic-light.png",
       "name": "agri",
       "mandate":
         "The office is tasked to conduct and organized disaster preparedness activities to save lives and properties."
+    },
+    {
+      "tag": 18,
+      "title": "City Arts and Culture Office",
+      "icon": "/images/Icon awesome-traffic-light.png",
+      "name": "educ",
+      "mandate":
+        ""
+    },
+    {
+      "tag": 19,
+      "title": "Local Civil Registry Office",
+      "icon": "/images/Icon awesome-traffic-light.png",
+      "name": "disaster",
+      "mandate":
+        ""
+    },
+    {
+      "tag": 20,
+      "title": "City Health Office",
+      "icon": "/images/Icon awesome-traffic-light.png",
+      "name": "transpo",
+      "mandate":
+        ""
+    },
+    {
+      "tag": 21,
+      "title": "City Solid Waste Management Office",
+      "icon": "/images/Icon awesome-traffic-light.png",
+      "name": "agri",
+      "mandate":
+        ""
+    },
+    {
+      "tag": 22,
+      "title": "City General Services Office",
+      "icon": "/images/Icon awesome-traffic-light.png",
+      "name": "transpo",
+      "mandate":
+        ""
+    },
+    {
+      "tag": 23,
+      "title": "City Public Library and Tech4ED Center",
+      "icon": "/images/Icon awesome-traffic-light.png",
+      "name": "waste",
+      "mandate":
+        ""
+    },
+    {
+      "tag": 24,
+      "title": "City Drug Abuse Prevention & Rehabilitation Office",
+      "icon": "/images/Icon awesome-traffic-light.png",
+      "name": "peace",
+      "mandate":
+        ""
+    },
+    {
+      "tag": 25,
+      "title": "City Agriculture Office",
+      "icon": "/images/Icon awesome-traffic-light.png",
+      "name": "disaster",
+      "mandate":
+        ""
+    },
+    {
+      "tag": 26,
+      "title": "City Nutrition Council",
+      "icon": "/images/Icon awesome-traffic-light.png",
+      "name": "health",
+      "mandate":
+        ""
+    },
+    {
+      "tag": 27,
+      "title": "City Tourism and Information Office",
+      "icon": "/images/Icon awesome-traffic-light.png",
+      "name": "infra",
+      "mandate":
+        ""
     }
+
   ]
