@@ -433,34 +433,34 @@ import VueSlickCarousel from "vue-slick-carousel";
 import "vue-slick-carousel/dist/vue-slick-carousel.css";
 // optional style for arrows & dots
 import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
-// import department_datas from "~/components/json/department/departments.json";
-// import department_programs_accomplishments from "~/components/json/department/programs_accomplishment.json";
-// import activity_post2 from "~/components/json/department/activity_post2.json";
+import department_datas from "~/components/json/department/departments.json";
+import department_programs_accomplishments from "~/components/json/department/programs_accomplishment.json";
+import activity_post2 from "~/components/json/department/activity_post2.json";
 import officials_data from "~/components/json/officials.json";
 export default {
   name: "About",
   layouts: "default",
   components: { VueSlickCarousel },
-  async asyncData({ $axios }) {
-    const ip = await $axios.$get(
-      "https://gist.githubusercontent.com/letsclode/139c94dccc0dab994c243cfb9bb411bf/raw/3213c47176402fc2c6b25c9cdb31daf208f6f830/departments.json"
-    );
+  // async asyncData({ $axios }) {
+  //   const ip = await $axios.$get(
+  //     "https://gist.githubusercontent.com/letsclode/139c94dccc0dab994c243cfb9bb411bf/raw/3213c47176402fc2c6b25c9cdb31daf208f6f830/departments.json"
+  //   );
 
-    const ip2 = await $axios.$get(
-      "https://gist.githubusercontent.com/letsclode/73378e946e223814e018ea91a1013b6f/raw/3861d7bf6982a2e1a73a43e2b17525b15ec7a288/programs.json"
-    );
+  //   const ip2 = await $axios.$get(
+  //     "https://gist.githubusercontent.com/letsclode/73378e946e223814e018ea91a1013b6f/raw/3861d7bf6982a2e1a73a43e2b17525b15ec7a288/programs.json"
+  //   );
 
-    const ip3 = await $axios.$get(
-      "https://gist.githubusercontent.com/letsclode/130811607f5377fc4392b4232c1083c9/raw/d5a6a84d405fe711f81ceaa6acfa523427d1dac4/activity.json"
-    );
-    return { departments: ip, department_programs: ip2, activity_post: ip3 };
-  },
+  //   const ip3 = await $axios.$get(
+  //     "https://gist.githubusercontent.com/letsclode/130811607f5377fc4392b4232c1083c9/raw/d5a6a84d405fe711f81ceaa6acfa523427d1dac4/activity.json"
+  //   );
+  //   return { departments: ip, department_programs: ip2, activity_post: ip3 };
+  // },
 
   data() {
     return {
-      // departments: ip,
-      // department_programs: department_programs_accomplishments,
-      // activity_post: activity_post2,
+      departments: department_datas,
+      department_programs: department_programs_accomplishments,
+      activity_post: activity_post2,
       officialIndex: "",
       showWelcomeMesDept: false,
       imgUrl: "",
