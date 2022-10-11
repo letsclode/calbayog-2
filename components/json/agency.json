@@ -23,7 +23,7 @@
     },
     {
       "tag": 4,
-      "title": "City Accountanting Office",
+      "title": "City Accounting Office",
       "icon": "/images/Icon awesome-briefcase-medical.png",
       "name": "health",
       "mandate":
@@ -129,30 +129,5 @@
       "name": "agri",
       "mandate":
         "The office is tasked to conduct and organized disaster preparedness activities to save lives and properties."
-    },
-    {
-      "tag": 1,
-      "title": "Meeting with the Federation of Pedicab Drivers of Calbayog ",
-      "date": "October 1, 2022",
-      "mandate":
-        "The members of the federation expressed their willingness to join the city in commemorating its Charter Day in October 16, 2022. They will celebrate Pedicab Drivers Day in October 14, 2022 with some series of activities.",
-      "icon": "/images/news1.jpg"
-    },
-    {
-      "tag": 2,
-      "title": "COA EXIT CONFERENCE for 60 Barangays",
-      "date": "September 30, 2022",
-      "mandate":
-        "COA EXIT CONFERENCE for 60 Barangays CY 2019-2021 @Baypark Hotel, Calbayog City",
-      "icon": "/images/news2.jpg"
-    },
-    {
-      "tag": 3,
-      "title":
-        "The 3-Year (2022-2025) Executive-Legislative Agenda (ELA) Conference. ",
-      "date": "September 21, 2022",
-      "mandate":
-        "The ELA was derived from the series of workshops previously conducted by the Technical Working Group Sectoral Teams with  their PPAs, Goals and Objectives.",
-      "icon": "/images/news3.jpg"
     }
   ]

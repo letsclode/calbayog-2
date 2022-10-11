@@ -135,8 +135,8 @@
                     style="border:none;overflow:hidden"
                     scrolling="no"
                     frameborder="0"
-                    allowfullscreen="true"
                     allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                    allowfullscreen="true"
                   ></iframe>
                   <v-card-text class="news-content-wrapper">
                     <p class="news-date">{{item.date}}</p>

@@ -1,33 +1,26 @@
 [
-    {
-      "title": "Opening Ceremony",
-      "date": "3 OCTOBER, 2022",
-      "description":
-        "We invite all participating entries in the following competitions to be present during the opening ceremonies and awarding of winners later at the Calbayog City Convention Center at 6 pm.",
-      "frame":
-        "https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FIRcalbayog247%2Fvideos%2F496738412041957%2F&show_text=false&width=560&t=0 ",
-      "url": "news/vid1"
-    },
-
-    {
-      "title": "SANGGUNIANG PANLUNGSOD PUBLIC HEARING",
-      "date": "21 SEPTEMBER, 2022",
-      "description":
-        "SAMELCO 1 UMATUBANG SA KONSEHO SAN CALBAYOG PARA BATUNON AN MGA PAKIANA HIUNONG SAN SOBRA NGA PAGHATAAS SAN SUKOT SA KURYENTE",
-      "frame":
-        "https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FIRcalbayog247%2Fvideos%2F465375588855152%2F&show_text=false&width=560&t=0",
-      "url": "news/vid2"
-    },
-    {
-      "title":
-        "THE LEGISLATIVE HOUR WITH VICE MAYOR REX DAGUMAN & CITY COUNCILOR ABBIE IRIGON-YULO",
-      "date": "AUGUST 17, 2022",
-      "description":
-        "MAYOR REX DAGUMAN & CITY COUNCILOR ABBIE IRIGON-YULO KNOW HOW OUR VICE MAYOR RENDER HIS WORKS.",
-      "frame":
-        "https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FIRcalbayog247%2Fvideos%2F781763489628704%2F&show_text=false&width=560&t=0",
-      "url": "news/vid3"
-    }
+  {
+    "title": "Opening Ceremony",
+    "date": "3 OCTOBER, 2022",
+    "description": "We invite all participating entries in the following competitions to be present during the opening ceremonies and awarding of winners later at the Calbayog City Convention Center at 6 pm.",
+    "frame": "https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FIRcalbayog247%2Fvideos%2F496738412041957%2F&show_text=false&width=560&t=0 ",
+    "url": "news/vid1"
+  },
+  
+  {
+    "title": "SANGGUNIANG PANLUNGSOD PUBLIC HEARING",
+    "date": "21 SEPTEMBER, 2022",
+    "description": "SAMELCO 1 UMATUBANG SA KONSEHO SAN CALBAYOG PARA BATUNON AN MGA PAKIANA HIUNONG SAN SOBRA NGA PAGHATAAS SAN SUKOT SA KURYENTE",
+    "frame": "https://www.facebook.com%2FIRcalbayog247%2Fvideos%2F465375588855152%2F&show_text=false&width=560&t=0",
+    "url": "news/vid2"
+  },
+  {
+    "title": "THE LEGISLATIVE HOUR WITH VICE MAYOR REX DAGUMAN & CITY COUNCILOR ABBIE IRIGON-YULO",
+    "date": "AUGUST 17, 2022",
+    "description": "MAYOR REX DAGUMAN & CITY COUNCILOR ABBIE IRIGON-YULO KNOW HOW OUR VICE MAYOR RENDER HIS WORKS.",
+    "frame": "https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FIRcalbayog247%2Fvideos%2F781763489628704%2F&show_text=false&width=560&t=0",
+    "url": "news/vid3"
+  }
   ]
 
   
