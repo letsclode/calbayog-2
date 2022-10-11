@@ -7,7 +7,7 @@
           <div class="wt-wrapper">
             <div class="img-holder">
               <img
-                :src="require('~/static/images/Mayor12 – 10.jpg')"
+                :src="('https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assets%2FMayor12%20%E2%80%93%2010.jpg?alt=media&token=65cc8f64-159c-4117-845c-18798d19e0e0')"
                 alt=""
               >
             </div>
@@ -45,7 +45,7 @@
           <div class="mobile-wt-wrapper">
             <div class="img-holder">
               <img
-                :src="require('~/static/images/Mayor12 – 10.jpg')"
+                :src="('https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assets%2FMayor12%20%E2%80%93%2010.jpg?alt=media&token=65cc8f64-159c-4117-845c-18798d19e0e0')"
                 alt=""
               >
             </div>
@@ -401,48 +401,20 @@ import "vue-slick-carousel/dist/vue-slick-carousel.css";
 // optional style for arrows & dots
 import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
 import Banners from "../components/Banners.vue";
+import news_data from "../components/json/news.json";
+import officials_data from "../components/json/officials.json";
 export default {
   name: "IndexPage",
   layouts: "default",
   components: { VueSlickCarousel, Banners },
   data() {
     return {
-      newsArray: [
-        {
-          title: "Opening Ceremony",
-          date: "3 OCTOBER, 2022",
-          description:
-            "We invite all participating entries in the following competitions to be present during the opening ceremonies and awarding of winners later at the Calbayog City Convention Center at 6 pm.",
-          frame:
-            "https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FIRcalbayog247%2Fvideos%2F496738412041957%2F&show_text=false&width=560&t=0 ",
-          url: "news/vid1",
-        },
-
-        {
-          title: "SANGGUNIANG PANLUNGSOD PUBLIC HEARING",
-          date: "21 SEPTEMBER, 2022",
-          description:
-            "SAMELCO 1 UMATUBANG SA KONSEHO SAN CALBAYOG PARA BATUNON AN MGA PAKIANA HIUNONG SAN SOBRA NGA PAGHATAAS SAN SUKOT SA KURYENTE",
-          frame:
-            "https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FIRcalbayog247%2Fvideos%2F465375588855152%2F&show_text=false&width=560&t=0",
-          url: "news/vid2",
-        },
-        {
-          title:
-            "THE LEGISLATIVE HOUR WITH VICE MAYOR REX DAGUMAN & CITY COUNCILOR ABBIE IRIGON-YULO",
-          date: "AUGUST 17, 2022",
-          description:
-            "MAYOR REX DAGUMAN & CITY COUNCILOR ABBIE IRIGON-YULO KNOW HOW OUR VICE MAYOR RENDER HIS WORKS.",
-          frame:
-            "https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FIRcalbayog247%2Fvideos%2F781763489628704%2F&show_text=false&width=560&t=0",
-          url: "news/vid3",
-        },
-      ],
+      newsArray: news_data,
       eventGallery: [
         {
           tag: 1,
           title: "October",
-          img: "/images/spark-oct.jpg",
+          img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assets%2Fspark-oct.jpg?alt=media&token=464db337-4bce-4487-b73a-c11ba269d823",
         },
         {
           tag: 2,
@@ -457,11 +429,11 @@ export default {
         {
           tag: 4,
           title: "July",
-          img: "/images/july1.png",
+          img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assets%2Fjuly1.png?alt=media&token=2c5b9406-0414-4468-a177-1fe9c39d6a1f",
         },
         {
           title: "June",
-          img: "/images/2378565_orig.png",
+          img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assets%2F2378565_orig.png?alt=media&token=6f5758eb-37db-41df-a7f0-2daf70890804",
         },
       ],
       agencyArray: [
@@ -656,7 +628,7 @@ export default {
         {
           tag: 1,
           title: "October",
-          img: "/images/spark-oct.jpg",
+          img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assets%2Fspark-oct.jpg?alt=media&token=464db337-4bce-4487-b73a-c11ba269d823",
         },
         {
           tag: 2,
@@ -671,147 +643,14 @@ export default {
         {
           tag: 4,
           title: "July",
-          img: "/images/july1.png",
+          img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assets%2Fjuly1.png?alt=media&token=2c5b9406-0414-4468-a177-1fe9c39d6a1f",
         },
         {
           title: "June",
-          img: "/images/2378565_orig.png",
+          img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assets%2F2378565_orig.png?alt=media&token=6f5758eb-37db-41df-a7f0-2daf70890804",
         },
       ],
-      // agencyArray: [
-      //   {
-      //     title: 'Agriculture',
-      //     icon: '/images/Icon awesome-leaf.png',
-      //     name: 'agri',
-      //     mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
-      //   },
-      //   {
-      //     title: 'Disaster Risk Reduction',
-      //     icon: '/images/Icon ionic-md-warning.png',
-      //     name: 'disaster',
-      //     mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
-      //   },
-      //   {
-      //     title: 'Education',
-      //     icon: '/images/Icon awesome-graduation-cap.png',
-      //     name: 'educ',
-      //     mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
-      //   },
-      //   {
-      //     title: 'Health',
-      //     icon: '/images/Icon awesome-briefcase-medical.png',
-      //     name: 'health',
-      //     mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
-      //   },
-      //   {
-      //     title: 'Infrastructure Development',
-      //     icon: '/images/Icon awesome-building.png',
-      //     name: 'infra',
-      //     mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
-      //   },
-      //   {
-      //     title: 'Peace and Order',
-      //     icon: '/images/Icon awesome-dove.png',
-      //     name: 'peace',
-      //     mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
-      //   },
-      //   {
-      //     title: 'Poverty Alleviation',
-      //     icon: '/images/Icon open-graph.png',
-      //     name: 'pov',
-      //     mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
-      //   },
-      //   {
-      //     title: 'Solid Waste Management',
-      //     icon: '/images/Icon awesome-recycle.png',
-      //     name: 'waste',
-      //     mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
-      //   },
-      //   {
-      //     title: 'Tourism',
-      //     icon: '/images/Icon awesome-umbrella-beach.png',
-      //     name: 'tourism',
-      //     mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
-      //   },
-      //   {
-      //     title: 'Transportation Planning and Traffic Management',
-      //     icon: '/images/Icon awesome-traffic-light.png',
-      //     name: 'transpo',
-      //     mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
-      //   },
-      // ],
-      // agencyArray: [
-      //   {
-      //     tag:1,
-      //     title: 'CITY MAYOR`S OFFICE',
-      //     icon: '/images/Icon awesome-leaf.png',
-      //     name: 'agri',
-      //     mandate: 'The Mayor`s Office Operation coordinates and oversees the management of city governmental operations to promote the efficient and effective delivery of agency services. The office mandate to both provide the operational support for all agencies as well as measure and report on agency performance. Operations helps City agencies to improve productivity by providing recommendations and institutional support in addition to reporting areas of success and identifying the areas of possible improvement.',
-      //   },
-      //   {
-      //     tag:17,
-      //     title: 'Disaster Risk Reduction',
-      //     icon: '/images/Icon ionic-md-warning.png',
-      //     name: 'disaster',
-      //     mandate: 'The office is tasked to conduct and organized disaster preparedness activities to save lives and properties.',
-      //   },
-      //   {
-      //     tag:15,
-      //     title: 'CITY HOUSING AND DEVELOPMENT',
-      //     icon: '/images/Icon awesome-graduation-cap.png',
-      //     name: 'educ',
-      //     mandate: 'Formulate plans and program applicable to the Housing Program of the city based on RA 7279 or otherwise known as Urban Development and Housing Act of 1992',
-      //   },
-      //   {
-      //     tag:6,
-      //     title: 'Business Permits and Licensing',
-      //     icon: '/images/Icon awesome-briefcase-medical.png',
-      //     name: 'health',
-      //     mandate: 'In charge of the business permitting and licensing on private commercial, industrial and other business establishments within the jurisdiction of the local government unit in relation to the implementation of tax ordinances pursuant to the provisions provided under Book II of RA # 7160 otherwise known as the Local Government Code of 1991',
-      //   },
-      //   {
-      //     tag:0,
-      //     title: 'SANGGUNIANG PANLUNGSOD',
-      //     icon: '/images/Icon awesome-building.png',
-      //     name: 'infra',
-      //     mandate: 'Appropriate Funds for expenses of the City Government in accordance with law.',
-      //   },
-      //   {
-      //     tag:3,
-      //     title: 'CITY ADMINISTRATOR',
-      //     icon: '/images/Icon awesome-dove.png',
-      //     name: 'peace',
-      //     mandate: 'Develop management and administrative-related plans and strategies upon approval of the LCE/Delivery of administrative services during and after man-made and natural disasters and calamities.',
-      //   },
-      //   {
-      //     tag:0,
-      //     title: 'City Civil Registrar',
-      //     icon: '/images/Icon open-graph.png',
-      //     name: 'pov',
-      //     mandate: 'Records all vital occurrences of a person, natural or through judicial order, in civil registry forms and books required by law and file, compile, keep and preserve these documents in secure place.',
-      //   },
-      //   {
-      //     tag:0,
-      //     title: 'Solid Waste Management',
-      //     icon: '/images/Icon awesome-recycle.png',
-      //     name: 'waste',
-      //     mandate: 'The City Solid Waste Management Office was created to answer the needs towards preventing Health hazards to Human Lives and mitigating Environmental degradation. Thus, on October 10, 1997 an Ordinance No. 97-42-3682 was approved by the Sangguniang Panlungsod.',
-      //   },
-      //   {
-      //     tag:0,
-      //     title: 'CITY GENERAL SERVICES',
-      //     icon: '/images/Icon awesome-umbrella-beach.png',
-      //     name: 'tourism',
-      //     mandate: 'The City General Services Office was formally created and established in 1993 by virtue of Local Government Code of 1991 or RA. 7160, empowering local government units or decentralizing government&#39;s operation.',
-      //   },
-      //   {
-      //     tag:0,
-      //     title: 'City Budget Office',
-      //     icon: '/images/Icon awesome-traffic-light.png',
-      //     name: 'transpo',
-      //     mandate: 'Provide periodic review and disclosure of budgetary status of the Local Government',
-      //   },
-      // ],
+
       agencyArray: [
         {
           tag: 1,
@@ -965,73 +804,7 @@ export default {
       items: [],
       limitationList: 3,
       screenWidth: 0,
-      officials: [
-        {
-          name: "Hon. Raymund C. Uy",
-          position: "Calbayog City Mayor",
-          profile: "/images/my.png",
-        },
-        {
-          name: "Daguman, Rex",
-          position: "Calbayog City Vice-Mayor",
-          profile: "/images/Daguman, Rex.png",
-        },
-        {
-          name: "Delos Santos, Dolore",
-          position: "Councilor",
-          profile: "/images/Delos Santos, Dolore.png",
-        },
-        {
-          name: "Enriquez, Bombie",
-          position: "Councilor",
-          profile: "/images/Enriquez, Bombie.png",
-        },
-        {
-          name: "Gianan, Jessie",
-          position: "Councilor",
-          profile: "/images/Gianan, Jessie.png",
-        },
-        {
-          name: "Morales, Endo",
-          position: "Councilor",
-          profile: "/images/Morales, Endo.png",
-        },
-        {
-          name: "Tan, Jormac",
-          position: "Councilor",
-          profile: "/images/Tan, Jormac.png",
-        },
-        {
-          name: "Irigon, Abbie",
-          position: "Councilor",
-          profile: "/images/Irigon, Abbie.png",
-        },
-        {
-          name: "Pasacas, Minda",
-          position: "Councilor",
-          profile: "/images/Pasacas, Minda.png",
-        },
-        {
-          name: "Sumagang, Adjie",
-          position: "Councilor",
-          profile: "/images/Sumagang, Adjie.png",
-        },
-        {
-          name: "Tafalla, Rhena",
-          position: "Councilor",
-          profile: "/images/Tafalla, Rhena.png",
-        },
-        {
-          name: "Tan Josie",
-          position: "Councilor",
-          profile: "/images/Tan Josie red.png",
-        },
-        {
-          name: "Tibo, Edie",
-          position: "Councilor",
-          profile: "/images/Tibo, Edie.png",
-        },
-      ],
+      officials: officials_data,
       sliderSettings: {
         dots: true,
         dotsClass: "slick-dots custom-dot-class",
@@ -1202,73 +975,7 @@ export default {
         items: [],
         limitationList: 3,
         screenWidth: 0,
-        officials: [
-          {
-            name: "Hon. Raymund C. Uy",
-            position: "Calbayog City Mayor",
-            profile: "/images/my.png",
-          },
-          {
-            name: "Daguman, Rex",
-            position: "Calbayog City Vice-Mayor",
-            profile: "/images/Daguman, Rex.png",
-          },
-          {
-            name: "Delos Santos, Dolore",
-            position: "Councilor",
-            profile: "/images/Delos Santos, Dolore.png",
-          },
-          {
-            name: "Enriquez, Bombie",
-            position: "Councilor",
-            profile: "/images/Enriquez, Bombie.png",
-          },
-          {
-            name: "Gianan, Jessie",
-            position: "Councilor",
-            profile: "/images/Gianan, Jessie.png",
-          },
-          {
-            name: "Morales, Endo",
-            position: "Councilor",
-            profile: "/images/Morales, Endo.png",
-          },
-          {
-            name: "Tan, Jormac",
-            position: "Councilor",
-            profile: "/images/Tan, Jormac.png",
-          },
-          {
-            name: "Irigon, Abbie",
-            position: "Councilor",
-            profile: "/images/Irigon, Abbie.png",
-          },
-          {
-            name: "Pasacas, Minda",
-            position: "Councilor",
-            profile: "/images/Pasacas, Minda.png",
-          },
-          {
-            name: "Sumagang, Adjie",
-            position: "Councilor",
-            profile: "/images/Sumagang, Adjie.png",
-          },
-          {
-            name: "Tafalla, Rhena",
-            position: "Councilor",
-            profile: "/images/Tafalla, Rhena.png",
-          },
-          {
-            name: "Tan Josie",
-            position: "Councilor",
-            profile: "/images/Tan Josie red.png",
-          },
-          {
-            name: "Tibo, Edie",
-            position: "Councilor",
-            profile: "/images/Tibo, Edie.png",
-          },
-        ],
+        officials: officials_data,
         sliderSettings: {
           dots: true,
           dotsClass: "slick-dots custom-dot-class",

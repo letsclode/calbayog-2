@@ -4,7 +4,6 @@
       class="banner-wrapper small-banner"
       id="about-banner"
     >
-      <!-- <img :src="require('~/static/images/Calbayog.png')"  alt=""> -->
       <VueSlickCarousel
         v-bind="sliderHeader"
         class="officials-slider"
@@ -285,7 +284,10 @@ export default {
       ],
       value: null,
       headerCarousel: [
-        { title: "Cathedral", img: "/images/Calbayog.png" },
+        {
+          title: "Cathedral",
+          img: "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/assets%2FCalbayog.png?alt=media&token=40378d2a-0f3b-474e-85f8-837dbebad3f8",
+        },
         { title: "Falls", img: "/images/calbcover.png" },
         { title: "Falls", img: "/images/falls.png" },
       ],
