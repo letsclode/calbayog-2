@@ -752,7 +752,7 @@ a{
                         box-shadow: unset;
                         -webkit-box-shadow: unset;
                         -moz-box-shadow: unset;
-                        height: auto;
+                        height: 100%;
                     }
                 }
             }
@@ -3237,4 +3237,10 @@ opacity: 0;
             }
         }
     }
+}
+
+
+
+.slick-arrow{
+    display: none!important;
 }

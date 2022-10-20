@@ -1,4 +1,6 @@
 [
+ 
+ 
   {
     "title": "Opening Ceremony",
     "date": "3 OCTOBER, 2022",
@@ -7,7 +9,7 @@
     "url": "news/vid1"
   },
   
-  {
+  { 
     "title": "SANGGUNIANG PANLUNGSOD PUBLIC HEARING",
     "date": "21 SEPTEMBER, 2022",
     "description": "SAMELCO 1 UMATUBANG SA KONSEHO SAN CALBAYOG PARA BATUNON AN MGA PAKIANA HIUNONG SAN SOBRA NGA PAGHATAAS SAN SUKOT SA KURYENTE",
@@ -20,7 +22,22 @@
     "description": "MAYOR REX DAGUMAN & CITY COUNCILOR ABBIE IRIGON-YULO KNOW HOW OUR VICE MAYOR RENDER HIS WORKS.",
     "frame": "https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FIRcalbayog247%2Fvideos%2F781763489628704%2F&show_text=false&width=560&t=0",
     "url": "news/vid3"
+  },
+  {
+    "title": "WATCH | Highlights of Calbayog City's 74th Charter Day Celebration and the first 100 days report of Mayor Raymund C. Uy.",
+    "date": "17 OCTOBER, 2022",
+    "description": "WATCH | Highlights of Calbayog City's 74th Charter Day Celebration and the first 100 days report of Mayor Raymund C. Uy.",
+    "frame": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/news%2Fcharter%2F311249257_1408440579564336_8133018640182782418_n.mp4?alt=media&token=c7483590-bea1-4f90-bdf4-325e4ab13cca",
+    "url": "news/vid4"
+  },
+  {
+    "title": "1st 100 DAYS | SUMAT SA CALBAYOGNON",
+    "date": "16 OCTOBER, 2022",
+    "description": "1st 100 DAYS | SUMAT SA CALBAYOGNON MAYOR RAYMUND C. UY | STATE OF THE CITY ADDRESS (SOCA)",
+    "frame": "https://firebasestorage.googleapis.com/v0/b/calbayogapp.appspot.com/o/news%2Fcharter%2F10000000_1072717133353119_7562848501315701446_n.mp4?alt=media&token=cbbf7ed2-bd8e-40b7-b831-dcd70129235f",
+    "url": "news/vid5"
   }
+ 
   ]
 
   
