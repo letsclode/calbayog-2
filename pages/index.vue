@@ -160,7 +160,7 @@
 
           </div>
           <VueSlickCarousel
-            v-bind="newsSettings"
+            v-bind="newsSettings3"
             class="mobile-news"
           >
             <v-card
@@ -172,13 +172,13 @@
             >
               <a href="news/_id">
                 <v-img
-                  height="auto"
+                  height="210px"
                   class="news-card-img"
                   :src="news.img"
                 ></v-img>
                 <v-card-text class="news-content-wrapper">
                   <p class="news-date">{{news.date}}</p>
-                  <h5 class="news-title">{{news.title}}</h5>
+                  <h5 class="news-title" ref="infoBox">{{news.title}}</h5>
                   <p class="news-desc">{{news.description}}</p>
                   <a
                     href="news/_id"
@@ -498,10 +498,10 @@ export default {
           },
         ],
       },
-      newsSettings: {
+      newsSettings3: {
         dots: false,
         infinite: true,
-        slidesToShow: 1.4,
+        slidesToShow: 1,
         speed: 300,
         rows: 1,
         slidesPerRow: 1,
@@ -642,7 +642,7 @@ export default {
         newsSettings: {
           dots: false,
           infinite: true,
-          slidesToShow: 1.4,
+          slidesToShow: 1,
           speed: 300,
           rows: 1,
           slidesPerRow: 1,
@@ -652,7 +652,7 @@ export default {
             {
               breakpoint: 475,
               settings: {
-                slidesToShow: 1.3,
+                slidesToShow: 1,
                 rows: 1,
                 dots: false,
               },
@@ -660,7 +660,7 @@ export default {
             {
               breakpoint: 400,
               settings: {
-                slidesToShow: 1.2,
+                slidesToShow: 1,
                 rows: 1,
                 dots: false,
               },
@@ -677,6 +677,9 @@ export default {
         },
       },
     };
+  },
+  mounted(){
+    
   },
   methods: {
     newsShowPopup(val) {
